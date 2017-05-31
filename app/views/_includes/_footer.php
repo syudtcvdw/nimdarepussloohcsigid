@@ -8,9 +8,9 @@
   <script src="<?= ASSET_PATH . 'js/tether.min.js'; ?>"></script>
   <script src="<?= ASSET_PATH . 'js/bootstrap.min.js'; ?>"></script>
   <?php
-  if ( isset($this->js) )
-    foreach ($this->js as $js)
-      echo '<script src="' . PROJECT_PATH . 'app/views/' . $js .'"></script >';
+    if ( isset($this->js) )
+      foreach ($this->js as $js)
+        echo '<script src="' . ASSET_PATH . 'js/' . $js .'"></script >';
   ?>
 
 </body>

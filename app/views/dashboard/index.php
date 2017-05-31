@@ -1,1 +1,0 @@
-<p> The secret dashboard page </p>

@@ -3,11 +3,15 @@
 
 namespace App\Core;
 
+use App\Controllers\_ErrorController;
+
 class App
 {
   protected $controller = 'home';
   protected $method = 'index';
   protected $args = [];
+
+  public static $hasError = false;
 
   public function __construct()
   {
@@ -19,6 +23,9 @@ class App
     }
     $this->controller = ucfirst($this->controller) . 'Controller';
 //    require_once APP_ROOT . 'controllers/' . $this->controller . '.php';
+
+    $this->__assertController();
+
     $this->controller = 'App\Controllers\\' . $this->controller;
     $this->controller = new $this->controller;
 
@@ -34,10 +41,14 @@ class App
 
   private function __checkControllerMethod($url, $index)
   {
-    if ( isset($url[$index]) && method_exists($this->controller, $url[$index]) ) {
+    if ( !isset($url[$index])) return $url;
+
+    if ( method_exists($this->controller, $url[$index]) ) {
       $this->method = $url[$index];
       unset($url[$index]);
-    }
+    } else
+      $url = $this->__methodInexistent();
+
     return $url;
   }
 
@@ -48,6 +59,27 @@ class App
       $url = filter_var($url, FILTER_SANITIZE_URL);
       return explode('/', $url);
     }
+  }
+
+  /**
+   * Method was supplied to controller, but is in-existent
+   * @return array
+   */
+  private function __methodInexistent() {
+      App::$hasError = true;
+      $this->controller = new _ErrorController();
+      return [404,404];
+  }
+
+  /**
+   * Ensures that the resolved controller actually does exist
+   */
+  private function __assertController() {
+      if ( !file_exists(DOC_ROOT . APP_ROOT . 'controllers/' . $this->controller . '.php') ) {
+          $this->__methodInexistent();
+          $this->controller->index(404, 404);
+          die();
+      }
   }
 
 }

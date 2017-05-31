@@ -24,6 +24,7 @@ class View
 
   public function __construct()
   {
+    $this->isErrorPage = App::$hasError;
     $this->loggedIn = Session::get("loggedIn");
     $this->header = '_includes/_header.php';
     $this->footer = '_includes/_footer.php';

@@ -10,7 +10,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-class ErrorController extends Controller
+class _ErrorController extends Controller
 {
 
   public function __construct()
@@ -24,13 +24,13 @@ class ErrorController extends Controller
     $this->view->status = $status;
     switch ( $type ) {
       case 404:
-        $this->view->render('error/404');
+        $this->view->render('_error/404');
         break;
       case 500:
-        $this->view->render('error/500');
+        $this->view->render('_error/500');
         break;
       default:
-        $this->view->render('error/index');
+        $this->view->render('_error/index');
     }
   }
 

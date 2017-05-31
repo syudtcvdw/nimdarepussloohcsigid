@@ -16,6 +16,7 @@ use App\Lib\Session;
  * @property string status
  * @property array js
  * @property array css
+ * @property string sidebar
  */
 class View
 {
@@ -26,12 +27,21 @@ class View
   public $js = [];
   public $css = [];
 
+  /**
+   * View constructor.
+   */
   public function __construct()
   {
     $this->isErrorPage = App::$hasError;
     $this->loggedIn = Session::get("loggedIn");
   }
 
+  /**
+   * Loads in a view file with the option of using a defined layout.
+   * Note: properties of this current class is available in the loaded view file.
+   * @param $view
+   * @param string $layout
+   */
   public function render($view, $layout = '_plain-layout')
   {
     $viewFile = 'app/views/' . $view . '.php';

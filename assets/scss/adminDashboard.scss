@@ -1,0 +1,149 @@
+@import "_partials/vars"; 
+@import "_partials/mixins"; 
+
+@include full-page-hack;
+
+.wrapper {
+	height: 100%;
+}
+
+.toggle-this{
+      left: 0 !important;
+}
+
+.left, .right{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+
+//annoyances
+.transition{
+    transition: left 250ms;
+    transition-timing-function: linear;
+}
+//end of annoyances
+
+    .navbar{
+        margin-bottom: 0 !important;
+            .icon-bar {
+	        background: #bbb;
+        }  
+        .center-things{
+        position: relative;
+        top: 5%;
+        bottom: 5%;
+        }
+    }
+    .btn{
+        position: relative;
+        overflow: auto;
+        min-height: 100%;
+        border: 0;
+        border-radius: 0;
+    }
+    .left{
+        height: 100%;
+        
+
+        .sidebar{
+            height: inherit;
+            background: rgb(14%,14%,20%);
+            //background: $theme-blue;
+            transition: width 2s, height 4s;
+            //padding: 1.5em 0em;
+            box-sizing: border-box;
+            overflow: auto;
+            
+            
+        button{
+            width: inherit;
+            background: none;
+            outline: none;
+            border: none;
+        }
+            
+            .col-md-12, .col-md-6{
+                
+            padding: 0 !important;
+            margin: 0 !important;
+                
+         }
+        
+        .btn-sidebar {
+                
+        background: $theme-blue;
+       // background: rgba($theme-black, 1);
+        color: white;
+        margin: 0 !important;
+        position: relative;
+        width: 100%;
+        padding-top: 1em;
+        padding-bottom: 1em;
+            
+        }
+            
+        .sidebar-row  {
+        color: white;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        width: 100%;
+	    border-bottom: 1px solid 1%,1%,20%;
+        
+        }
+            
+        }    
+        
+        
+
+
+        
+    }
+    .right{
+            background: white;
+            height: 100%;
+        .right-nav{
+            position: relative;
+            width: 100%;
+            min-height: 40px;
+            box-shadow: 1.2px 0px 0px 0.5px #eee;
+        }
+            .body-content {
+            padding: 2em;
+            background: $theme-white;
+            position: relative;
+            overflow: auto;
+                
+                .col-md-3 {
+	            padding: 1em 1em;
+                }
+                .info{
+                    text-align: center;
+                    background: white;
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+                    padding: 4em;
+                    box-shadow: 0px 0px 1px 0px #ddd;
+                }
+        }
+    }
+    
+
+//media queries
+  @media (max-width: 767px) {
+      
+       .left{
+             left: -100%;
+            position: fixed;
+            top: 0;
+            }
+      
+    .slide-in-sidebar{
+        position: fixed;
+        width: 80%;
+        z-index: 10; 
+    }
+}
+
+

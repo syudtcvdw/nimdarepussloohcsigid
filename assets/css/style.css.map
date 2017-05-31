@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "style.css",
+  "sources": [
+    "../scss/style.scss",
+    "../scss/_partials/_fonts.scss",
+    "../scss/_partials/_mixins.scss",
+    "../scss/_partials/_quick_mixins.scss",
+    "../scss/_partials/_vars.scss"
+  ],
+  "mappings": "AGmMI,AAAA,IAAI,CAAE,AAAA,IAAI,AAAC,CACP,QAAQ,CAAE,QAAS,CACnB,KAAK,CAAE,IAAK,CACZ,MAAM,CAAE,IAAK,CACb,OAAO,CAAE,CAAE,CACX,MAAM,CAAE,CAAE,CACV,UAAU,CAAE,MACf,CAAC,AHpMN,AAAA,UAAU,AAAC,CACP,MAAM,CAAE,IAAK,CAChB",
+  "names": []
+}

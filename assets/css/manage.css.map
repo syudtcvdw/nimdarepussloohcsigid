@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAMA,eAAgB,CACZ,UAAU,CAAE,EAAE,CAElB,aAAc,CACb,aAAa,CAAE,cAAc,CAC1B,UAAU,CAAE,IAAI,CAChB,OAAO,CAAE,SAAS",
+"sources": ["../scss/manage.scss"],
+"names": [],
+"file": "manage.css"
+}

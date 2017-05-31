@@ -10,7 +10,7 @@
     <?php
     if ( isset($this->css) )
         foreach ($this->css as $css)
-            echo '<link rel="stylesheet" href="' . ASSET_PATH . 'css/' . $css .'>';
+            echo '<link rel="stylesheet" href="' . ASSET_PATH . 'css/' . $css .'.css">';
     ?>
 </head>
 <body>

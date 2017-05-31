@@ -18,6 +18,7 @@ class Model
 
   /**
    * Model constructor.
+   * Instantiates the Database object
    */
   public function __construct()
   {

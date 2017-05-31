@@ -4,11 +4,76 @@
 * To overwrite the bootstrap form classes to suite my taste
 * 31-05-2017
 */
+
+@import "_partials/mixins";
+@import "_partials/fonts";
+@import "_partials/vars";
+
 .manage-wrapper {
-    margin-top: 3%;
+    width: 96%;
+    margin: 5px auto 0;
+    h4 {
+        font-size: 1.3em;
+        padding-bottom: 5px;
+        color: $theme-black;
+    }
+    span {
+        font-size: 1.5em;
+        color: $theme-deepblue;
+        font-weight: bold;
+    }
 }
+
 .form-control {
-	border-radius: 0px !important;
+    border-radius: 0px !important;
     box-shadow: none;
-    padding: 10px 13px;
+    padding: 8px 10px; //color: $theme-blue;
+}
+input[type=disabled] {
+    background: $theme-white;
+}
+.pad {
+    padding-top: 4rem;
+}
+
+.btn {
+    border-radius: 0px;
+    border:none;
+    
+}
+
+.btn-primary {
+    background: $theme-blue;
+}
+
+.btn-success {
+    background: $theme-deepblue;
+}
+
+.btn-danger {
+    background: $theme-red;
+}
+.alert {
+    padding: 1.32em 1.34em;
+}
+.alert-success {
+    color: $theme-deepblue;
+}
+.alert-danger {
+	color: $theme-red;
+}
+.fa-trash {
+    color: $theme-red;
+}
+.fa-edit {
+    color: $theme-deepblue;
+}
+.modal-dialog {
+    width: 250px !important;
+    position: relative;
+}
+.modal-content {
+    border: none;
+    border-radius: 0px !important;
+    height: 100%;
 }

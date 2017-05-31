@@ -6,7 +6,7 @@
 <?php
 if ( isset($this->js) )
     foreach ($this->js as $js)
-        echo '<script src="' . ASSET_PATH . 'js/' . $js .'"></script >';
+        echo '<script src="' . ASSET_PATH . 'js/' . $js .'.js"></script >';
 ?>
 
 </body>

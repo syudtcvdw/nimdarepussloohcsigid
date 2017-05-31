@@ -15,11 +15,17 @@ use App\Models\LoginModel;
 class LoginController extends Controller
 {
 
+  /**
+   * LoginController constructor.
+   */
   public function __construct()
   {
     parent::__construct();
   }
 
+  /**
+   * Renders the login view and communicates with the LoginModel
+   */
   public function index()
   {
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {

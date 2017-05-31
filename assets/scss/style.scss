@@ -1,0 +1,9 @@
+@import "_partials/fonts";
+@import "_partials/mixins";
+@import "_partials/vars";
+
+@include full-page-hack;
+
+.error-404 {
+    height: 100%;
+}

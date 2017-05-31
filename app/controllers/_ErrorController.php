@@ -17,6 +17,7 @@ class _ErrorController extends Controller
   {
     parent::__construct();
     $this->view->title = "Error";
+    $this->view->css = ["error-page"];
   }
 
   public function index($type=null, $status="")

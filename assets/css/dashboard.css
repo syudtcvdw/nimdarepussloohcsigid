@@ -1,0 +1,121 @@
+/**
+ * ensures that vertically aligned children don't appear blurry
+ */
+/**
+ * vertically aligns an element
+ */
+/*
+    Keyframes
+    Credits: https://gist.github.com/Integralist/3931680
+*/
+/*
+    Transform
+    Credits: https://codepen.io/sawmac/pen/qGudy/
+*/
+/*
+    Style placeholder
+    Credits: http://stackoverflow.com/questions/17181849/placeholder-mixin-scss-css
+*/
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; }
+
+.wrapper {
+  height: 100%; }
+
+.toggle-this {
+  left: 0 !important; }
+
+.left, .right {
+  padding: 0 !important;
+  margin: 0 !important; }
+
+.transition {
+  transition: left 250ms;
+  transition-timing-function: linear; }
+
+.navbar {
+  margin-bottom: 0 !important; }
+  .navbar .icon-bar {
+    background: #bbb; }
+  .navbar .center-things {
+    position: relative;
+    top: 5%;
+    bottom: 5%; }
+
+.btn {
+  position: relative;
+  overflow: auto;
+  min-height: 100%;
+  border: 0;
+  border-radius: 0; }
+
+.left {
+  height: 100%; }
+  .left .sidebar {
+    height: inherit;
+    background: #242433;
+    transition: width 2s, height 4s;
+    box-sizing: border-box;
+    overflow: auto; }
+    .left .sidebar button {
+      width: inherit;
+      background: none;
+      outline: none;
+      border: none; }
+    .left .sidebar .col-md-12, .left .sidebar .col-md-6 {
+      padding: 0 !important;
+      margin: 0 !important; }
+    .left .sidebar .btn-sidebar {
+      background: #3399FF;
+      color: white;
+      margin: 0 !important;
+      position: relative;
+      width: 100%;
+      padding-top: 1em;
+      padding-bottom: 1em; }
+    .left .sidebar .sidebar-row {
+      color: white;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      border-bottom: 1px solid 1%,1%,20%; }
+
+.right {
+  background: white;
+  height: 100%; }
+  .right .right-nav {
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    box-shadow: 1.2px 0px 0px 0.5px #eee; }
+  .right .body-content {
+    padding: 2em;
+    background: #F7F7FF;
+    position: relative;
+    overflow: auto; }
+    .right .body-content .col-md-3 {
+      padding: 1em 1em; }
+    .right .body-content .info {
+      text-align: center;
+      background: white;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      padding: 4em;
+      box-shadow: 0px 0px 1px 0px #ddd; }
+
+@media (max-width: 767px) {
+  .left {
+    left: -100%;
+    position: fixed;
+    top: 0; }
+
+  .slide-in-sidebar {
+    position: fixed;
+    width: 80%;
+    z-index: 10; } }

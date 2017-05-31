@@ -8,7 +8,6 @@
 @import "_partials/mixins";
 @import "_partials/fonts";
 @import "_partials/vars";
-
 .manage-wrapper {
     width: 96%;
     margin: 5px auto 0;
@@ -23,33 +22,27 @@
         font-weight: bold;
     }
 }
-
 .form-control {
     border-radius: 0px !important;
     box-shadow: none;
     padding: 8px 10px; //color: $theme-blue;
 }
-input[type=disabled] {
-    background: $theme-white;
-}
+.form-control:disabled {
+        background: #fff !important;
+    }
 .pad {
     padding-top: 4rem;
 }
-
 .btn {
     border-radius: 0px;
-    border:none;
-    
+    border: none;
 }
-
 .btn-primary {
     background: $theme-blue;
 }
-
 .btn-success {
     background: $theme-deepblue;
 }
-
 .btn-danger {
     background: $theme-red;
 }
@@ -60,7 +53,7 @@ input[type=disabled] {
     color: $theme-deepblue;
 }
 .alert-danger {
-	color: $theme-red;
+    color: $theme-red;
 }
 .fa-trash {
     color: $theme-red;

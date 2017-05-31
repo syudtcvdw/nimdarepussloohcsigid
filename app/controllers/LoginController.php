@@ -25,9 +25,8 @@ class LoginController extends Controller
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
       $loginModel = new LoginModel;
       if ( $loginModel->login($_POST) ) echo "Login successful";
-      else $this->view->status = "That admin already exist";
+      else $this->view->status = "That admin does not exist";
     }
     $this->view->render("login/index");
   }
-
 }

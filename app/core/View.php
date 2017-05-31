@@ -15,6 +15,7 @@ use App\Lib\Session;
  * @property string title
  * @property string status
  * @property array js
+ * @property array css
  */
 class View
 {
@@ -28,6 +29,9 @@ class View
     $this->loggedIn = Session::get("loggedIn");
     $this->header = '_includes/_header.php';
     $this->footer = '_includes/_footer.php';
+    $this->sidebar = '_includes/_sidebar.php';
+    $this->js = [];
+    $this->css = [];
   }
 
   public function render($name)

@@ -16,13 +16,13 @@ class App
   public function __construct()
   {
     $url = $this->__parseURL();
+    $url[0] = $this->__cleanUpDashes($url[0]);
     // controller
-    if ( file_exists(DOC_ROOT . APP_ROOT . 'controllers/' . ucfirst($url[0]) . 'Controller.php') ) {
+    if ( file_exists(APP_ROOT . 'controllers/' . ucfirst($url[0]) . 'Controller.php') ) {
       $this->controller = $url[0];
       unset($url[0]);
     }
     $this->controller = ucfirst($this->controller) . 'Controller';
-//    require_once APP_ROOT . 'controllers/' . $this->controller . '.php';
 
     $this->__assertController();
 
@@ -42,7 +42,8 @@ class App
   private function __checkControllerMethod($url, $index)
   {
     if ( !isset($url[$index])) return $url;
-
+    $url[$index] = $this->__cleanUpDashes($url[$index]);
+      
     if ( method_exists($this->controller, $url[$index]) ) {
       $this->method = $url[$index];
       unset($url[$index]);
@@ -75,11 +76,15 @@ class App
    * Ensures that the resolved controller actually does exist
    */
   private function __assertController() {
-      if ( !file_exists(DOC_ROOT . APP_ROOT . 'controllers/' . $this->controller . '.php') ) {
+      if ( !file_exists(APP_ROOT . 'controllers/' . $this->controller . '.php') ) {
           $this->__methodInexistent();
           $this->controller->index(404, 404);
           die();
       }
+  }
+
+  private function __cleanUpDashes($subject) {
+    return str_replace("-", "", $subject);
   }
 
 }

@@ -22,8 +22,9 @@ class View
 
   protected $header;
   protected $footer;
-  protected $js;
-  protected $css;
+  
+  public $js = [];
+  public $css = [];
 
   public function __construct()
   {

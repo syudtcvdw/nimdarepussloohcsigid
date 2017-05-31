@@ -23,4 +23,5 @@ class LoginController extends Controller
   {
     $this->view->render("login");
   }
+
 }

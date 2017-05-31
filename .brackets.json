@@ -8,10 +8,10 @@
                 "includePaths": [],
                 "sourceComments": false,
                 "outputStyle": "compressed",
-                "sourceMap": false
+                "sourceMap": ""
             },
             "noDistractions": true,
-            "linting.collapsed": false,
+            "linting.collapsed": true,
             "fonts.fontSize": "12px",
             "hirse.outline.enabled": false,
             "brackets-git.gitPath": "C:\\Program Files\\Git\\cmd\\git.exe"

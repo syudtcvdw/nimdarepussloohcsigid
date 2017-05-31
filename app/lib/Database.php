@@ -11,6 +11,9 @@ class Database
   public $success;
   private $status;
 
+  /**
+   * Database constructor.
+   */
   public function __construct()
   {
     try {
@@ -25,6 +28,12 @@ class Database
     }
   }
 
+  /**
+   * Executes an SQL statement using PDO::prepare
+   * @param $query
+   * @param array|bool $bindings
+   * @return bool|\PDOStatement
+   */
   public function query($query, $bindings=false)
   {
     try {
@@ -37,14 +46,24 @@ class Database
     }
   }
 
+  /**
+   * Inserts data into the database.
+   * @param string $table
+   * @param array $bindings
+   * @return bool|int
+   */
   public function insert($table, $bindings)
   {
     $keys = implode(', ', array_keys($bindings));
     $named_param = ':' . implode(', :', array_keys($bindings));
     $result = $this->query("INSERT INTO {$table} ($keys) VALUES ($named_param)", $bindings);
-    return $result ? (int)$this->conn->lastInsertId() : $result;
+    return $result ? (int)$this->conn->lastInsertId() : false;
   }
 
+  /**
+   * Returns Database connection Message
+   * @return string
+   */
   public function getStatusMessage()
   {  return $this->success ? "Connection successful!" : $this->status;  }
 

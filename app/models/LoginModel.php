@@ -19,4 +19,9 @@ class LoginModel extends Model
     parent::__construct();
   }
 
+  public function login($credentials) {
+    $adminLogin = new Admin($credentials);
+    return $adminLogin->login();
+  }
+
 }

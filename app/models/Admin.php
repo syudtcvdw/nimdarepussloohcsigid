@@ -9,7 +9,59 @@
 namespace App\Models;
 
 
-class Admin
+use App\Core\Model;
+use App\Lib\Session;
+
+class Admin extends Model
 {
 
+  public $id;
+  public $fullname;
+  public $email;
+  public $password;
+  private $adminTableName;
+
+  public function __construct($data=null)
+  {
+    parent::__construct();
+    $this->adminTableName = "admins";
+    if ( !empty($data) )
+      foreach ( $data as $key => $value )
+        if ( !empty($value) )
+          $this->{$key} = $value;
+  }
+
+  public function register()
+  {
+    if ( !$this->__adminExists() ) {
+      $insertId = $this->db->insert($this->adminTableName, ["fullname"=>$this->fullname, "useremail"=>$this->email, "userpass"=>password_hash($this->password, PASSWORD_BCRYPT)]);
+      if ( $insertId ) {
+        $this->id = $insertId;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public function login()
+  {
+    if ( $this->__adminExists() ) {
+      Session::set("loggedIn", true);
+      return true;
+    }
+    return false;
+  }
+
+ public function logout($redirect="")
+  {
+    Session::destroy();
+    header("Location: ". PROJECT_PATH . $redirect);
+  }
+
+  public function __adminExists()
+  {
+    $result = $this->db->query("SELECT userpass FROM " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail"=>$this->email]);
+    return ( $result->rowCount() > 0 ) ?
+      password_verify($this->password, $result->fetch(\PDO::FETCH_ASSOC)['userpass']) : false;
+  }
 }

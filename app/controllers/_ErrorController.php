@@ -33,7 +33,7 @@ class _ErrorController extends Controller
     $this->view->status = $status;
     switch ( $type ) {
       case 404:
-        $this->view->render('_error/404');
+        $this->view->render('_error/500');
         break;
       case 500:
         $this->view->render('_error/500');

@@ -4,7 +4,7 @@
             <h2 class="heading2"> Create School </h2>
         </div>
         <br/>
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-3 change-input">
             <input type="text" name="school_name" class="form-control" placeholder="School Name"/>
             <br/>
             <input type="text" name="school_location" class="form-control" placeholder="School Location"/>

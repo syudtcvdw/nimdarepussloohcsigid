@@ -1,6 +1,11 @@
 @import "_partials/vars";
 @import "_partials/fonts";
 @import "_partials/mixins";
+
+.content{
+    height:inherit;
+    width: 100%;
+}
 .wrapper.create-school{
   background: $theme-white;
   padding-top: 10px;
@@ -28,5 +33,10 @@
      -moz-border-radius: 0!important;
      border-radius:0 !important;
    }
+    .submit-button {
+	 padding: .85em !important;
+     border: 0px;
+        border-radius: 0px;
+    }
 }
 }

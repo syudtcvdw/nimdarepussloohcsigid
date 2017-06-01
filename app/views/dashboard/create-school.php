@@ -16,7 +16,7 @@
             <input type="text" name="admin_password" class="form-control" placeholder="Admin Password"/>
             <br/>
 
-            <button type="button" class="btn btn-block submit-button">Submit</button>
+            <button type="submit" class="btn btn-block submit-button">Submit</button>
         </div>
     </div>
 

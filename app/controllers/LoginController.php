@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 
 use App\Core\Controller;
+use App\Lib\Validators;
 use App\Models\LoginModel;
 
 class LoginController extends Controller
@@ -21,6 +22,7 @@ class LoginController extends Controller
   public function __construct()
   {
     parent::__construct();
+    $this->view->css = ["login"];
   }
 
   /**
@@ -29,9 +31,11 @@ class LoginController extends Controller
   public function index()
   {
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-      $loginModel = new LoginModel;
-      if ( $loginModel->login($_POST) ) echo "Login successful";
-      else $this->view->status = "That admin does not exist";
+      if ( !empty($_POST['email']) && Validators::validateEmail($_POST['email']) && !empty($_POST['password']) ) {
+        $loginModel = new LoginModel;
+        if ($loginModel->login($_POST)) echo "Login successful";
+        else $this->view->status = "That admin does not exist";
+      } else $this->view->status = "Please provide a valid email and password";
     }
     $this->view->render("login/index");
   }

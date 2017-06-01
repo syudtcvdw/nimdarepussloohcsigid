@@ -21,7 +21,7 @@ class Generators
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomPassword = '';
     for ($i = 0; $i < 8; $i++)
-      $randomPassword .= $characters(rand(0, strlen($characters) - 1));
+      $randomPassword .= $characters[rand(0, strlen($characters) - 1)];
     return $randomPassword;
   }
 

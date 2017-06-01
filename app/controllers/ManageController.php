@@ -40,7 +40,7 @@ class ManageController extends Controller
       if ( !empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass']) ) {
         if ( $admin->register($_POST) ) $this->view->notice = "Registration successful";
         else $this->view->notice = "Could not register this admin. That email has been taken.";
-      } else $this->view->notice = "Fill in all fields";
+      } else $this->view->notice = "Please fill in all fields";
     }
 
     $this->view->viewAdmins = $admin->getAdmins();

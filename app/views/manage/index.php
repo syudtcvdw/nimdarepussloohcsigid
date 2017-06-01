@@ -22,20 +22,21 @@
             <div class="form-group">
               <label class="control-label sr-only">Fullname</label>
               <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname"
-                     value="<?= _preserveInputs('fullname'); ?>" required/>
+                     value="<?= _preserveInputs('fullname'); ?>"/>
             </div>
             <div class="form-group">
               <label class="control-label sr-only">Email Address</label>
               <input type="email" class="form-control" placeholder="Email address" name="useremail"
-                     value="<?= _preserveInputs('useremail'); ?>" required/>
+                     value="<?= _preserveInputs('useremail'); ?>" />
             </div>
             <div class="form-group">
               <label class="control-label sr-only">Password</label>
               <div class="input-group">
-                <input type="text" value="<?= _preserveInputs('userpass'); ?>" class="form-control"
-                       placeholder="Password" name="userpass" required disabled/>
+                <input type="text"  class="form-control"
+                       placeholder="Password" name="userpass" value="<?= \App\Lib\Generators::generatePassword(); ?>"
+                       readonly/>
                 <span class="input-group-addon"><button class="btn btn-danger"
-                                                        onclick="generatePassword();">Generate</button></span>
+                                                        onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</button></span>
               </div>
             </div>
             <div class="form-group">
@@ -101,7 +102,7 @@
         <div class="modal-body">
           <form class="form-horizontal" action="" method="post">
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Enter New Password" name="userpass" required>
+              <input type="password" class="form-control" placeholder="Enter New Password" name="userpass" >
             </div>
             <div class="form-group">
               <input type="password" class="form-control" placeholder="Confirm New Password" name="conf_userpass"

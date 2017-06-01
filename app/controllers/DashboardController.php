@@ -11,12 +11,20 @@ class DashboardController extends Controller
   {
     parent::__construct();
     $this->view->title = "Dashboard";
+    $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
   }
 
   public function index()
   {
-        $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
         $this->view->render('dashboard/index', 'dashboard-layout');
+
+  }
+  public function createSchool(){
+      $this->view->css = ['create-school'];
+      $this->view->render('dashboard/create-school', 'dashboard-layout');
+
+
+
   }
 
 }

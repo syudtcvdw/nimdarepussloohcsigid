@@ -16,6 +16,9 @@
     @include font-lato();
 
   }
+  span{
+    text-align: center;
+  }
   .body-content{
     @include vertical-align();
     @include font-opensans();

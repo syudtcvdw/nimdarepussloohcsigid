@@ -3,7 +3,75 @@
 @import "_partials/vars";
 
 @include full-page-hack;
+@include use-opensans;
 
+.error-404::before{
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image:url(../resx/lost.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: .3;
+}
 .error-404 {
     height: 100%;
+    width: 100%;
+    position: relative;
+	background-repeat: no-repeat;
+    background-size: cover;
+	background:  $theme-deepblue;
+	
+    h1 {
+        font-size:180px;
+        color: $theme-white;
+    }
+    
+    .content {
+        @include vertical-align;
+        text-align: center;
+        top: 40%;
+    }
+    
+    .way-home {
+        height: 50%;
+        width: 30%;
+        color: $theme-white;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 100; 
+        left: 35%;
+        position: relative;
+        margin-top: 5%;
+    }
+
+
+    h2 {
+        color: $theme-white;
+        font-weight: 100;
+    }
+
+    h3 {
+        display: inline-block;
+		padding: 5px;
+    }
+    
+}
+
+.f-home {
+    
+    float: left;
+    left: 10%;
+    margin: 0; padding: 0;
+    position: relative;
+    padding: 5px;
+}
+
+span {
+	    font-size: 1.2em;
+        color: $theme-white;
+        font-weight: lighter;
+		padding-top: 5%;
+		position: relative;
 }

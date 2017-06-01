@@ -17,7 +17,6 @@ class Generators
    * @return string
    * @internal param $password
    */
-
   public static function generatePassword() {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomPassword = '';

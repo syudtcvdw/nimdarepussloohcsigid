@@ -23,7 +23,7 @@ class Database
       $this->success = true;
     } catch ( \PDOException $e ) {
       $err = new _ErrorController;
-      $err->index("500", $e->getMessage());
+      $err->index(500, $e->getMessage());
       die();
     }
   }
@@ -59,6 +59,61 @@ class Database
     $result = $this->query("INSERT INTO {$table} ($keys) VALUES ($named_param)", $bindings);
     return $result ? (int)$this->conn->lastInsertId() : false;
   }
+
+  /**
+   * Updates a row in a table
+   * @param $table
+   * @param $id
+   * @param $bindings
+   * @return bool|\PDOStatement
+   */
+  public function update($table, $id, $bindings)
+  {
+    $structure = "";
+    foreach ( $bindings as $key => $value)
+      $structure .= $key . "=:" . $key . ", ";
+    $structure = rtrim($structure, ", ");
+    $bindings['id'] = $id;
+    $result = $this->query("UPDATE " . $table . " SET {$structure} WHERE id=:id", $bindings);
+    return $result;
+  }
+
+  /**
+   * Selects records
+   * @param $table
+   * @return array
+   */
+  public function selectAll($table)
+  {
+    $result =  $this->query("SELECT * FROM {$table}");
+    return $result->fetchAll();
+  }
+
+  /**
+   * Deletes all entry in a table
+   * @param $table
+   * @return bool|\PDOStatement
+   */
+  public function deleteAll($table)
+  { return $this->query("DELETE FROM {$table}"); }
+
+  /**
+   * Deletes a row from a table
+   * @param $table
+   * @param $id
+   * @return bool|\PDOStatement
+   */
+  public function delete($table, $id)
+  { return $this->query("DELETE FROM " . $table . " WHERE id=:id", ["id"=>$id]);  }
+
+  /**
+   * Runs an SQL command to DROP a table
+   * @param $table
+   * @return bool|\PDOStatement
+   */
+  public function drop($table)
+  { return $this->query("DROP TABLE {$table}"); }
+
 
   /**
    * Returns Database connection Message

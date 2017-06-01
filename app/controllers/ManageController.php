@@ -14,16 +14,22 @@ use App\Core\Controller;
 class ManageController extends Controller
 {
 
+  /**
+   * ManageController constructor.
+   */
   public function __construct()
   {
     parent::__construct();
     $this->view->title = "Manage Super Admin";
   }
 
-  public function index($type = null, $status = "")
-    {
-        $this->view->css = ['manage','font-awesome.min'];
-        $this->view->js = ['datatable.min'];
-        $this->view->render("manage/index");
-    }
+  /**
+   * ManageController index (default) page
+   */
+  public function index()
+  {
+    $this->view->css = ['manage','font-awesome.min'];
+    $this->view->js = ['datatable.min'];
+    $this->view->render("manage/index");
+  }
 }

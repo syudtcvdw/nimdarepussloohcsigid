@@ -42,7 +42,7 @@ class Admin extends Model
   public function register()
   {
     if ( !$this->__adminExists() ) {
-      $insertId = $this->db->insert($this->adminTableName, ["fullname"=>$this->fullname, "useremail"=>$this->email, "userpass"=>password_hash($this->password, PASSWORD_BCRYPT)]);
+      $insertId = $this->db->insert($this->adminTableName, ["fullname"=>$this->fullname, "useremail"=>$this->email, "userpass"=>_hash($this->password, PASSWORD_BCRYPT)]);
       if ( $insertId ) {
         $this->id = $insertId;
         return true;
@@ -83,6 +83,6 @@ class Admin extends Model
   {
     $result = $this->db->query("SELECT userpass FROM " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail"=>$this->email]);
     return ( $result->rowCount() > 0 ) ?
-      password_verify($this->password, $result->fetch(\PDO::FETCH_ASSOC)['userpass']) : false;
+      _verify_hash($this->password, $result->fetch(\PDO::FETCH_ASSOC)['userpass']) : false;
   }
 }

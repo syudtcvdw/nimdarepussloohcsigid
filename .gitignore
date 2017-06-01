@@ -9,3 +9,6 @@
 *.iml
 out
 gen
+*.ini
+*.map
+/.sass-cache/

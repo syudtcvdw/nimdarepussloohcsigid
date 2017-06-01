@@ -47,13 +47,6 @@ html, body {
     top: 5%;
     bottom: 5%; }
 
-.btn {
-  position: relative;
-  overflow: auto;
-  min-height: 100%;
-  border: 0;
-  border-radius: 0; }
-
 .left {
   height: 100%;
   transition: 250ms;
@@ -71,11 +64,12 @@ html, body {
       width: inherit;
       background: none;
       outline: none;
-      border: none; }
+      border: none;
+      border-radius: 0; }
     .left .sidebar .col-md-12, .left .sidebar .col-md-6 {
       padding: 0 !important;
       margin: 0 !important; }
-    .left .sidebar .btn-sidebar {
+    .left .sidebar .active {
       background: #3399FF;
       color: white;
       margin: 0 !important;
@@ -83,18 +77,23 @@ html, body {
       width: 100%;
       padding-top: 1em;
       padding-bottom: 1em; }
-    .left .sidebar .sidebar-row {
+      .left .sidebar .active:hover {
+        background: #1a8cff !important; }
+    .left .sidebar .sidebar-row, .left .sidebar .logo {
       text-align: left;
       color: white;
       padding: 2.5rem 2rem;
       width: 100%;
       box-shadow: 0px 0px 0px 0.04px #e6e6fc; }
-      .left .sidebar .sidebar-row span {
+      .left .sidebar .sidebar-row span, .left .sidebar .logo span {
         padding-left: 1em; }
-    .left .sidebar .sidebar-row:hover {
-      background: #2f2f42;
-      color: white;
-      font-weight: 500; }
+      .left .sidebar .sidebar-row:hover, .left .sidebar .logo:hover {
+        background: #2f2f42;
+        color: white;
+        font-weight: 500; }
+    .left .sidebar .logo {
+      text-align: center !important;
+      padding: 5rem 2rem; }
 
 .right {
   transition: 250ms;

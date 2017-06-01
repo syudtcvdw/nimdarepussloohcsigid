@@ -13,10 +13,6 @@ use App\Lib\Session;
 
 class Admin extends Model
 {
-    public $id;
-    public $fullname;
-    public $useremail;
-    public $userpass;
     private $adminTableName;
 
     public function __construct($data=null)
@@ -27,25 +23,11 @@ class Admin extends Model
             foreach ( $data as $key => $value )
                 if ( !empty($value) )
                     $this->{$key} = $value;
-
-
     }
 
-   /* public function generatePassword($length = 8) {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, $charactersLength - 1)];
-            }
-            return $randomString;
-        }*/
     public function register()
     {
-        if ( $this->__adminExists() ) {
-            echo "Admin Exist";
-        }
-        else {
+        if ( !$this->__adminExists() ) {
             $insertId = $this->db->insert($this->adminTableName, ["fullname"=>$this->fullname, "useremail"=>$this->useremail, "userpass"=>password_hash($this->userpass, PASSWORD_BCRYPT)]);
             if ($insertId) {
                 $this->id = $insertId;

@@ -1,27 +1,36 @@
 @import "_partials/vars";
 @import "_partials/mixins";
+@import "_partials/fonts";
 
 body {
   background: $theme-white;
+    @include font-opensans;
+}
+
+@include headers {
+        @include font-lato;
+    font-weight: lighter
 }
 
 .login-wrapper {
-
-  max-width: 50%;
+  //border:1px solid $theme-black;
   margin: 10% auto;
-
-  form {
-    width: 100%;
-  }
+  
 
   .panel {
-    //outline: none;
-    width: 50%;
     margin: 8px auto;
-    border: 1px solid $theme-blue;
+    border: none;
+      border-radius: 0px !important;
   }
+    .panel-primary {
+        border: none !important;
+    }
   .panel-heading {
-    background: $theme-blue;
+    background: $theme-white;
+      padding: 10px 15px !important;
+      color: #777;
+      text-align: center;
+      border: none;
   }
 
   .checkbox {
@@ -29,11 +38,27 @@ body {
       font-size: 13px;
     }
   }
-
+    input.form-control {
+	border-radius: 0px !important;
+        border: none;
+    border-bottom: 2px solid $theme-black;
+    padding: 1.4em 4.4em;
+        text-align: center;
+    height: 4.3rem;
+        box-shadow: none !important;
+        outline: none !important;
+        background: none !important;
+        
+}
   .notice {
     font-size: 13px;
     font-style: italic;
   }
+    .btn {
+        border-radius: 0px;
+        padding: 10px 10px;
+        width: 15rem;
+    }
 
   .btn-primary {
     color: $theme-blue;

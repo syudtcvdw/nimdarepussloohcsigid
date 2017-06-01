@@ -20,21 +20,33 @@ body {
   background: #F7F7FF; }
 
 .login-wrapper {
-  max-width: 50%;
   margin: 10% auto; }
-  .login-wrapper form {
-    width: 100%; }
   .login-wrapper .panel {
-    width: 50%;
     margin: 8px auto;
-    border: 1px solid #3399FF; }
+    border: none;
+    border-radius: 0px !important; }
   .login-wrapper .panel-heading {
-    background: #3399FF; }
+    background: #3399FF;
+    padding: 10px 15px !important; }
   .login-wrapper .checkbox label {
     font-size: 13px; }
+  .login-wrapper input.form-control {
+    border-radius: 0px !important;
+    border: none;
+    border-bottom: 2px solid #070600;
+    padding: 1.4em 4.4em;
+    text-align: center;
+    height: 4.3rem;
+    box-shadow: none !important;
+    outline: none !important;
+    background: none !important; }
   .login-wrapper .notice {
     font-size: 13px;
     font-style: italic; }
+  .login-wrapper .btn {
+    border-radius: 0px;
+    padding: 10px 10px;
+    width: 15rem; }
   .login-wrapper .btn-primary {
     color: #3399FF;
     background: #F7F7FF;

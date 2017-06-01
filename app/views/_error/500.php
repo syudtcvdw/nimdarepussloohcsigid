@@ -4,7 +4,7 @@
    <h2>This is embarrasing.</h2>
    <span>Something went wrong, but we're fixing it</span>
    
-        <div class="link-div"><a href="#">Show me something that works</a></div>
+        <div class="link-div"><a href="<?= PROJECT_PATH ?>">Show me something that works</a></div>
     
     </div>
 </div>

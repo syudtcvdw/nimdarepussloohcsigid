@@ -9,7 +9,7 @@
 
 namespace App\Core;
 
-use App\Lib\Session;
+use App\Lib\Classes\Session;
 
 /**
  * @property string title

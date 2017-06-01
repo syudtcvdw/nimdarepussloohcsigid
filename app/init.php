@@ -7,7 +7,7 @@
  * Time: 12:52 PM
  */
 
-use App\Lib\Session;
+use App\Lib\Classes\Session;
 
 require_once 'app/lib/config/paths.php';
 require_once 'app/lib/config/database.php';

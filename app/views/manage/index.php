@@ -33,7 +33,7 @@
               <label class="control-label sr-only">Password</label>
               <div class="input-group">
                 <input type="text"  class="form-control"
-                       placeholder="Password" name="userpass" value="<?= \App\Lib\Generators::generatePassword(); ?>"
+                       placeholder="Password" name="userpass" value="<?= _generate_id() ?>"
                        readonly/>
                 <span class="input-group-addon"><button class="btn btn-danger"
                                                         onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</button></span>

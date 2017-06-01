@@ -5,15 +5,17 @@
  * @param $key
  * @return string
  */
-function _preserveInputs($key) {
-  return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
+function _preserveInputs($key)
+{
+    return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
 }
 
 /**
  * Redirects to supplied uri
  * @param $uri
  */
-function _redirect($uri) {
+function _redirect($uri)
+{
     echo '<script>window.location="' . PROJECT_PATH . $uri . '"</script>';
     die();
 }
@@ -25,8 +27,9 @@ function _redirect($uri) {
  * @param int $algorithm
  * @return bool|string
  */
-function _hash($password, $algorithm=PASSWORD_BCRYPT) {
-  return password_hash($password, $algorithm);
+function _hash($password, $algorithm = PASSWORD_BCRYPT)
+{
+    return password_hash($password, $algorithm);
 }
 
 
@@ -36,6 +39,27 @@ function _hash($password, $algorithm=PASSWORD_BCRYPT) {
  * @param $hash
  * @return bool
  */
-function _verify_hash($password, $hash) {
-  return password_verify($password, $hash);
+function _verify_hash($password, $hash)
+{
+    return password_verify($password, $hash);
+}
+
+/**
+ * Generates random mixed case string
+ * @param $length
+ * @return string
+ */
+function _generate_id($length = 8)
+{
+    $chars = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
+    shuffle($chars);
+    if ($length > count($chars)) $length = count($chars);
+    return implode(array_slice($chars, 0, $length));
+}
+
+/**
+ * Redirects unlogged visitors to login
+ */
+function _logged_only() {
+    if (!\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
 }

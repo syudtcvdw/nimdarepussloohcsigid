@@ -16,38 +16,41 @@ use App\Models\ManageAdminModel;
 class ManageController extends Controller
 {
 
-  /**
-   * ManageController constructor.
-   */
-  public function __construct()
-  {
-    parent::__construct();
-    $this->view->title = "Manage Super Admin";
-  }
+    /**
+     * ManageController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        _logged_only();
 
-  /**
-   * MangeController index method (page)
-   */
-  public function index()
-  {
-    $admin = new ManageAdminModel;
-    if ( isset($_GET['id']) ) {
-      $admin->deleteAdmins($_GET['id']);
-      _redirect("manage");
+        $this->view->title = "Manage Admins";
+        $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
     }
 
-    if( isset($_POST['add-super-admin']) ) {
-      if ( !empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass']) ) {
-        if ( $admin->register($_POST) ) $this->view->notice = "Registration successful";
-        else $this->view->notice = "Could not register this admin. That email has been taken.";
-      } else $this->view->notice = "Please fill in all fields";
-    }
+    /**
+     * MangeController index method (page)
+     */
+    public function index()
+    {
+        $admin = new ManageAdminModel;
+        if (isset($_GET['id'])) {
+            $admin->deleteAdmins($_GET['id']);
+            _redirect("manage");
+        }
 
-    $this->view->viewAdmins = $admin->getAdmins();
-    $this->view->css = ['manage','font-awesome.min'];
-    $this->view->js = ['datatable.min'];
-    $this->view->render("manage/index");
-  }
+        if (isset($_POST['add-super-admin'])) {
+            if (!empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass'])) {
+                if ($admin->register($_POST)) $this->view->notice = "Registration successful";
+                else $this->view->notice = "Could not register this admin. That email has been taken.";
+            } else $this->view->notice = "Please fill in all fields";
+        }
+
+        $this->view->viewAdmins = $admin->getAdmins();
+        $this->view->css = ['manage', 'font-awesome.min'];
+        $this->view->js = ['datatable.min'];
+        $this->view->render("manage/index", "dashboard-layout");
+    }
 
 
 }

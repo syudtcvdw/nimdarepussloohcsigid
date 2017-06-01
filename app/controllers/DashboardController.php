@@ -27,5 +27,10 @@ class DashboardController extends Controller
 
   }
 
+   public function create(){
+      if(( $_SERVER['REQUEST_METHOD'] === 'POST' ) && isset($_POST['create_school'])){
+
+      }
+   }
 }
 

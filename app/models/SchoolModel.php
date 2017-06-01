@@ -30,9 +30,13 @@ class SchoolModel extends Model
         }
 
         public function register(){
+            $this->date_created = date();
             $insertID = $this->db->insert($this->schoolTable, [ "name"=>$this->name,
                 "location"=>$this->location, "status" => $this->status, "admin_uname" => $this->admin_uname,
                 "admin_password" => password_hash($this->admin_password,PASSWORD_BCRYPT),
-                "date_created" => ]);
+                "date_created" => date("d/m/Y H:i:s",$this->date_created)]);
+            if($insertID){
+                $this->id = $insertID;
+            }
         }
 }

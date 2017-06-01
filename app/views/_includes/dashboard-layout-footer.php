@@ -3,6 +3,7 @@
 <script>window.jQuery || document.write("<script src='<?= ASSET_PATH . 'js/jquery.min.js'; ?>''><\/script>")</script>
 <script src="<?= ASSET_PATH . 'js/tether.min.js'; ?>"></script>
 <script src="<?= ASSET_PATH . 'js/bootstrap.min.js'; ?>"></script>
+<script src="<?= ASSET_PATH . 'js/dashboard.js'; ?>"></script>
 <?php
 if ( isset($this->js) )
     foreach ($this->js as $js)

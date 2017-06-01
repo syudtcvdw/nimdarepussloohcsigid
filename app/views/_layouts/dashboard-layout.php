@@ -1,11 +1,11 @@
 <?php require_once $this->header; ?>
     <div class="wrapper">
 
-        <div class="left  transition col-md-3 col-sm-3 slide-in-sidebar">
+<div class="left transition">
             <?php require_once $this->sidebar; ?>
         </div>
 
-        <div class="right col-md-9 col-sm-9 col-xs-12">
+        <div class="right">
             <?php require_once $viewFile; ?>
         </div>
 

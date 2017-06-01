@@ -16,6 +16,9 @@ class ManageAdminModel extends Model
 {
   private $admin;
 
+  /**
+   * ManageAdminModel constructor.
+   */
   public function __construct()
   {
     parent::__construct();

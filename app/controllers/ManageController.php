@@ -33,19 +33,13 @@ class ManageController extends Controller
     $admin = new ManageAdminModel;
     if ( isset($_GET['id']) ) {
       $admin->deleteAdmins($_GET['id']);
-      _redirect("/manage");
-    }
-
-    if ( isset($_POST['generate-password']) ) {
-      Generators::generatePassword();
+      _redirect("manage");
     }
 
     if( isset($_POST['add-super-admin']) ) {
       if ( !empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass']) ) {
-        if ( $admin->register($_POST) )
-          $this->view->notice = "Registration successful";
-        else
-          $this->view->notice = "Could not register this admin. That email has been taken.";
+        if ( $admin->register($_POST) ) $this->view->notice = "Registration successful";
+        else $this->view->notice = "Could not register this admin. That email has been taken.";
       } else $this->view->notice = "Fill in all fields";
     }
 

@@ -58,7 +58,7 @@ class Admin extends Classes
     {
         if ($this->__adminExists()) {
             Session::set("loggedIn", true);
-            header("Location: " . _redirect($redirect));
+            _redirect($redirect);
         }
         return false;
     }
@@ -108,7 +108,7 @@ class Admin extends Classes
      * @return bool
      */
     private function __adminExists()
-    {
+    { 
         $result = $this->db->query("SELECT userpass FROM " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail" => $this->useremail]);
         return ($result->rowCount() > 0) ?
             _verify_hash($this->userpass, $result->fetch(\PDO::FETCH_ASSOC)['userpass']) : false;

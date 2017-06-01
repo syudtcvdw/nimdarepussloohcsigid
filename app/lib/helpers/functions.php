@@ -16,7 +16,7 @@ function _preserveInputs($key)
  */
 function _redirect($uri)
 {
-    echo '<script>window.location="' . PROJECT_PATH . $uri . '"</script>';
+    echo '<script>document.title = "Redirecting..."; window.location="' . PROJECT_PATH . $uri . '"</script>';
     die();
 }
 

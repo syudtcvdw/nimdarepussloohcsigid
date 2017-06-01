@@ -22,6 +22,7 @@ class LoginController extends Controller
   public function __construct()
   {
     parent::__construct();
+    if ( $this->view->loggedIn ) _redirect("dashboard");
     $this->view->title = "Login";
     $this->view->css = ["login"];
   }
@@ -32,9 +33,10 @@ class LoginController extends Controller
   public function index()
   {
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-      if ( !empty($_POST['email']) && Validators::validateEmail($_POST['email']) && !empty($_POST['password']) ) {
+      if ( !empty($_POST['useremail']) && Validators::validateEmail($_POST['useremail']) && !empty($_POST['userpass'])
+      ) {
         $loginModel = new LoginModel;
-        if ( !$loginModel->login($_POST) ) $this->view->notice = "Incorrect credentials";
+        if ( !$loginModel->login($_POST, isset($_POST['remember'])) ) $this->view->notice = "Incorrect credentials";
       } else $this->view->notice = "Please provide a valid email and password";
     }
     $this->view->render("login/index");

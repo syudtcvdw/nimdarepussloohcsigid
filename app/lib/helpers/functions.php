@@ -10,6 +10,15 @@ function _preserveInputs($key) {
 }
 
 /**
+ * Preserve the state of a checkbox
+ * @param $key
+ * @return string
+ */
+function _preserveCheckBox($key) {
+  return isset($_POST[$key]) ? "checked" : "";
+}
+
+/**
  * Redirects to supplied uri
  * @param $uri
  */

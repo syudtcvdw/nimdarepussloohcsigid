@@ -10,6 +10,7 @@ class DashboardController extends Controller
   public function __construct()
   {
     parent::__construct();
+    if ( !$this->view->loggedIn ) _redirect("login"); // redirects you to index if you're not logged in.
     $this->view->title = "Dashboard";
     $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
   }

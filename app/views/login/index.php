@@ -6,16 +6,17 @@
     <div class="panel-body">
       <form action="" method="POST">
         <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= _preserveInputs('email'); ?>" required>
+          <label for="useremail">Email address</label>
+          <input type="email" class="form-control" id="useremail" name="useremail" placeholder="Email" value="<?= _preserveInputs('useremail'); ?>">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?=
-_preserveInputs('password'); ?>" required>
+          <label for="userpass">Password</label>
+          <input type="password" class="form-control" id="userpass" name="userpass" placeholder="Password" value="<?=
+_preserveInputs('userpass'); ?>">
         </div>
         <div class="checkbox">
-          <label> <input type="checkbox"> Remember me </label>
+          <label> <input type="checkbox" name="remember" <?= _preserveCheckBox('remember'); ?>> Remember me
+          </label>
         </div>
         <? if ( isset($this->notice) ): ?>
           <p class="text-danger notice"><?= $this->notice; ?></p>

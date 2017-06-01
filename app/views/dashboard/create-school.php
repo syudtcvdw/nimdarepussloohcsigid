@@ -7,7 +7,7 @@
         <div class="col-sm-6 col-sm-offset-3">
             <input type="text" name="school_name" class="form-control" placeholder="School Name"/>
             <br/>
-            <input type="text" name="school_population" class="form-control" placeholder="School Population"/>
+            <input type="text" name="school_location" class="form-control" placeholder="School Location"/>
             <br/>
             <input type="text" name="school_population" class="form-control" placeholder="School Population"/>
             <br/>

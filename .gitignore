@@ -10,4 +10,5 @@
 out
 gen
 *.ini
-.map
+*.map
+/.sass-cache/

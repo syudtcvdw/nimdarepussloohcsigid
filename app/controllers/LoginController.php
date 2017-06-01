@@ -34,10 +34,10 @@ class LoginController extends Controller
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
       if ( !empty($_POST['email']) && Validators::validateEmail($_POST['email']) && !empty($_POST['password']) ) {
         $loginModel = new LoginModel;
-        if ($loginModel->login($_POST)) echo "Login successful";
-        else $this->view->status = "That admin does not exist";
-      } else $this->view->status = "Please provide a valid email and password";
+        if ( !$loginModel->login($_POST) ) $this->view->notice = "That admin does not exist";
+      } else $this->view->notice = "Please provide a valid email and password";
     }
     $this->view->render("login/index");
   }
+
 }

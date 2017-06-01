@@ -13,10 +13,11 @@ use App\Lib\Session;
 
 /**
  * @property string title
- * @property string status
+ * @property string notice
  * @property array js
  * @property array css
  * @property string sidebar
+ * @property bool viewAdmins
  */
 class View
 {

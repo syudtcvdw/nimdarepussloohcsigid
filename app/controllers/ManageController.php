@@ -10,7 +10,7 @@ namespace App\Controllers;
 
 
 use App\Core\Controller;
-use App\Lib\Classes\Admin;
+use App\Lib\Generators;
 use App\Models\ManageAdminModel;
 
 class ManageController extends Controller
@@ -25,30 +25,35 @@ class ManageController extends Controller
     $this->view->title = "Manage Super Admin";
   }
 
-  public function index($type = null, $status = "")
-    {
-        $admin = new ManageAdminModel();
-        if(isset($_POST['add-super-admin'])) {
-            if(!empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass'])) {
-
-                if ($admin->register($_POST)) {
-                    echo "register!";
-                }
-                else {
-                    echo "Failed";
-                }
-
-            }
-            else {
-                echo "Fill all field";
-            }
-        }
-
-        $this->view->viewAdmins = $admin->viewSuperAdmins();
-
-        $this->view->css = ['manage','font-awesome.min'];
-        $this->view->js = ['datatable.min'];
-        $this->view->render("manage/index");
+  /**
+   * MangeController index method (page)
+   */
+  public function index()
+  {
+    $admin = new ManageAdminModel;
+    if ( isset($_GET['id']) ) {
+      $admin->deleteAdmins($_GET['id']);
+      _redirect("/manage");
     }
+
+    if ( isset($_POST['generate-password']) ) {
+      Generators::generatePassword();
+    }
+
+    if( isset($_POST['add-super-admin']) ) {
+      if ( !empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass']) ) {
+        if ( $admin->register($_POST) )
+          $this->view->notice = "Registration successful";
+        else
+          $this->view->notice = "Could not register this admin. That email has been taken.";
+      } else $this->view->notice = "Fill in all fields";
+    }
+
+    $this->view->viewAdmins = $admin->getAdmins();
+    $this->view->css = ['manage','font-awesome.min'];
+    $this->view->js = ['datatable.min'];
+    $this->view->render("manage/index");
+  }
+
 
 }

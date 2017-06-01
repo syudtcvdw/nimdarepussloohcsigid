@@ -14,32 +14,43 @@ use App\Lib\Classes\Admin;
 
 class ManageAdminModel extends Model
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-    /*
-     * The function registers new superAdmins
-     * */
-    public function register($admin_details) {
-        $addSuperAdmin = new Admin($admin_details);
-        return $addSuperAdmin->register();
-    }
+  private $admin;
 
-    /*Function to view all super Admins in the database*/
-    public function viewSuperAdmins() {
-        $viewAdmins = new Admin();
-        return $viewAdmins ->viewSuperAdmins();
-    }
+  public function __construct()
+  {
+    parent::__construct();
+    $this->admin = new Admin;
+  }
 
-    /*Function to delete a SuperAdmins from Database*/
-    public function deleteSuperAdmins($id) {
-        $deleteAdmin = new Admin();
-        return $deleteAdmin ->deleteSuperAdmins($id);
-    }
-    /*Update the password of the super Admin*/
-    public function updateSuperPassword($id) {
-        $passupdate = new Admin();
-        return $passupdate ->updateSuperPassword($id);
-    }
+  /**
+   * Admin register model
+   * @param $admin_details
+   * @return bool
+   */
+  public function register($admin_details) {
+    $this->admin = new Admin($admin_details);
+    return $this->admin->register();
+  }
+
+  /**
+   * Gets all admins
+   * @return bool
+   */
+  public function getAdmins() {
+    return $this->admin->getAdmins();
+  }
+
+  public function deleteAdmins($id) {
+    return $this->admin->deleteAdmins($id);
+  }
+
+  /**
+   * Update Admin entries
+   * @param $id
+   * @param $newValues
+   * @return mixed
+   */
+  public function updateAdmins($id, $newValues)
+  { return $this->admin->updateAdmins($id, $newValues); }
+
 }

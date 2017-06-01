@@ -17,8 +17,8 @@ _preserveInputs('password'); ?>" required>
         <div class="checkbox">
           <label> <input type="checkbox"> Remember me </label>
         </div>
-        <? if ( isset($this->status) ): ?>
-          <p class="text-danger notice"><?= $this->status; ?></p>
+        <? if ( isset($this->notice) ): ?>
+          <p class="text-danger notice"><?= $this->notice; ?></p>
         <?php endif; ?>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>

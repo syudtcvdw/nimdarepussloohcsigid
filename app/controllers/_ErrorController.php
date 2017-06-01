@@ -32,7 +32,7 @@ class _ErrorController extends Controller
      */
     public function index($type = null, $status = "")
     {
-        $this->view->status = $status;
+        $this->view->notice = $status;
         switch ($type) {
             case 404:
                 $this->view->render('_error/404');

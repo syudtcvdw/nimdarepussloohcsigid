@@ -13,7 +13,7 @@ class DashboardController extends Controller
     $this->view->title = "Dashboard";
   }
 
-  public function index($type=null, $status="")
+  public function index()
   {
         $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
         $this->view->render('dashboard/index', 'dashboard-layout');

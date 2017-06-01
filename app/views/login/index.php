@@ -7,12 +7,12 @@
       <form action="" method="POST">
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= preserveInputs('email'); ?>" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= _preserveInputs('email'); ?>" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?=
-preserveInputs('password'); ?>" required>
+_preserveInputs('password'); ?>" required>
         </div>
         <div class="checkbox">
           <label> <input type="checkbox"> Remember me </label>

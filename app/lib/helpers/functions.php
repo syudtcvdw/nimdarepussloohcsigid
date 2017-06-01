@@ -5,7 +5,7 @@
  * @param $key
  * @return string
  */
-function preserveInputs($key) {
+function _preserveInputs($key) {
   return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
 }
 
@@ -13,7 +13,7 @@ function preserveInputs($key) {
  * Redirects to supplied uri
  * @param $uri
  */
-function redirect($uri) {
+function _redirect($uri) {
     echo '<script>window.location="' . PROJECT_PATH . $uri . '"</script>';
     die();
 }
@@ -25,9 +25,10 @@ function redirect($uri) {
  * @param int $algorithm
  * @return bool|string
  */
-function hash($password, $algorithm=PASSWORD_BCRYPT) {
+function _hash($password, $algorithm=PASSWORD_BCRYPT) {
   return password_hash($password, $algorithm);
 }
+
 
 /**
  * Verifies hashed password
@@ -35,6 +36,6 @@ function hash($password, $algorithm=PASSWORD_BCRYPT) {
  * @param $hash
  * @return bool
  */
-function verify_hash($password, $hash) {
+function _verify_hash($password, $hash) {
   return password_verify($password, $hash);
 }

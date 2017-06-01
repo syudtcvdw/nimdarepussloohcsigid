@@ -1,0 +1,23 @@
+@import "_partials/vars";
+@import "_partials/fonts";
+@import "_partials/mixins";
+.wrapper.create-school{
+  background: $theme-white;
+  padding-top: 10px;
+  .submit-button{
+    background-color: $theme-blue;
+    color: $theme-white;
+  }
+  .heading2{
+    color: $theme-blue;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+  }
+  .body-content{
+    @include vertical-align();
+
+  }
+
+}

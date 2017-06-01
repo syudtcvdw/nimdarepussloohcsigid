@@ -41,9 +41,9 @@ body {
     input.form-control {
 	border-radius: 0px !important;
         border: none;
-    border-bottom: 2px solid $theme-black;
-    padding: 1.4em 4.4em;
-        text-align: center;
+    border-bottom: 1px solid $theme-blue;
+    padding: 1.4em .8em;
+        text-align: left;
     height: 4.3rem;
         box-shadow: none !important;
         outline: none !important;
@@ -58,6 +58,7 @@ body {
         border-radius: 0px;
         padding: 10px 10px;
         width: 15rem;
+        text-align: center;
     }
 
   .btn-primary {

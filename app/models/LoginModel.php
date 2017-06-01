@@ -10,6 +10,7 @@ namespace App\Models;
 
 
 use App\Core\Model;
+use App\Lib\Classes\Admin;
 
 class LoginModel extends Model
 {
@@ -29,7 +30,7 @@ class LoginModel extends Model
    */
   public function login($credentials) {
     $adminLogin = new Admin($credentials);
-    return $adminLogin->login();
+    return $adminLogin->login("/dashboard");
   }
 
 

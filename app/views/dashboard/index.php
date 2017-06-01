@@ -1,4 +1,4 @@
-<div class="content">
+   <div class="content">
                <nav class=' nav navbar right-nav'>
                        <div class="container-fluid  center-things">
                         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,17 +15,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="my-navbar">
-
-<!--
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                <a href="#" class="btn">Logout</a>
-                </li>
-                <li>
-                <a href="" class="btn">Sign In</a>
-                </li>
-            </ul>
--->
                            </div>
                    </div>
                </nav>

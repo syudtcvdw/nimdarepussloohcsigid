@@ -1,4 +1,4 @@
-/* Developed by
+/* Developed by 
 * Falua Temitope Oyewole
 * Planet Nest
 * To overwrite the bootstrap form classes to suite my taste
@@ -40,8 +40,8 @@
   box-shadow: none;
   padding: 8px 10px; }
 
-input[type=disabled] {
-  background: #F7F7FF; }
+.form-control:disabled {
+  background: #fff !important; }
 
 .pad {
   padding-top: 4rem; }
@@ -51,7 +51,7 @@ input[type=disabled] {
   border: none; }
 
 .btn-primary {
-  background: #0AD3FF; }
+  background: #3399FF; }
 
 .btn-success {
   background: #279AF1; }
@@ -82,3 +82,5 @@ input[type=disabled] {
   border: none;
   border-radius: 0px !important;
   height: 100%; }
+
+/*# sourceMappingURL=manage.css.map */

@@ -21,6 +21,10 @@ class Admin extends Model
   public $password;
   private $adminTableName;
 
+  /**
+   * Admin constructor.
+   * @param null $data
+   */
   public function __construct($data=null)
   {
     parent::__construct();
@@ -31,6 +35,10 @@ class Admin extends Model
           $this->{$key} = $value;
   }
 
+  /**
+   * Registers the admin
+   * @return bool
+   */
   public function register()
   {
     if ( !$this->__adminExists() ) {
@@ -43,6 +51,11 @@ class Admin extends Model
     return false;
   }
 
+
+  /**
+   * Logs in the admin
+   * @return bool
+   */
   public function login()
   {
     if ( $this->__adminExists() ) {
@@ -52,12 +65,20 @@ class Admin extends Model
     return false;
   }
 
- public function logout($redirect="")
+  /**
+   * Logs the admin out.
+   * @param string $redirect
+   */
+  public function logout($redirect="")
   {
     Session::destroy();
     header("Location: ". PROJECT_PATH . $redirect);
   }
 
+  /**
+   * Checks if an administrator exists
+   * @return bool
+   */
   public function __adminExists()
   {
     $result = $this->db->query("SELECT userpass FROM " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail"=>$this->email]);

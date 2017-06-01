@@ -1,0 +1,59 @@
+@import "_partials/vars";
+@import "_partials/mixins";
+
+body {
+  background: $theme-white;
+}
+
+.login-wrapper {
+
+  max-width: 50%;
+  margin: 10% auto;
+
+  form {
+    width: 100%;
+  }
+
+  .panel {
+    //outline: none;
+    width: 50%;
+    margin: 8px auto;
+    border: 1px solid $theme-blue;
+  }
+  .panel-heading {
+    background: $theme-blue;
+  }
+
+  .checkbox {
+    label {
+      font-size: 13px;
+    }
+  }
+
+  .notice {
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .btn-primary {
+    color: $theme-blue;
+    background: $theme-white;
+    outline: $theme-blue;
+    &:hover {
+      background: $theme-blue;
+      color: $theme-white;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 8px;
+
+  p {
+    text-align: center;
+    font-size: 14px;
+  }
+}

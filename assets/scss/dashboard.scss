@@ -39,23 +39,16 @@
         }
 }
 
-//.btn{
-//    position: relative;
-//    overflow: auto;
-//    min-height: 100%;
-//    border: 0;
-//    border-radius: 0;
-//}
-
-
 .left{
 
     height: 100%;
     transition: 250ms;
     width: 6%;
     float: left;
-text-align: center;
+    text-align: center;
     margin: auto;
+    z-index: 90;
+    position: absolute;
     button span{
         display: none;
         }
@@ -126,7 +119,7 @@ text-align: center;
 .right{
     transition: 250ms;
     width:94%;
-    float: left;
+    float: right;
     background: white;
     height: 100%;
 
@@ -198,10 +191,6 @@ text-align: center;
 }
 
 @media(min-width: 768px){
-    .hover-right-width{
-     width: 75% !important;
-    }
-
     .hover-left-width{
      width: 25% !important;
 

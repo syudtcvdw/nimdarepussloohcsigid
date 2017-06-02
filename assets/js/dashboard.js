@@ -10,7 +10,6 @@ $(".showSidebar").click(function(){
     
 $left.hover(function(){
       $left.toggleClass("hover-left-width");
-      $right.toggleClass("hover-right-width");
 });
 
 

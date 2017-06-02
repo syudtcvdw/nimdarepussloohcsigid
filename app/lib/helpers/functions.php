@@ -1,4 +1,7 @@
 <?php
+/**
+ * Contains boilerplate functions universally available in the framework
+ */
 
 /**
  * Preserves the text supplied in HTML inputs

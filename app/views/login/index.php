@@ -9,20 +9,30 @@
                     <form action="" method="POST" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email address</label>
-                            <input type="email" class="form-control" id="email" name="useremail" placeholder="Enter your Email Address" value="<?= _preserveInputs('email'); ?>" required>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
+                                <input type="email" class="form-control" id="email" name="useremail" placeholder="Enter your Email Address" value="<?= _preserveInputs('email'); ?>" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="password" name="userpass" placeholder="Enter Your Password" value="<?=
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input type="password" class="form-control" id="password" name="userpass" placeholder="Enter Your Password" value="<?=
                             _preserveInputs('password'); ?>" required>
+                            </div>
                         </div>
                         <div class="checkbox">
-                            <label> <input type="checkbox"> Remember me </label>
+                            <label><input type="checkbox" > Remember Me</label>
                         </div>
                         <? if ( isset($this->notice) ): ?>
-                            <p class="text-danger notice"><?= $this->notice; ?></p>
-                        <?php endif; ?>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                            <p class="text-danger notice">
+                                <?= $this->notice; ?>
+                            </p>
+                            <?php endif; ?>
+                            <div class="form-group btn-s">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -30,5 +40,6 @@
     </div>
 </div>
 <footer class="footer">
-  <p>Digischools <?= date("© Y"); ?>. All rights reserved.</p>
+    <p>Digischools
+        <?= date("© Y"); ?>. All rights reserved.</p>
 </footer>

@@ -111,6 +111,15 @@ class Database
     }
 
     /**
+     * Get each row from a table
+     * @param $table
+     * @param $id
+     * @return bool|\PDOStatement
+     * */
+    public function getOne($table, $id) {
+        return $this->query("SELECT FROM " .$table . "WHERE id=:id", ["id"=>$id]);
+    }
+    /**
      * Runs an SQL command to DROP a table
      * @param $table
      * @return bool|\PDOStatement

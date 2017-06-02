@@ -30,5 +30,4 @@ class Validators
     return strlen($password) > 3;
   }
 
-
 }

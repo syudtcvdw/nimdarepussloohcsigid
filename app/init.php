@@ -9,11 +9,9 @@
 
 use App\Lib\Classes\Session;
 
-use App\Lib\Classes\Session;
-
-require_once 'app/lib/config/paths.php';
-require_once 'app/lib/config/database.php';
-require_once 'app/lib/helpers/functions.php';
-require_once 'app/lib/helpers/__autoloader.php';
+require_once __DIR__ . '/../app/lib/config/paths.php';
+require_once __DIR__ . '/../app/lib/config/database.php';
+require_once __DIR__ . '/../app/lib/helpers/functions.php';
+require_once __DIR__ . '/../app/lib/helpers/__autoloader.php';
 
 Session::init();

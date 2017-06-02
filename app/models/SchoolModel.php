@@ -43,8 +43,8 @@ class SchoolModel extends Model
             $this->date_created = time();
             $this->uID = _generate_id(6);
             $db = new Database();
-                while ($db->exists($this->uID, 'uid', 'schools'))  $this->uID = _generate_id(6);
-            $this->slug = _generate_slug($this->name,'schools');
+                while ($db->exists($this->uID, 'uid', $this->schoolTable))  $this->uID = _generate_id(6);
+            $this->slug = _generate_slug($this->name,$this->schoolTable);
             $this->status = "active";
             $insertID = $this->db->insert($this->schoolTable, [ "name"=>$this->name,
                 "location"=>$this->location, "admin_uname" => $this->admin_username,

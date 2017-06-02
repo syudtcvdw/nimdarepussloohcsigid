@@ -1,7 +1,7 @@
 <div class="wrapper create-school">
     <div class="body-content">
         <div class="heading">
-            <p> Enter School Details </p>
+             Enter School Details
         </div>
         <br/>
         <div class="col-sm-6 col-sm-offset-3 change-input">

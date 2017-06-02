@@ -21,7 +21,7 @@ class ManageController extends Controller
     public function __construct()
     {
         parent::__construct();
-        _logged_only();
+//        _logged_only();
 
         $this->view->title = "Manage Admins";
         $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';

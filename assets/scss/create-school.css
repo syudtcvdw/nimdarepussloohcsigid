@@ -17,6 +17,10 @@
     Style placeholder
     Credits: http://stackoverflow.com/questions/17181849/placeholder-mixin-scss-css
 */
+.content {
+  height: inherit;
+  width: 100%; }
+
 .wrapper.create-school {
   background: #F7F7FF;
   padding-top: 10px; }
@@ -29,6 +33,8 @@
     margin-top: 0;
     margin-bottom: 0;
     font-family: 'Lato', sans-serif; }
+  .wrapper.create-school p {
+    text-align: center; }
   .wrapper.create-school .body-content {
     position: relative;
     top: 50%;
@@ -42,5 +48,9 @@
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important; }
+  .wrapper.create-school .change-input .submit-button {
+    padding: .85em !important;
+    border: 0px;
+    border-radius: 0px; }
 
 /*# sourceMappingURL=create-school.css.map */

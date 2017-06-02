@@ -41,23 +41,33 @@ h1, h2, h3, h4, h5, h6 {
     border: none; }
   .login-wrapper .checkbox label {
     font-size: 13px; }
-  .login-wrapper input.form-control {
+  .login-wrapper .form-control {
     border-radius: 0px !important;
     border: none;
-    border-bottom: 2px solid #070600;
-    padding: 1.4em 4.4em;
-    text-align: center;
+    border-bottom: 1px solid #3399FF;
+    padding: 1.4em .8em;
+    text-align: left;
     height: 4.3rem;
     box-shadow: none !important;
     outline: none !important;
     background: none !important; }
+  .login-wrapper .input-group-addon {
+    outline: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #3399FF !important;
+    background: none;
+    border-top: none;
+    border-left: none; }
   .login-wrapper .notice {
     font-size: 13px;
     font-style: italic; }
   .login-wrapper .btn {
     border-radius: 0px;
     padding: 10px 10px;
-    width: 15rem; }
+    width: 15rem;
+    text-align: center; }
+  .login-wrapper .btn-s {
+    padding-top: 4%; }
   .login-wrapper .btn-primary {
     color: #3399FF;
     background: #F7F7FF;

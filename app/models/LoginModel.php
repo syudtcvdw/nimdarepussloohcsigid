@@ -30,7 +30,7 @@ class LoginModel extends Model
    */
   public function login($credentials) {
     $adminLogin = new Admin($credentials);
-    return $adminLogin->login("/dashboard");
+    return $adminLogin->login("dashboard");
   }
 
 

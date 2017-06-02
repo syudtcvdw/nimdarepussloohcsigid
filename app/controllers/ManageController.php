@@ -38,7 +38,10 @@ class ManageController extends Controller
             $admin->deleteAdmins($_GET['id']);
             _redirect("manage");
         }
-
+        if (isset($_GET['id'])) {
+            $admin->updateAdmins($_GET['id']);
+            _redirect("manage");
+        }
         if (isset($_POST['add-super-admin'])) {
             if (!empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass'])) {
                 if ($admin->register($_POST)) $this->view->notice = "Registration successful";
@@ -46,11 +49,16 @@ class ManageController extends Controller
             } else $this->view->notice = "Please fill in all fields";
         }
 
+        if (isset($_POST['changePassword'])) {
+            if(!empty($_POST['userpass']) && !empty($_POST['conf_userpass'])) {
+                if($admin->updateAdmins($_POST)) $this->view->notice = "Password Updated Successfully";
+                else $this->view->notice = "Could Not Update Existing Password. Try Again!";
+            }
+            else $this->view->notice = "Please, Fill All Fields";
+        }
         $this->view->viewAdmins = $admin->getAdmins();
         $this->view->css = ['manage', 'font-awesome.min'];
-        $this->view->js = ['datatable.min'];
+        $this->view->js = ['datatables.min'];
         $this->view->render("manage/index", "dashboard-layout");
     }
-
-
 }

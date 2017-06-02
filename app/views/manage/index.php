@@ -18,9 +18,10 @@
                 <div class="panel-body">
                     <!--Panel body-->
                     <? if (isset($this->notice)): ?>
-                        <p class="alert alert-<?= $this->error ? 'danger' : 'success' ?> notice">
+                        <br>
+                        <div class="alert alert-<?= $this->error ? 'danger' : 'success' ?> notice">
                             <?= $this->notice; ?>
-                        </p>
+                        </div>
                     <?php endif; ?>
                     <!--form for adding super admin-->
                     <p id="info"></p>

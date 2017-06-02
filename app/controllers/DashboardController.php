@@ -30,6 +30,9 @@ class DashboardController extends Controller
 
     }
 
+    /**
+     * /create-school
+     */
     public function createSchool()
     {
         #!- inform whoever is listening, what menu item we're on
@@ -54,10 +57,13 @@ class DashboardController extends Controller
             }
         }
         $this->view->css = ['create-school'];
-        $this->view->title = "Create School";
+        $this->view->title = "Create school";
         $this->view->render('dashboard/create-school', 'dashboard-layout');
     }
 
+    /**
+     * /view-schools
+     */
     public function viewSchools()
     {
         #!- inform whoever is listening, what menu item we're on
@@ -76,20 +82,30 @@ class DashboardController extends Controller
         $this->view->render('dashboard/view-schools', $this->layout);
     }
 
-    protected function toggle(){
+    /**
+     * Handles school status toggle
+     */
+    protected function toggle()
+    {
         $args = func_get_args();
         if (isset($args[0])) {
             $model = new SchoolModel();
             $model->toggleStatus($args[0]);
-            _redirect(App::$uri);
         }
+        _redirect(App::$uri);
     }
 
+    /**
+     * /manage
+     */
     public function manage()
     {
         _redirect("dashboard/manage-admins");
     }
 
+    /**
+     * /manage-admins
+     */
     public function manageAdmins()
     {
         #!- inform whoever is listening, what menu item we're on
@@ -117,7 +133,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * delete admin
+     * Handles admin deletion
      */
     protected function delete()
     {
@@ -130,7 +146,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * delete admin
+     * Handles password update for admin
      */
     protected function changePassword()
     {
@@ -149,7 +165,7 @@ class DashboardController extends Controller
                     else $this->view->notice = "Could Not Update Existing Password. Try Again!";
                 }
             } else $this->view->notice = "Please, Fill All Fields";
-        }
+        } else _redirect(App::$uri);
     }
 
 }

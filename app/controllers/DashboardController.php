@@ -19,6 +19,9 @@ class DashboardController extends Controller
         $this->layout = "dashboard-layout";
         $this->view->title = "Dashboard";
         $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
+
+        #!- inform whoever is listening, what menu item we're on
+        $this->view->menu = 0;
     }
 
     public function index()
@@ -29,6 +32,8 @@ class DashboardController extends Controller
 
     public function createSchool()
     {
+        #!- inform whoever is listening, what menu item we're on
+        $this->view->menu = 1;
 
         if (isset($_POST['create_school'])) {
             unset($_POST['create_school']);
@@ -61,6 +66,9 @@ class DashboardController extends Controller
 
     public function manageAdmins()
     {
+        #!- inform whoever is listening, what menu item we're on
+        $this->view->menu = 3;
+
         #!- set up args
         $this->args = func_get_args();
 

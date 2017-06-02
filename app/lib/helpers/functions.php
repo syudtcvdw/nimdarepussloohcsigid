@@ -71,11 +71,13 @@ function _generate_id($length = 8)
 }
 
 /**
- * Redirects unlogged visitors to login
+ * Redirects unlogged visitors to login, does the reverse [on /login] when $protected is false
+ * @param bool $protected
  */
-function _logged_only()
+function _logged_only($protected = true)
 {
-    if (!\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
+    if ($protected && !\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
+    if (!$protected && \App\Lib\Classes\Session::get("loggedIn")) _redirect("dashboard");
 }
 
 /**

@@ -130,4 +130,34 @@ class Database
         return $this->success ? "Connection successful!" : $this->status;
     }
 
+    /**
+     * Determines if specified entry exists
+     * @credit Banjo Mofesola Paul
+     * @param  string $value The value to search for
+     * @param  string $column The column to search under
+     * @param  string $table The table to search in
+     * @return bool
+     */
+    public function exists($value, $column, $table)
+    {
+        $q = $this->query("SELECT 1 FROM `$table` WHERE `$column` = :value LIMIT 1", ["value" => $value]);
+        return (bool) $q->fetchColumn();
+    }
+
+    /**
+     * Returns a specific column from a table, given another column value
+     * @credit Banjo Mofesola Paul
+     * @param string $table The table to search in
+     * @param string $dis The target column whose value we're getting
+     * @param string $that The known column
+     * @param string $value Value of known column
+     */
+    public function thisFromThat($table, $dis, $that, $value)
+    {
+        $sql = "SELECT `$dis` FROM `$table` WHERE `$that` = :value LIMIT 1";
+
+        $q = $this->query($sql, ['value' => $value]);
+        if ($o = $q->fetchObject()) return $o->$dis;
+    }
+
 }

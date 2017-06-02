@@ -1,4 +1,18 @@
 
+ <div class="cover-screen-with-this transition hide">
+    <button class="btn btn-danger closeModal">Close</button>
+    <div class="blackground"></div>
+    <div class="modal-overlay hide"></div>
+
+    <div class="treated-query-overlay hide">
+       <div class="treated-content">
+        <h3>Lorem Heading</h3>
+        <p>Sure You Want To Mark This As Treated?</p>
+        <button class="btn yes">Yes</button>
+        <button class="btn no">No</button>
+       </div>
+    </div>
+</div>
 
                <div class="feedback-body-content">
                    <div class="centered-view">

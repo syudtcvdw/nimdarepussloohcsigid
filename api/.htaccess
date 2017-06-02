@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#RewriteRule ^api/(v[0-9]+)/(.*)$ api/index.php?api-version=$1&api-request=$2 [L,NC,QSA]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L,NC]

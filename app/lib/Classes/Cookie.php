@@ -6,7 +6,7 @@
  * Time: 8:05 PM
  */
 
-namespace App\Lib;
+namespace App\Lib\Classes;
 
 
 class Cookie

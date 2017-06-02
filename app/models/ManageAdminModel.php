@@ -30,20 +30,23 @@ class ManageAdminModel extends Model
    * @param $admin_details
    * @return bool
    */
-  public function register($admin_details) {
+  public function register($admin_details)
+  {
     $this->admin = new Admin($admin_details);
     return $this->admin->register();
   }
 
   /**
    * Gets all admins
-   * @return bool
+   * @return bool|array
    */
-  public function getAdmins() {
+  public function getAdmins()
+  {
     return $this->admin->getAdmins();
   }
 
-  public function deleteAdmins($id) {
+  public function deleteAdmins($id)
+  {
     return $this->admin->deleteAdmins($id);
   }
 
@@ -54,6 +57,8 @@ class ManageAdminModel extends Model
    * @return mixed
    */
   public function updateAdmins($id, $newValues)
-  { return $this->admin->updateAdmins($id, $newValues); }
+  {
+    return $this->admin->updateAdmins($id, $newValues);
+  }
 
 }

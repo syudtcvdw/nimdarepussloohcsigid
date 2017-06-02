@@ -21,7 +21,7 @@ class App
     $url = $this->__parseURL();
     $url[0] = $this->__cleanUpDashes($url[0]);
     // controller
-    if ( file_exists(APP_ROOT . 'controllers/' . ucfirst($url[0]) . 'Controller.php') ) {
+    if (file_exists(APP_ROOT . 'controllers/' . ucfirst($url[0]) . 'Controller.php')) {
       $this->controller = $url[0];
       unset($url[0]);
     }
@@ -50,10 +50,10 @@ class App
    */
   private function __checkControllerMethod($url, $index)
   {
-    if ( !isset($url[$index]) ) return $url;
+    if (!isset($url[$index])) return $url;
     $url[$index] = $this->__cleanUpDashes($url[$index]);
-      
-    if ( method_exists($this->controller, $url[$index]) ) {
+
+    if (method_exists($this->controller, $url[$index])) {
       $this->method = $url[$index];
       unset($url[$index]);
     } else
@@ -68,7 +68,7 @@ class App
    */
   private function __parseURL()
   {
-    if ( isset($_GET['url']) ) {
+    if (isset($_GET['url'])) {
       $url = rtrim($_GET['url'], '/');
       $url = filter_var($url, FILTER_SANITIZE_URL);
       return explode('/', $url);
@@ -79,21 +79,23 @@ class App
    * Method was supplied to controller, but is in-existent
    * @return array
    */
-  private function __methodInExistent() {
-      App::$hasError = true;
-      $this->controller = new _ErrorController();
-      return [404,404];
+  private function __methodInExistent()
+  {
+    App::$hasError = true;
+    $this->controller = new _ErrorController();
+    return [404, 404];
   }
 
   /**
    * Ensures that the resolved controller actually does exist
    */
-  private function __assertController() {
-      if ( !file_exists(APP_ROOT . 'controllers/' . $this->controller . '.php') ) {
-          $this->__methodInExistent();
-          $this->controller->index(404, 404);
-          die();
-      }
+  private function __assertController()
+  {
+    if (!file_exists(APP_ROOT . 'controllers/' . $this->controller . '.php')) {
+      $this->__methodInExistent();
+      $this->controller->index(404, 404);
+      die();
+    }
   }
 
   /**
@@ -101,7 +103,8 @@ class App
    * @param $subject
    * @return mixed
    */
-  private function __cleanUpDashes($subject) {
+  private function __cleanUpDashes($subject)
+  {
     return str_replace("-", "", $subject);
   }
 

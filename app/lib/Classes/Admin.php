@@ -9,9 +9,7 @@
 namespace App\Lib\Classes;
 
 use App\Core\Classes;
-use App\Lib\Cookie;
-use App\Lib\Generators;
-use App\Lib\Session;
+
 
 class Admin extends Classes
 {
@@ -84,7 +82,7 @@ class Admin extends Classes
       Session::set("adminSalt", Generators::generateSalt($this->useremail));
       if ($rememberMe) // sets a cookie for period of 3 months
         Cookie::set("adminId", $this->id, Cookie::EXPIRE_THREE_MONTH);
-      header("Location: " . _redirect($redirect));
+      _redirect($redirect);
     }
     return false;
   }
@@ -97,7 +95,7 @@ class Admin extends Classes
   {
     Session::destroy();
     Cookie::destroy("adminId");
-    header("Location: " . _redirect($redirect));
+    _redirect($redirect);
   }
 
   /**

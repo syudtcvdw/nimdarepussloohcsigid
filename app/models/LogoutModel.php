@@ -16,13 +16,8 @@ class LogoutModel extends Model
 {
 
   /**
-   * LogoutModel constructor.
+   * logs the user out and redirects to login page
    */
-  public function __construct()
-  {
-    parent::__construct();
-  }
-
   public function logout()
   {
     $admin = new Admin;

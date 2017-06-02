@@ -5,7 +5,8 @@
  * @param $key
  * @return string
  */
-function _preserveInputs($key) {
+function _preserveInputs($key)
+{
   return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
 }
 
@@ -14,7 +15,8 @@ function _preserveInputs($key) {
  * @param $key
  * @return string
  */
-function _preserveCheckBox($key) {
+function _preserveCheckBox($key)
+{
   return isset($_POST[$key]) ? "checked" : "";
 }
 
@@ -22,9 +24,10 @@ function _preserveCheckBox($key) {
  * Redirects to supplied uri
  * @param $uri
  */
-function _redirect($uri) {
-    echo '<script>window.location="' . PROJECT_PATH . $uri . '"</script>';
-    die();
+function _redirect($uri)
+{
+  echo '<script>window.location="' . PROJECT_PATH . $uri . '"</script>';
+  die();
 }
 
 
@@ -34,7 +37,8 @@ function _redirect($uri) {
  * @param int $algorithm
  * @return bool|string
  */
-function _hash($password, $algorithm=PASSWORD_BCRYPT) {
+function _hash($password, $algorithm = PASSWORD_BCRYPT)
+{
   return password_hash($password, $algorithm);
 }
 
@@ -45,6 +49,30 @@ function _hash($password, $algorithm=PASSWORD_BCRYPT) {
  * @param $hash
  * @return bool
  */
-function _verify_hash($password, $hash) {
+function _verify_hash($password, $hash)
+{
   return password_verify($password, $hash);
+}
+
+
+/**
+ * Generates a random salt
+ * @param $name
+ * @param int $algorithm
+ * @return bool|string
+ */
+function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
+{
+  return password_hash($name, $algorithm);
+}
+
+/**
+ * Verifies a salt
+ * @param $name
+ * @param $salt
+ * @return bool
+ */
+function _verify_salt($name, $salt)
+{
+  return password_verify($name, $salt);
 }

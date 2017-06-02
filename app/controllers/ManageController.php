@@ -10,7 +10,6 @@ namespace App\Controllers;
 
 
 use App\Core\Controller;
-use App\Lib\Generators;
 use App\Models\ManageAdminModel;
 
 class ManageController extends Controller

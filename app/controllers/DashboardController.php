@@ -23,9 +23,6 @@ class DashboardController extends Controller
   public function createSchool(){
       $this->view->css = ['create-school'];
       $this->view->render('dashboard/create-school', 'dashboard-layout');
-
-
-
   }
 
 }

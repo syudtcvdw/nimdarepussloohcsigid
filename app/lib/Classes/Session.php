@@ -7,7 +7,7 @@
  * Time: 7:56 PM
  */
 
-namespace App\Lib;
+namespace App\Lib\Classes;
 
 
 class Session

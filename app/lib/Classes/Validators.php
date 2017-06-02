@@ -6,7 +6,7 @@
  * Time: 5:00 PM
  */
 
-namespace App\Lib;
+namespace App\Lib\Classes;
 
 
 class Validators
@@ -17,7 +17,8 @@ class Validators
    * @param $email
    * @return bool
    */
-  public static function validateEmail($email) {
+  public static function validateEmail($email)
+  {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
   }
 
@@ -26,7 +27,8 @@ class Validators
    * @param $password
    * @return bool
    */
-  public static function validatePassword($password) {
+  public static function validatePassword($password)
+  {
     return strlen($password) > 3;
   }
 

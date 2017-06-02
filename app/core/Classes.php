@@ -9,7 +9,8 @@
 namespace App\Core;
 
 
-use App\Lib\Database;
+
+use App\Lib\Classes\Database;
 
 class Classes
 {

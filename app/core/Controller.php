@@ -2,6 +2,9 @@
 
 namespace App\Core;
 
+/**
+ * @property string layout
+ */
 abstract class Controller
 {
 

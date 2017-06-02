@@ -11,8 +11,6 @@ namespace App\Core;
 
 use App\Lib\Classes\Database;
 
-use App\Lib\Classes\Database;
-
 class Classes
 {
   public $db;

@@ -35,8 +35,8 @@
                     </td>
                     <td class="no-bottom-padding">
                         <label class="switch">
-                            <input type="checkbox">
-                            <div class="slider round"></div>
+                            <input type="checkbox" <?= $school['status']? 'checked':'' ?>>
+                            <a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/toggle/' .$school['slug']; ?>" class="toggle-school-status slider round"></a>
                         </label>
                     </td>
                 </tr>

@@ -48,7 +48,7 @@ class DashboardController extends Controller
           }
       }
       $this->view->css = ['create-school'];
-      $this->view->title = "CreateSchool";
+      $this->view->title = "Create School";
       $this->view->render('dashboard/create-school', 'dashboard-layout');
   }
 

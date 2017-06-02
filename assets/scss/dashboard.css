@@ -47,31 +47,13 @@ html, body {
     top: 5%;
     bottom: 5%; }
 
-.btn {
-  position: relative;
-  overflow: auto;
-  min-height: 100%;
-  border: 0;
-  border-radius: 0; }
-
-.default-left-width {
+.left {
+  height: 100%;
   transition: 250ms;
   width: 6%;
   float: left; }
-
-.default-right-width {
-  transition: 250ms;
-  width: 94%;
-  float: left; }
-
-.hover-right-width {
-  width: 75% !important; }
-
-.hover-left-width {
-  width: 25% !important; }
-
-.left {
-  height: 100%; }
+  .left button span {
+    display: none; }
   .left .sidebar {
     height: inherit;
     background: #242433;
@@ -82,11 +64,12 @@ html, body {
       width: inherit;
       background: none;
       outline: none;
-      border: none; }
+      border: none;
+      border-radius: 0; }
     .left .sidebar .col-md-12, .left .sidebar .col-md-6 {
       padding: 0 !important;
       margin: 0 !important; }
-    .left .sidebar .btn-sidebar {
+    .left .sidebar .active {
       background: #3399FF;
       color: white;
       margin: 0 !important;
@@ -94,14 +77,28 @@ html, body {
       width: 100%;
       padding-top: 1em;
       padding-bottom: 1em; }
-    .left .sidebar .sidebar-row {
+      .left .sidebar .active:hover {
+        background: #1a8cff !important; }
+    .left .sidebar .sidebar-row, .left .sidebar .logo {
+      text-align: left;
       color: white;
-      text-align: center;
       padding: 2.5rem 2rem;
       width: 100%;
       box-shadow: 0px 0px 0px 0.04px #e6e6fc; }
+      .left .sidebar .sidebar-row span, .left .sidebar .logo span {
+        padding-left: 1em; }
+      .left .sidebar .sidebar-row:hover, .left .sidebar .logo:hover {
+        background: #2f2f42;
+        color: white;
+        font-weight: 500; }
+    .left .sidebar .logo {
+      text-align: center !important;
+      padding: 5rem 2rem; }
 
 .right {
+  transition: 250ms;
+  width: 94%;
+  float: left;
   background: white;
   height: 100%; }
   .right .right-nav {
@@ -129,16 +126,29 @@ html, body {
   .left {
     left: -100%;
     position: fixed;
-    top: 0; }
-
-  .slide-in-sidebar {
-    position: fixed;
+    top: 0;
     width: 80%;
     z-index: 10; }
+    .left button img {
+      height: 15px !important;
+      transition: 250ms; }
+    .left button span {
+      display: inline-block; }
 
-  .default-right-width {
+  .right {
     width: 100%;
     float: left;
     transition: 400ms; } }
+@media (min-width: 768px) {
+  .hover-right-width {
+    width: 75% !important; }
+
+  .hover-left-width {
+    width: 25% !important; }
+    .hover-left-width button img {
+      height: 15px !important;
+      transition: 250ms; }
+    .hover-left-width button span {
+      display: inline-block; } }
 
 /*# sourceMappingURL=dashboard.css.map */

@@ -6,7 +6,7 @@
  * Time: 5:00 PM
  */
 
-namespace App\Lib;
+namespace App\Lib\Classes;
 
 
 class Validators
@@ -28,6 +28,17 @@ class Validators
    */
   public static function validatePassword($password) {
     return strlen($password) > 3;
+  }
+
+  public static function validateCreateSchoolForm($data){
+      $errors = [];
+      foreach ($data as $key => $value){
+          if(empty($value)){
+
+              $errors[$key] = "Field is required";
+          }
+      }
+      return empty($errors) ? false : $errors;
   }
 
 

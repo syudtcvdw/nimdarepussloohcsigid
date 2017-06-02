@@ -28,12 +28,17 @@
   margin: 5px auto 0; }
   .manage-wrapper h4 {
     font-size: 1.3em;
-    padding-bottom: 5px;
     color: #070600; }
   .manage-wrapper span {
     font-size: 1.5em;
     color: #279AF1;
     font-weight: bold; }
+
+.panel-heading {
+  padding: 10px 10px !important; }
+
+.input-group-addon {
+  padding: 0px; }
 
 .form-control {
   border-radius: 0px !important;

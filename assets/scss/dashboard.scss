@@ -7,6 +7,7 @@
     height: 100%;
 }
 
+
 .toggle-this{
     left: 0 !important;
 }
@@ -23,7 +24,9 @@
 }
 //end of annoyances
 
+
 .navbar{
+
         margin-bottom: 0 !important;
 
         .icon-bar {
@@ -36,13 +39,13 @@
         }
 }
 
-.btn{
-    position: relative;
-    overflow: auto;
-    min-height: 100%;
-    border: 0;
-    border-radius: 0;
-}
+//.btn{
+//    position: relative;
+//    overflow: auto;
+//    min-height: 100%;
+//    border: 0;
+//    border-radius: 0;
+//}
 
 
 .left{
@@ -51,7 +54,8 @@
     transition: 250ms;
     width: 6%;
     float: left;
-
+text-align: center;
+    margin: auto;
     button span{
         display: none;
         }
@@ -68,6 +72,7 @@
             background: none;
             outline: none;
             border: none;
+            border-radius: 0;
         }
 
         .col-md-12, .col-md-6{
@@ -75,7 +80,7 @@
             margin: 0 !important;
         }
 
-        .btn-sidebar {
+        .active {
             background: $theme-blue;
             color: white;
             margin: 0 !important;
@@ -83,6 +88,11 @@
             width: 100%;
             padding-top: 1em;
             padding-bottom: 1em;
+
+            &:hover{
+             background: darken($theme-blue, 5%) !important;
+
+            }
         }
 
         .sidebar-row  {
@@ -95,15 +105,21 @@
             span{
                 padding-left: 1em;
             }
-        }    
-        
-        .sidebar-row:hover {
-           background:lighten(rgb(14%,14%,20%), 5%);
-            color: white;
-            font-weight: 500;
-        }
 
+             &:hover {
+                background:lighten(rgb(14%,14%,20%), 5%);
+                color: white;
+                font-weight: 500;
+            }
+
+
+        }
         
+        .logo{
+            @extend .sidebar-row;
+            text-align: center !important;
+            padding: 5rem 2rem;
+        }
     }
 }
 
@@ -115,14 +131,24 @@
     height: 100%;
 
     .right-nav{
-        position: relative;
+        //position: relative;
         width: 100%;
         min-height: 40px;
         box-shadow: 1.2px 0px 0px 0.5px #eee;
     }
 
+    .override-nav{
+     background: white !important;
+     position: fixed !important;
+     z-index: 7;
+     border-radius: 0 !important;
+     border: 0 !important;
+
+}
+
+
     .body-content {
-        padding: 2em;
+        padding: 8em 2em 2em 2em;
         background: $theme-white;
         position: relative;
         overflow: auto;

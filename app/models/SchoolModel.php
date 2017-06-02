@@ -16,27 +16,41 @@ class SchoolModel extends Model
         public $id;
         public $name;
         public $location;
-        public $status;
-        public $admin_uname;
+        public $admin_username;
         public $admin_password;
         public $s_population;
         public $date_created;
+        private $schoolTable;
+        public $uID;
 
-        public function __construct($data)
+        public function __construct($data = null)
         {
             parent::__construct();
             $this->schoolTable = 'schools';
-
+            $this->generateSchoolID();
+            if ( !empty($data) ) {
+                foreach ($data as $key => $value)
+                    if (!empty($value))
+                        $this->{$key} = $value;
+            }
+            return $this;
         }
 
-        public function register(){
-            $this->date_created = date();
+        public function create(){
+            $this->date_created = time();
             $insertID = $this->db->insert($this->schoolTable, [ "name"=>$this->name,
-                "location"=>$this->location, "status" => $this->status, "admin_uname" => $this->admin_uname,
+                "location"=>$this->location, "admin_uname" => $this->admin_username,
                 "admin_password" => password_hash($this->admin_password,PASSWORD_BCRYPT),
-                "date_created" => date("d/m/Y H:i:s",$this->date_created)]);
+                "date_created" => date("Y-m-d H:i:s",$this->date_created),"uid"]);
             if($insertID){
                 $this->id = $insertID;
+                return true;
             }
+            return false;
+        }
+
+        private function generateSchoolID()
+        {
+            $this->uID = rand();
         }
 }

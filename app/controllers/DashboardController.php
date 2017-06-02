@@ -32,6 +32,13 @@ class DashboardController extends Controller
         $this->view->render('dashboard/create-school', $this->layout);
     }
 
+        public function feedback()
+    {
+        $this->view->css = ['feedback'];
+        $this->view->title = "Feedback";
+        $this->view->render('dashboard/feedback', $this->layout);
+    }
+
     public function manage()
     {
         _redirect("dashboard/manage-admins");

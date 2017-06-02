@@ -32,6 +32,7 @@ display: none;
         z-index: 9999999;
         position: absolute;
     }
+
     .blackground{
       z-index: 999;
     overflow: auto;
@@ -43,20 +44,76 @@ display: none;
     }
     
     .modal-overlay{
-    opacity: 1 !important;
-    position: absolute;
-    z-index: 9999;
-    width: auto;
-    height: auto;
-    margin-top: 50px;
-    top: 10%;
-    bottom: 10%;
-    left: 10%;
-    right: 10%;
-    background: white;
+        opacity: 1 !important;
+        position: absolute;
+        z-index: 9999;
+        width: auto;
+        height: auto;
+        margin-top: 50px;
+        top: 10%;
+        bottom: 10%;
+        left: 10%;
+        right: 10%;
+        background: white;
+    }
+
+
+    .treated-query-overlay{
+        margin: auto;
+        text-align: center;
+        opacity: 1 !important;
+        position: absolute;
+        z-index: 9999;
+        width: auto;
+        height: auto;
+        margin-top: 50px;
+        top: 25%;
+        bottom: 25%;
+        left: 25%;
+        right: 25%;
+
+        .treated-content {
+	        position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+
+             button{
+            width: 8em;
+            margin: .25em;
+            display: inline;
+            background: white;
+            border: 0;
+            border-radius: 2px;
+            padding: .75em 2em;
+            box-shadow: 0px 0px 0px .5px $theme-blue;
+            outline: 0;
+            }
+
+            .no{
+                color: $theme-blue;
+            }
+
+            .yes{
+                box-shadow: none !important;
+                background: $theme-blue;
+                color: white;
+            }
+        }
+
+
+
+        @media(max-width: 768px){
+        top: 15%;
+        bottom: 15%;
+        left: 15%;
+        right: 15%;
+
+        }
+        background: white;
+        color: #777;
+    }
 }
 
-}
 .feedback-body-content {
     overflow: auto;
 	min-height: 100% !important;
@@ -85,16 +142,15 @@ display: none;
     box-shadow: 0px 0px 5px .1px #eee;
 
     padding-bottom: 100px;
-    
-    .header-section {
-	    padding: 3em .5em;
-        border-bottom: .5px solid #eee;
-    }
-    
+
     .body-section {
+
         overflow: auto;
         button{
             padding: 0 !important;
+        }
+        .viewed {
+	background: #eee;
         }
         .feedback-row {
             border-bottom: 1px solid #eee;
@@ -106,24 +162,20 @@ display: none;
                 padding-top: 1.5em;
                 padding-bottom: 1.5em; 
             }
-            
 
-            
                .serialNo {
                   width: 5%;
                   @extend .borrowFromMe;
-                 
+                    padding-top: 3.5em !important;
                 }
             .SchoolName {
                 width: 20%; 
-                  @extend .borrowFromMe;   
-                  
-
+                  @extend .borrowFromMe;
             }
             .excerpt {
                 width: 60%;
                 @extend .borrowFromMe;
-
+                padding-top: 2em !important;
             }
             .action{ 
                     width: 12%;
@@ -134,19 +186,24 @@ display: none;
                     margin: auto;
                    
                 button{
-                    padding: .75rem 1.25em !important; 
-                    width: 5em;
-                    //margin: .25em;
+                    display: inline;
+                    min-height: 3.3em;
+                    min-width: 3.3em;
+                    margin: .25em;
                     display: inline;
                     border: 0;
                     border-radius: 2px;
-                   
-                    box-shadow: 0px 0px 0px .5px $theme-blue;
                     outline: 0;
                     box-shadow: none !important;
                     background: $theme-blue;
                     color: white;
+
+                    i{
+                       font-size: 1.4em;
+                    }
                 }
+
+
             }
              
         }

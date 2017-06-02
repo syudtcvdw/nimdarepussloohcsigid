@@ -12,7 +12,7 @@ namespace App\Lib\Classes\Api;
 
 
 
-class Admin
+class Admin extends APIAble
 {
 
   /**

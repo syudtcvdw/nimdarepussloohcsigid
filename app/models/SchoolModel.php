@@ -10,7 +10,6 @@ namespace App\Models;
 
 
 use App\Core\Model;
-use App\Lib\Classes\Database;
 
 class SchoolModel extends Model
 {
@@ -39,6 +38,10 @@ class SchoolModel extends Model
         return $this;
     }
 
+    /**
+     * Creates a new school
+     * @return bool
+     */
     public function create()
     {
         $this->date_created = time();
@@ -59,6 +62,10 @@ class SchoolModel extends Model
         return false;
     }
 
+    /**
+     * Returns list of all schools
+     * @return array|bool
+     */
     public function getAllSchools()
     {
         $getAllSchools = $this->db->selectAll($this->schoolTable);

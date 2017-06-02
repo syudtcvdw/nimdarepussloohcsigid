@@ -1,6 +1,7 @@
 @import "_partials/vars";
 @import "_partials/mixins";
 @import "_partials/fonts";
+
 body {
     background: $theme-white;
     @include font-opensans;
@@ -32,17 +33,7 @@ body {
             font-size: 13px;
         }
     }
-    .form-control {
-        border-radius: 0px !important;
-        border: none;
-        border-bottom: 1px solid $theme-blue;
-        padding: 1.4em .8em;
-        text-align: left;
-        height: 4.3rem;
-        box-shadow: none !important;
-        outline: none !important;
-        background: none !important;
-    }
+    
     .input-group-addon {
         outline: none !important;
         border-radius: 0px !important;
@@ -55,24 +46,7 @@ body {
         font-size: 13px;
         font-style: italic;
     }
-    .btn {
-        border-radius: 0px;
-        padding: 10px 10px;
-        width: 15rem;
-        text-align: center;
-    }
-    .btn-s {
-        padding-top: 4%;
-    }
-    .btn-primary {
-        color: $theme-blue;
-        background: $theme-white;
-        outline: $theme-blue;
-        &:hover {
-            background: $theme-blue;
-            color: $theme-white;
-        }
-    }
+    
 }
 .footer {
     width: 100%;

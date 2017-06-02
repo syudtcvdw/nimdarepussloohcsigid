@@ -28,7 +28,7 @@
     </div>
 
     <div class="col-md-12 ">
-        <a class="<?= $this->menu == 4 ? 'active' : '' ?> sidebar-row" href="<?= PROJECT_PATH . 'feedback' ?>">
+        <a class="<?= $this->menu == 4 ? 'active' : '' ?> sidebar-row" href="<?= DASHBOARD_PATH . 'feedback' ?>">
             <img src="<?= ASSET_PATH ?>icons/feedback-wire-frame.png" height=30px alt=""> <span> Feedback</span>
         </a>
     </div>

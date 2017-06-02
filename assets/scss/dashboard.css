@@ -51,7 +51,9 @@ html, body {
   height: 100%;
   transition: 250ms;
   width: 6%;
-  float: left; }
+  float: left;
+  text-align: center;
+  margin: auto; }
   .left button span {
     display: none; }
   .left .sidebar {
@@ -102,12 +104,17 @@ html, body {
   background: white;
   height: 100%; }
   .right .right-nav {
-    position: relative;
     width: 100%;
     min-height: 40px;
     box-shadow: 1.2px 0px 0px 0.5px #eee; }
+  .right .override-nav {
+    background: white !important;
+    position: fixed !important;
+    z-index: 7;
+    border-radius: 0 !important;
+    border: 0 !important; }
   .right .body-content {
-    padding: 2em;
+    padding: 8em 2em 2em 2em;
     background: #F7F7FF;
     position: relative;
     overflow: auto; }

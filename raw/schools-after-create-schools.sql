@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2017 at 02:18 PM
+-- Generation Time: Jun 02, 2017 at 02:29 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `digischools_super`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `useremail` varchar(200) NOT NULL,
+  `userpass` varchar(300) NOT NULL,
+  `fullname` varchar(200) NOT NULL,
+  `date_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -44,6 +58,12 @@ CREATE TABLE `schools` (
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schools`
 --
 ALTER TABLE `schools`
@@ -54,10 +74,15 @@ ALTER TABLE `schools`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

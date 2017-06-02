@@ -60,7 +60,7 @@ class App
     {
         if (!isset($url[$index])) return $url;
         $this->raw_method = $url[$index];
-        $url[$index] = $this->__cleanUpDashes($url[$index]);
+        $url[$index] = _cleanUpDashes($url[$index]);
 
         if (method_exists($this->controller, $url[$index])) {
             $this->method = $url[$index];
@@ -83,7 +83,7 @@ class App
             $url = explode('/', $url);
             if (count($url) > 0) {
                 $this->raw_controller = $url[0];
-                $url[0] = $this->__cleanUpDashes($url[0]);
+                $url[0] = _cleanUpDashes($url[0]);
             }
             return $url;
         }
@@ -110,16 +110,6 @@ class App
             $this->controller->index(404, 404);
             die();
         }
-    }
-
-    /**
-     * Cleans up dashes(-) in the controller/method names
-     * @param $subject
-     * @return mixed
-     */
-    private function __cleanUpDashes($subject)
-    {
-        return str_replace("-", "", $subject);
     }
 
 }

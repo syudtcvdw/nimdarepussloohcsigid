@@ -126,3 +126,13 @@ function _generate_slug($string, $check_table = '', $check_col = 'slug')
 
     return $slug;
 }
+
+/**
+ * Cleans up dashes(-) in the controller/method names
+ * @param $subject
+ * @return mixed
+ */
+function _cleanUpDashes($subject)
+{
+    return str_replace("-", "", $subject);
+}

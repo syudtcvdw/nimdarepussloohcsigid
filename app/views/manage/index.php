@@ -18,13 +18,13 @@
                 <div class="panel-body">
                     <!--Panel body-->
                     <? if (isset($this->notice)): ?>
-                        <p class="alert alert-success text-danger notice">
+                        <p class="alert alert-<?= $this->error? 'danger':'success' ?> notice">
                             <?= $this->notice; ?>
                         </p>
                         <?php endif; ?>
                             <!--form for adding super admin-->
                             <p id = "info"></p>
-                            <form class="" action="" method="POST">
+                            <form class="add-admin-form" action="" method="POST">
                                 <div class="form-group">
                                     <label class="control-label sr-only">Fullname</label>
                                     <div class="input-group">
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" name="add-super-admin" onclick="getConfirmation();">Add New Super Admin</button>
+                                    <button class="btn btn-primary" type="submit" name="add-super-admin">Add New Super Admin</button>
                                 </div>
                             </form>
                             <!--end of super admin forms-->
@@ -93,8 +93,8 @@
                                             <td>
                                                 <?= $admin['date_created']; ?>
                                             </td>
-                                            <td><a href="<?= PROJECT_PATH . 'manage?id=' . $admin['id']; ?>"><i class="fa fa-trash"></i></a> &nbsp;
-                                                <a data-toggle="modal" data-target="#myModal" href="<?/*= PROJECT_PATH . 'manage?id=' . $admin['id']; */?>">
+                                            <td><a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i class="fa fa-trash"></i></a> &nbsp;
+                                                <a data-toggle="modal" data-target="#myModal" href="#myModal" data-name="<?= $admin['fullname'] ?>" data-id="<?= $admin['id'] ?>" data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>">
                                                     <i class="fa fa-edit"></i></a>
                                                 </a>
                                             </td>
@@ -118,18 +118,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Your Password</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password For <span id="pwd-admin-target"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <? if (isset($this->notice)): ?>
-                        <p class="alert alert-success text-danger notice">
-                            <?= $this->notice; ?>
-                        </p>
-                        <?php endif; ?>
-                            <form class="form-horizontal" action="" method="post">
+                            <form class="form-horizontal change-pswd-form" action="" method="post">
                                 <div class="form-group">
                                     <label class="control-label sr-only">Password</label>
                                     <div class="input-group">
@@ -151,7 +146,7 @@
                 </div </div>
             </div>
             <!--manage-wrapper end-->
-            <script src="/../digischools-superadmin/assets/js/datatables.min.js"></script>
+            <!--<script src="<?/*= ASSET_PATH */?>js/datatables.min.js"></script>
 
             <script>
                 $(document).ready(function() {
@@ -159,17 +154,5 @@
                 });
                 $('#admin-table').removeClass('display').addClass('table table-bordered');
 
-            </script>
-            <script>
-                function getConfirmation() {
-                    var message;
-                    var r = confirm("Please, Copy your password before Submitting!");
-                    if (r == true) {
-                        message = "Good!";
-                    } else {
-                        message = "The System Reload After Submit and Your Password Disappears!";
-                    }
-                    document.getElementById("info").innerHTML = message;
-                }
+            </script>-->
 
-            </script>

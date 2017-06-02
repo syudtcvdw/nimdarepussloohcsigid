@@ -35,11 +35,7 @@ html, body {
   margin: 0 !important; }
 
 .transition {
-  -webkit-transition: left 250ms;
-  -o-transition: left 250ms;
   transition: left 250ms;
-  -webkit-transition-timing-function: linear;
-  -o-transition-timing-function: linear;
   transition-timing-function: linear; }
 
 .navbar {
@@ -53,8 +49,6 @@ html, body {
 
 .left {
   height: 100%;
-  -webkit-transition: 250ms;
-  -o-transition: 250ms;
   transition: 250ms;
   width: 6%;
   float: left; }
@@ -63,10 +57,7 @@ html, body {
   .left .sidebar {
     height: inherit;
     background: #242433;
-    -webkit-transition: width 2s, height 4s;
-    -o-transition: width 2s, height 4s;
     transition: width 2s, height 4s;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     overflow: auto; }
     .left .sidebar button {
@@ -93,12 +84,11 @@ html, body {
       color: white;
       padding: 2.5rem 2rem;
       width: 100%;
-      -webkit-box-shadow: 0px 0px 0px 0.04px #e6e6fc;
       box-shadow: 0px 0px 0px 0.04px #e6e6fc; }
       .left .sidebar .sidebar-row span, .left .sidebar .logo span {
         padding-left: 1em; }
       .left .sidebar .sidebar-row:hover, .left .sidebar .logo:hover {
-        background: #2e2e42;
+        background: #2f2f42;
         color: white;
         font-weight: 500; }
     .left .sidebar .logo {
@@ -106,8 +96,6 @@ html, body {
       padding: 5rem 2rem; }
 
 .right {
-  -webkit-transition: 250ms;
-  -o-transition: 250ms;
   transition: 250ms;
   width: 94%;
   float: left;
@@ -117,7 +105,6 @@ html, body {
     position: relative;
     width: 100%;
     min-height: 40px;
-    -webkit-box-shadow: 1.2px 0px 0px 0.5px #eee;
     box-shadow: 1.2px 0px 0px 0.5px #eee; }
   .right .body-content {
     padding: 2em;
@@ -133,7 +120,6 @@ html, body {
       height: 100%;
       width: 100%;
       padding: 4em;
-      -webkit-box-shadow: 0px 0px 1px 0px #ddd;
       box-shadow: 0px 0px 1px 0px #ddd; }
 
 @media (max-width: 767px) {
@@ -145,27 +131,24 @@ html, body {
     z-index: 10; }
     .left button img {
       height: 15px !important;
-      -webkit-transition: 250ms;
-      -o-transition: 250ms;
       transition: 250ms; }
     .left button span {
       display: inline-block; }
+
   .right {
     width: 100%;
     float: left;
-    -webkit-transition: 400ms;
-    -o-transition: 400ms;
     transition: 400ms; } }
-
 @media (min-width: 768px) {
   .hover-right-width {
     width: 75% !important; }
+
   .hover-left-width {
     width: 25% !important; }
     .hover-left-width button img {
       height: 15px !important;
-      -webkit-transition: 250ms;
-      -o-transition: 250ms;
       transition: 250ms; }
     .hover-left-width button span {
       display: inline-block; } }
+
+/*# sourceMappingURL=dashboard.css.map */

@@ -1,23 +1,22 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: victor
- * Date: 5/28/17
- * Time: 9:10 AM
+ * Date: 6/1/17
+ * Time: 4:40 PM
  */
+
 namespace App\Core;
 
 
 use App\Lib\Database;
 
-class Model
+class Classes
 {
-
   public $db;
 
   /**
-   * Model constructor.
+   * Classes constructor.
    * Instantiates the Database object
    */
   public function __construct()

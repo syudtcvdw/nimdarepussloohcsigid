@@ -13,6 +13,9 @@ class App
 
   public static $hasError = false;
 
+  /**
+   * App constructor.
+   */
   public function __construct()
   {
     $url = $this->__parseURL();
@@ -39,20 +42,30 @@ class App
     call_user_func_array([$this->controller, $this->method], $this->args);
   }
 
+  /**
+   * Ensures that the method exists within a controller
+   * @param $url
+   * @param $index
+   * @return array
+   */
   private function __checkControllerMethod($url, $index)
   {
-    if ( !isset($url[$index])) return $url;
+    if ( !isset($url[$index]) ) return $url;
     $url[$index] = $this->__cleanUpDashes($url[$index]);
       
     if ( method_exists($this->controller, $url[$index]) ) {
       $this->method = $url[$index];
       unset($url[$index]);
     } else
-      $url = $this->__methodInexistent();
+      $url = $this->__methodInExistent();
 
     return $url;
   }
 
+  /**
+   * Sanitizes and splits up the URL into an array
+   * @return array
+   */
   private function __parseURL()
   {
     if ( isset($_GET['url']) ) {
@@ -66,7 +79,7 @@ class App
    * Method was supplied to controller, but is in-existent
    * @return array
    */
-  private function __methodInexistent() {
+  private function __methodInExistent() {
       App::$hasError = true;
       $this->controller = new _ErrorController();
       return [404,404];
@@ -77,12 +90,17 @@ class App
    */
   private function __assertController() {
       if ( !file_exists(APP_ROOT . 'controllers/' . $this->controller . '.php') ) {
-          $this->__methodInexistent();
+          $this->__methodInExistent();
           $this->controller->index(404, 404);
           die();
       }
   }
 
+  /**
+   * Cleans up dashes(-) in the controller/method names
+   * @param $subject
+   * @return mixed
+   */
   private function __cleanUpDashes($subject) {
     return str_replace("-", "", $subject);
   }

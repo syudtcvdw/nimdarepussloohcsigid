@@ -4,43 +4,53 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/adminDashboard.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 
 <body>
    <div class="wrapper">
       
-       <div class="left  transition col-md-3 col-sm-3 slide-in-sidebar">
+       <div class="left transition">
           
            <div class="sidebar">
-             
-                <div class="col-md-12 ">
-               <button class=" sidebar-row btn btn-sidebar">Logout</button> 
-               </div>      
+
+
+               <div class="col-md-12 ">
+               <button class=" logo">
+              <!-- <img src="assets/icons/dashboard.png"  height=30px alt="">-->
+               <span> LOGO </span></button>
+               </div>
                
                <div class="col-md-12 ">
-                   <button class='sidebar-row'>Dashboard</button>
+                      <button class="active sidebar-row">
+               <img src="assets/icons/dashboard.png" height=30px alt=""> <span> Dashboard</span></button>
+               </div>
+
+               <div class="col-md-12 ">
+                      <button class=" sidebar-row">
+               <img src="assets/icons/plus.png" height=30px alt=""> <span> Add Student</span></button>
+               </div>
+
+               <div class="col-md-12">
+                     <button class=" sidebar-row">
+               <img src="assets/icons/mail.png" height=30px alt=""> <span> Messages</span></button>
                </div>
                <div class="col-md-12">
-                   <button class='sidebar-row'>Messages</button>
-               </div>
-               <div class="col-md-12">
-                  <button class='sidebar-row'> Elements</button>
-               </div>
-               <div class="col-md-12">
-                   <button class='sidebar-row'>Charts</button>
-               </div>
-               <div class="col-md-12">
-                   <button class='sidebar-row'>Calender</button>
+                  <button class='sidebar-row'>
+                  <img src="assets/icons/settings.png" height=30px alt=""> <span> Settings</span></button>
                </div>
                 
-               
+               <div class="col-md-12 ">
+               <button class=" sidebar-row">
+               <img src= "assets/icons/exit.png" height=30px alt=""> <span>Logout</span>
+               </button>
+               </div>
                </div>
            </div>
        
     
        
-       <div class="right col-md-9 col-sm-9 col-xs-12">
+       <div class="right">
            <div class="content">
                <nav class=' nav navbar right-nav'>
                        <div class="container-fluid  center-things">
@@ -58,17 +68,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="my-navbar">
-
-<!--
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                <a href="#" class="btn">Logout</a>
-                </li>
-                <li>
-                <a href="" class="btn">Sign In</a>
-                </li>
-            </ul>
--->
                            </div>
                    </div>
                </nav>
@@ -101,6 +100,6 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/tether.min.js"></script>
-    <script src="assets/js/adminDashboard.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 </html>

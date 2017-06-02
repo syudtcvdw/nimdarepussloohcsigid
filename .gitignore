@@ -12,3 +12,4 @@ gen
 *.ini
 *.map
 /.sass-cache/
+/backup/

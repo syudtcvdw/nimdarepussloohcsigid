@@ -1,18 +1,31 @@
-<form action="" method="POST">
-  <ul>
-    <li>
-      <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?= preserveInputs('email'); ?>" required>
-    </li>
-    <li>
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="<?= preserveInputs('password'); ?>" required>
-    </li>
-    <li>
-      <input type="submit" value="Login">
-    </li>
-  </ul>
-  <?php if( isset($this->status) ): ?>
-    <p class="error"><?= $this->status; ?></p>
-  <?php endif; ?>
-</form>
+<div class="login-wrapper">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3> Admin Login </h3>
+    </div>
+    <div class="panel-body">
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= _preserveInputs('email'); ?>" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?=
+_preserveInputs('password'); ?>" required>
+        </div>
+        <div class="checkbox">
+          <label> <input type="checkbox"> Remember me </label>
+        </div>
+        <? if ( isset($this->notice) ): ?>
+          <p class="text-danger notice"><?= $this->notice; ?></p>
+        <?php endif; ?>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Digischools <?= date("© Y"); ?>. All rights reserved.</p>
+</footer>

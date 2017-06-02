@@ -13,7 +13,6 @@
     margin: 5px auto 0;
     h4 {
         font-size: 1.3em;
-        padding-bottom: 5px;
         color: $theme-black;
     }
     span {
@@ -21,6 +20,12 @@
         color: $theme-deepblue;
         font-weight: bold;
     }
+}
+.panel-heading {
+    padding: 10px 10px !important;
+}
+.input-group-addon {
+	padding: 0px;
 }
 .form-control {
     border-radius: 0px !important;

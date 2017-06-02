@@ -11,6 +11,16 @@ function _preserveInputs($key)
 }
 
 /**
+ * Preserve the state of a checkbox
+ * @param $key
+ * @return string
+ */
+function _preserveCheckBox($key)
+{
+    return isset($_POST[$key]) ? "checked" : "";
+}
+
+/**
  * Redirects to supplied uri
  * @param $uri
  */
@@ -60,6 +70,29 @@ function _generate_id($length = 8)
 /**
  * Redirects unlogged visitors to login
  */
-function _logged_only() {
+function _logged_only()
+{
     if (!\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
+}
+
+/**
+ * Generates a random salt
+ * @param $name
+ * @param int $algorithm
+ * @return bool|string
+ */
+function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
+{
+    return password_hash($name, $algorithm);
+}
+
+/**
+ * Verifies a salt
+ * @param $name
+ * @param $salt
+ * @return bool
+ */
+function _verify_salt($name, $salt)
+{
+    return password_verify($name, $salt);
 }

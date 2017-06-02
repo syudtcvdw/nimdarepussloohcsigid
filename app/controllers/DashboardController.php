@@ -59,9 +59,13 @@ class DashboardController extends Controller
     }
 
     public function viewSchools(){
+        $model = new SchoolModel();
+        $this->view->allSchools= $model->getAllSchools();
         $this->view->css = ['create-school'];
         $this->view->title = 'View all schools';
         $this->view->render('dashboard/view-schools', $this->layout);
+
+
     }
 
     public function manage()

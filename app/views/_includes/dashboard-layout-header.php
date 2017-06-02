@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/dashboard.css'; ?>">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:300,400" rel="stylesheet">
 
+
     <?php
     if ( isset($this->css) )
         foreach ($this->css as $css)

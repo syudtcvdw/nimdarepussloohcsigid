@@ -40,4 +40,9 @@ $(function () {
         if ($box.hasClass('shown')) $('[type=password]', $box).attr('type', 'text');
         else $('input', $box).attr('type', 'password');
     });
+
+    // school status togglers
+    $('.toggle-school-status').click((e) => {
+        if (!confirm("Are you sure you want to toggle school status? This action is reversible")) e.preventDefault();
+    });
 });

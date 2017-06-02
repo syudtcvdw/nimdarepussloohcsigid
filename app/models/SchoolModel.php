@@ -68,4 +68,14 @@ class SchoolModel extends Model
             return false;
         }
     }
+
+    /**
+     * Toggles the status of specified school
+     * @param $school_slug
+     */
+    public function toggleStatus($school_slug) {
+        $this->db->query("UPDATE `{$this->schoolTable}` SET `status` = !`status` WHERE `slug` = :slug", [
+            'slug' => $school_slug
+        ]);
+    }
 }

@@ -63,11 +63,26 @@ class DashboardController extends Controller
         #!- inform whoever is listening, what menu item we're on
         $this->view->menu = 2;
 
+        #!- set up args
+        $this->args = func_get_args();
+
+        #!- args passed
+        if (count($this->args) > 0) $this->_ops();
+
         $model = new SchoolModel();
         $this->view->allSchools = $model->getAllSchools();
         $this->view->css = ['create-school'];
         $this->view->title = 'View all schools';
         $this->view->render('dashboard/view-schools', $this->layout);
+    }
+
+    protected function toggle(){
+        $args = func_get_args();
+        if (isset($args[0])) {
+            $model = new SchoolModel();
+            $model->toggleStatus($args[0]);
+            _redirect(App::$uri);
+        }
     }
 
     public function manage()

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Contains boilerplate functions universally available in the framework
+ */
 
 /**
  * Preserves the text supplied in HTML inputs
@@ -95,4 +98,31 @@ function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
 function _verify_salt($name, $salt)
 {
     return password_verify($name, $salt);
+}
+
+/**
+ * Generates a unique slug for a specified table; assumes the `slug` column exists
+ * @credit Banjo Mofesola Paul
+ * @param  string $string The string to slug
+ * @param  string [$check_table = ''] The database table to check in
+ * @return string
+ */
+function _generate_slug($string, $check_table = '', $check_col = 'slug')
+{
+    #!- regex
+    $s = array('/[^A-Za-z0-9\s]/', '/\s+/');
+    $r = array('-', '-');
+
+    #!- initial slug
+    $pregged = preg_replace($s, $r, strtolower($string));
+    $pregged = preg_replace('/\-+/', '-', $pregged);
+    $slug = $s = substr($pregged, 0, 30);
+
+    #!- clean up
+    if ($check_table != '') {
+        $db = new \App\Lib\Classes\Database();
+        while ($db->exists($slug, $check_col, $check_table)) $slug = $s . '-' . rand(0, 999);
+    }
+
+    return $slug;
 }

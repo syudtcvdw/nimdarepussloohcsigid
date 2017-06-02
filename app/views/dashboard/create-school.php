@@ -17,17 +17,7 @@
             <input type="password" name="admin_password" class="form-control" placeholder="Admin Password" required/>
             <br/>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             <button type="submit" class="btn btn-block submit-button">Submit</button>
-=======
-            <button type="submit" class="btn btn-block submit-button" name="create_school">Submit</button>
-            </form>
->>>>>>> Stashed changes
-=======
-            <button type="submit" class="btn btn-block submit-button" name="create_school">Submit</button>
-            </form>
->>>>>>> Stashed changes
         </div>
     </div>
 

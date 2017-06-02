@@ -79,7 +79,7 @@ class Admin extends Classes
   {
     if ($this->__adminExists()) {
       Session::set("loggedIn", true);
-      Session::set("adminSalt", Generators::generateSalt($this->useremail));
+      Session::set("adminSalt", _generate_salt($this->useremail));
       if ($rememberMe) // sets a cookie for period of 3 months
         Cookie::set("adminId", $this->id, Cookie::EXPIRE_THREE_MONTH);
       _redirect($redirect);

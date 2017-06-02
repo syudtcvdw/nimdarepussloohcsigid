@@ -10,45 +10,30 @@ namespace App\Controllers;
 
 
 use App\Core\Controller;
-use App\Lib\Classes\Admin;
 use App\Models\ManageAdminModel;
 
 class ManageController extends Controller
 {
 
-  /**
-   * ManageController constructor.
-   */
-  public function __construct()
-  {
-    parent::__construct();
-    $this->view->title = "Manage Super Admin";
-  }
-
-  public function index($type = null, $status = "")
+    /**
+     * ManageController constructor.
+     */
+    public function __construct()
     {
-        $admin = new ManageAdminModel();
-        if(isset($_POST['add-super-admin'])) {
-            if(!empty($_POST['fullname']) && !empty($_POST['useremail']) && !empty($_POST['userpass'])) {
+        parent::__construct();
+        _logged_only();
 
-                if ($admin->register($_POST)) {
-                    echo "register!";
-                }
-                else {
-                    echo "Failed";
-                }
-
-            }
-            else {
-                echo "Fill all field";
-            }
-        }
-
-        $this->view->viewAdmins = $admin->viewSuperAdmins();
-
-        $this->view->css = ['manage','font-awesome.min'];
-        $this->view->js = ['datatable.min'];
-        $this->view->render("manage/index");
+        $this->view->title = "Manage Admins";
+        $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
     }
+
+    /**
+     * MangeController index method (page)
+     */
+    public function index()
+    {
+
+    }
+
 
 }

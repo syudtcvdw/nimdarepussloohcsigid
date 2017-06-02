@@ -14,7 +14,8 @@
             "linting.collapsed": true,
             "fonts.fontSize": "12px",
             "hirse.outline.enabled": false,
-            "brackets-git.gitPath": "git"
+            "brackets-git.gitPath": "git",
+            "useTabChar": false
         }
     }
 }

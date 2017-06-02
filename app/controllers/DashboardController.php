@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Core\Controller;
+use App\Lib\Classes\Validators;
+use App\Models\SchoolModel;
 use App\Models\ManageAdminModel;
 
 class DashboardController extends Controller
@@ -27,9 +29,28 @@ class DashboardController extends Controller
 
     public function createSchool()
     {
+
+        if (isset($_POST['create_school'])) {
+            unset($_POST['create_school']);
+            $data = $_POST;
+            $errors = Validators::validateCreateSchoolForm($data);
+            if (!$errors) {
+                $school = new SchoolModel($data);
+                if ($school->create()) {
+                    $this->view->status = "success";
+                    $this->view->msg = "School Created Successfully";
+                } else {
+                    $this->view->status = "error";
+                    $this->view->msg = "Error Creating School";
+                }
+            } else {
+                $this->view->status = 'error';
+                $this->view->msg = 'All fields are required';
+            }
+        }
         $this->view->css = ['create-school'];
-        $this->view->title = "Create school";
-        $this->view->render('dashboard/create-school', $this->layout);
+        $this->view->title = "Create School";
+        $this->view->render('dashboard/create-school', 'dashboard-layout');
     }
 
     public function viewSchools(){
@@ -62,7 +83,7 @@ class DashboardController extends Controller
         $this->view->title = "Manage admins";
         $this->view->viewAdmins = $admin->getAdmins();
         $this->view->css = ['manage', 'font-awesome.min'];
-        $this->view->js = ['datatable.min'];
+        $this->view->js = ['datatables.min'];
         $this->view->render("manage/index", $this->layout);
     }
 
@@ -77,6 +98,29 @@ class DashboardController extends Controller
             $admin->deleteAdmins($args[0]);
         }
         _redirect(App::$uri);
+    }
+
+    /**
+     * delete admin
+     */
+    protected function changePassword()
+    {
+        $args = func_get_args();
+        if (isset($_POST['changePassword'])) {
+
+            $this->view->error = true;
+            if (!empty($_POST['userpass']) && !empty($_POST['conf_userpass'])) {
+
+                extract($_POST);
+                if ($userpass != $conf_userpass) $this->view->notice = "Passwords do not match";
+                else {
+
+                    $admin = new ManageAdminModel;
+                    if ($admin->updateAdmins($args[0], ['userpass' => _hash($_POST['userpass'])])) _redirect(App::$uri);
+                    else $this->view->notice = "Could Not Update Existing Password. Try Again!";
+                }
+            } else $this->view->notice = "Please, Fill All Fields";
+        }
     }
 
 }

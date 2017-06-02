@@ -1,6 +1,6 @@
-<div class="wrapper create-school">
+<div class="wrapper create-school container-fluid">
     <div class="table-div">
-        <table id="media-table" class="table table-striped table-responsive table-condensed" cellpadding="2" cellspacing="2">
+        <table id="media-table" class="table table-striped table-hover table-condensed" cellpadding="2" cellspacing="2">
             <thead>
             <tr>
                 <th>S/N</th>

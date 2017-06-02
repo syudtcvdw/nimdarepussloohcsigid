@@ -1,12 +1,24 @@
 @import "_partials/vars";
 @import "_partials/mixins";
+@import "_partials/fonts";
 
 @include full-page-hack;
+
+body {
+    @include font-opensans;
+}
+
+@include headers {
+    @include font-lato
+}
 
 .wrapper {
     height: 100%;
 }
 
+th {
+    @include font-lato;
+}
 
 .toggle-this{
     left: 0 !important;
@@ -30,7 +42,7 @@
         margin-bottom: 0 !important;
 
         .icon-bar {
-            background: #bbb;
+            background: $theme-sleekblack; 
         }
         .center-things{
             position: relative;

@@ -7,8 +7,7 @@
     width: 100%;
 }
 .wrapper.create-school{
-  background: $theme-white;
-  padding-top: 10px;
+  padding-top: 30px;
   .submit-button{
     background-color: $theme-blue;
     color: $theme-white;
@@ -21,7 +20,7 @@
     @include font-lato();
 
   }
-  p{
+  .heading{
     text-align: center;
   }
   .body-content{
@@ -42,4 +41,11 @@
         border-radius: 0px;
     }
 }
+  .table-div{
+    padding-top: 30px;
+  }
+  .panel-heading {
+    padding: 10px 10px !important;
+    background-color: $theme-blue;
+  }
 }

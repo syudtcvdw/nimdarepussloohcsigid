@@ -55,13 +55,7 @@ class DashboardController extends Controller
       $this->view->title = "CreateSchool";
       $this->view->render('dashboard/create-school', 'dashboard-layout');
   }
-
-    public function createSchool()
-    {
-        $this->view->css = ['create-school'];
-        $this->view->title = "Create school";
-        $this->view->render('dashboard/create-school', $this->layout);
-    }
+    
 
     public function manage()
     {

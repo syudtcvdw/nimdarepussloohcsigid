@@ -61,10 +61,12 @@ class DashboardController extends Controller
         $this->view->render('dashboard/create-school', 'dashboard-layout');
     }
 
-        public function feedback()
+    public function feedback()
     {
         $this->view->css = ['feedback'];
         $this->view->title = "Feedback";
+        $this->view->css = ['feedback','font-awesome.min'];
+        $this->view->js = ['feedback'];
         $this->view->render('dashboard/feedback', $this->layout);
     }
 

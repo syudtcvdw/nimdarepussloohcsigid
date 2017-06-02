@@ -4,7 +4,6 @@
 <script src="<?= ASSET_PATH . 'js/tether.min.js'; ?>"></script>
 <script src="<?= ASSET_PATH . 'js/bootstrap.min.js'; ?>"></script>
 <script src="<?= ASSET_PATH . 'js/dashboard.js'; ?>"></script>
-<script src="<?= ASSET_PATH . 'js/feedback.js'; ?>"></script>
 <?php
 if ( isset($this->js) )
     foreach ($this->js as $js)

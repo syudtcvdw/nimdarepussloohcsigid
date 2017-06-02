@@ -5,6 +5,9 @@
         </div>
         <br/>
         <div class="col-sm-6 col-sm-offset-3 change-input">
+            <?php if(isset($this->status)){ ?>
+                <div class="alert alert-<?= $this->status == 'error' ? 'danger' : 'success' ?>" > <?= $this->msg; ?> </div>
+            <?php } ?>
             <form action="" method="POST">
             <input type="text" name="name" class="form-control" placeholder="School Name" required/>
             <br/>

@@ -42,7 +42,8 @@ class Database
             else $stmt->execute();
             return $stmt;
         } catch (\PDOException $e) {
-            return false;
+            die($e);
+//            return false;
         }
     }
 

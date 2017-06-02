@@ -33,29 +33,25 @@ class DashboardController extends Controller
             $data = $_POST;
             $errors = Validators::validateCreateSchoolForm($data);
           if(!$errors){
-              echo "No errors <br>";
               $school = new SchoolModel($data);
               if($school->create()){
-                  echo "School created<br>";
                   $this->view->status= "success";
                   $this->view->msg= "School Created Successfully";
               }
               else{
-                  echo "School not created <br>";
                   $this->view->status= "error";
                   $this->view->msg= "Error Creating School";
               }
           }else{
-              echo "Errors in validating <br>";
-              $this->view->errors = $errors;
+              $this->view->status = 'error';
+              $this->view->msg = 'All fields are required';
           }
-
       }
       $this->view->css = ['create-school'];
       $this->view->title = "CreateSchool";
       $this->view->render('dashboard/create-school', 'dashboard-layout');
   }
-    
+
 
     public function manage()
     {

@@ -1,0 +1,2 @@
+@todo: Add salt column in admins table
+@todo: sync databases across all workstations

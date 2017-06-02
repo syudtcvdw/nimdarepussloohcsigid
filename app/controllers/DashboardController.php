@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         parent::__construct();
-//        _logged_only();
+        _logged_only();
 
         $this->layout = "dashboard-layout";
         $this->view->title = "Dashboard";

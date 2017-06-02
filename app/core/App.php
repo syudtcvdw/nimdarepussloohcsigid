@@ -12,6 +12,11 @@ class App
     protected $args = [];
 
     public static $hasError = false;
+    public static $uri = '';
+
+    #!- keeps the raw uri entry, not the cleaned up version
+    private $raw_controller = '';
+    private $raw_method = '';
 
     /**
      * App constructor.
@@ -38,6 +43,9 @@ class App
         // args
         $this->args = $url ? array_values($url) : [];
 
+        // note the controller/method in the url
+        App::$uri .= "{$this->raw_controller}/{$this->raw_method}";
+
         // call respective controller method
         call_user_func_array([$this->controller, $this->method], $this->args);
     }
@@ -51,6 +59,7 @@ class App
     private function __checkControllerMethod($url, $index)
     {
         if (!isset($url[$index])) return $url;
+        $this->raw_method = $url[$index];
         $url[$index] = $this->__cleanUpDashes($url[$index]);
 
         if (method_exists($this->controller, $url[$index])) {
@@ -72,8 +81,10 @@ class App
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
-            if (count($url) > 0)
+            if (count($url) > 0) {
+                $this->raw_controller = $url[0];
                 $url[0] = $this->__cleanUpDashes($url[0]);
+            }
             return $url;
         }
     }

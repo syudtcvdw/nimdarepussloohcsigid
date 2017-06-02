@@ -74,7 +74,7 @@
                   <td><?= $admin['fullname']; ?></td>
                   <td><?= $admin['useremail']; ?></td>
                   <td><?= $admin['date_created']; ?></td>
-                  <td><a href="<?= PROJECT_PATH . 'manage?id=' . $admin['id']; ?>"><i class="fa fa-trash"></i></a>
+                  <td><a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i class="fa fa-trash"></i></a>
                     &nbsp; <i href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i>
                     </i></td>
                 </tr>

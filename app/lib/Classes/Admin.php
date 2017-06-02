@@ -70,7 +70,7 @@ class Admin extends Classes
     public function logout($redirect = "/")
     {
         Session::destroy();
-        header("Location: " . _redirect($redirect));
+        _redirect($redirect);
     }
 
     /**

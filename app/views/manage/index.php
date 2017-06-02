@@ -3,7 +3,7 @@
     <div class="row">
         <!--row--->
         <div class="col-lg-12">
-            <h3>Manage SuperAdmins</h3>
+            <h3></h3>
         </div>
 
         <div class="col-md-5 pad">
@@ -135,31 +135,33 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal change-pswd-form" action="" method="post">
-                        <div class="form-group">
+                        <div class="form-group" id="spwd">
                             <label class="control-label sr-only">Password</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                                <input type="password" class="form-control" placeholder="Password" name="userpass"
-                                       value="<?= _preserveInputs('userpass'); ?>">
+                                <input type="password" class="form-control" placeholder="Password" name="userpass">
+                                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="spwd">
                             <label class="control-label sr-only">Confirm Password</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i> </span>
                                 <input type="password" class="form-control" placeholder="Confirm New Password"
-                                       name="conf_userpass" value="<?= _preserveInputs('conf_userpass'); ?>">
+                                       name="conf_userpass">
+                                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="changePassword" class="btn btn-success">Change Password</button>
                         </div>
                     </form>
-                </div
+                </div>
             </div>
         </div>
-        <!--manage-wrapper end-->
-        <!--<script src="<? /*= ASSET_PATH */ ?>js/datatables.min.js"></script>
+    </div>
+    <!--manage-wrapper end-->
+    <!--<script src="<? /*= ASSET_PATH */ ?>js/datatables.min.js"></script>
 
             <script>
                 $(document).ready(function() {

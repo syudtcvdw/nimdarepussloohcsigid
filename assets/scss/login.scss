@@ -3,83 +3,58 @@
 @import "_partials/fonts";
 
 body {
-  background: $theme-white;
+    background: $theme-white;
     @include font-opensans;
 }
-
 @include headers {
-        @include font-lato;
+    @include font-lato;
     font-weight: lighter
-}
-
+} 
 .login-wrapper {
-  //border:1px solid $theme-black;
-  margin: 10% auto;
-  
-
-  .panel {
-    margin: 8px auto;
-    border: none;
-      border-radius: 0px !important;
-  }
+    //border:1px solid $theme-black;
+    margin: 10% auto;
+    .panel {
+        margin: 8px auto;
+        border: none;
+        border-radius: 0px !important;
+    }
     .panel-primary {
         border: none !important;
     }
-  .panel-heading {
-    background: $theme-white;
-      padding: 10px 15px !important;
-      color: #777;
-      text-align: center;
-      border: none;
-  }
-
-  .checkbox {
-    label {
-      font-size: 13px;
-    }
-  }
-    input.form-control {
-	border-radius: 0px !important;
-        border: none;
-    border-bottom: 1px solid $theme-blue;
-    padding: 1.4em .8em;
-        text-align: left;
-    height: 4.3rem;
-        box-shadow: none !important;
-        outline: none !important;
-        background: none !important;
-        
-}
-  .notice {
-    font-size: 13px;
-    font-style: italic;
-  }
-    .btn {
-        border-radius: 0px;
-        padding: 10px 10px;
-        width: 15rem;
+    .panel-heading {
+        background: $theme-white;
+        padding: 10px 15px !important;
+        color: #777;
         text-align: center;
+        border: none;
     }
-
-  .btn-primary {
-    color: $theme-blue;
-    background: $theme-white;
-    outline: $theme-blue;
-    &:hover {
-      background: $theme-blue;
-      color: $theme-white;
+    .checkbox {
+        label {
+            font-size: 13px;
+        }
     }
-  }
+    
+    .input-group-addon {
+        outline: none !important;
+        border-radius: 0px !important;
+        border-bottom: 1px solid $theme-blue !important;
+        background: none;
+        border-top: none;
+        border-left: none;
+    }
+    .notice {
+        font-size: 13px;
+        font-style: italic;
+    }
+    
 }
-
 .footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  margin: 8px;
-
-  p {
-    text-align: center;
-    font-size: 14px;
-  }
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin: 8px;
+    p {
+        text-align: center;
+        font-size: 14px;
+    }
 }

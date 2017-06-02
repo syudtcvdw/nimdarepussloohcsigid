@@ -13,3 +13,4 @@ gen
 *.map
 /.sass-cache/
 /backup/
+/prepros-6.config

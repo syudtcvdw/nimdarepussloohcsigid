@@ -24,8 +24,8 @@ abstract class Controller
      */
     protected function _ops()
     {
-        if (method_exists($this, $this->args[0]))
-            call_user_func_array([$this, $this->args[0]], array_slice($this->args, 1));
+        if (method_exists($this, _cleanUpDashes($this->args[0])))
+            call_user_func_array([$this, _cleanUpDashes($this->args[0])], array_slice($this->args, 1));
     }
 
     /**

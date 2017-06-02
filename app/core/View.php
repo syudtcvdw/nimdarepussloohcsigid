@@ -27,6 +27,9 @@ class View
   public $js = [];
   public $css = [];
 
+  #!- boolean for correct alert messages
+  public $error = false;
+
   /**
    * View constructor.
    */

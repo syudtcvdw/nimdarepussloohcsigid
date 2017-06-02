@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/style.css'; ?>">
 
     <!-- fonts here -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Open+Sans:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans:300,400" rel="stylesheet">
 
     <?php
     if ( isset($this->css) )

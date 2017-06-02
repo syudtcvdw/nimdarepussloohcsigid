@@ -9,6 +9,7 @@
 
 use App\Lib\Classes\Session;
 
+
 require_once 'app/lib/config/paths.php';
 require_once 'app/lib/config/database.php';
 require_once 'app/lib/helpers/functions.php';

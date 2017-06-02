@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Core\Controller;
+use App\Lib\Classes\Validators;
+use App\Models\SchoolModel;
 use App\Models\ManageAdminModel;
 
 class DashboardController extends Controller
@@ -12,7 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         parent::__construct();
-        _logged_only();
+//        _logged_only();
 
         $this->layout = "dashboard-layout";
         $this->view->title = "Dashboard";
@@ -23,14 +25,33 @@ class DashboardController extends Controller
     {
         $this->view->render('dashboard/index', 'dashboard-layout');
 
-    }
+  }
+  public function createSchool(){
 
-    public function createSchool()
-    {
-        $this->view->css = ['create-school'];
-        $this->view->title = "Create school";
-        $this->view->render('dashboard/create-school', $this->layout);
-    }
+      if(isset($_POST['create_school'])){
+          unset($_POST['create_school']);
+            $data = $_POST;
+            $errors = Validators::validateCreateSchoolForm($data);
+          if(!$errors){
+              $school = new SchoolModel($data);
+              if($school->create()){
+                  $this->view->status= "success";
+                  $this->view->msg= "School Created Successfully";
+              }
+              else{
+                  $this->view->status= "error";
+                  $this->view->msg= "Error Creating School";
+              }
+          }else{
+              $this->view->status = 'error';
+              $this->view->msg = 'All fields are required';
+          }
+      }
+      $this->view->css = ['create-school'];
+      $this->view->title = "CreateSchool";
+      $this->view->render('dashboard/create-school', 'dashboard-layout');
+  }
+
 
     public function manage()
     {

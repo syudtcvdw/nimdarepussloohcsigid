@@ -30,5 +30,16 @@ class Validators
     return strlen($password) > 3;
   }
 
+  public static function validateCreateSchoolForm($data){
+      $errors = [];
+      foreach ($data as $key => $value){
+          if(empty($value)){
+
+              $errors[$key] = "Field is required";
+          }
+      }
+      return empty($errors) ? false : $errors;
+  }
+
 
 }

@@ -58,7 +58,7 @@ class Admin extends Classes
    */
   public function register()
   {
-    if (!$this->__adminExists()) {
+    if (!$this->isAdminRegistered($this->useremail)) {
       $insertId = $this->db->insert($this->adminTableName, ["fullname" => $this->fullname, "useremail" => $this->useremail, "userpass" => _hash($this->userpass, PASSWORD_BCRYPT)]);
       if ($insertId) {
         $this->id = $insertId;
@@ -126,6 +126,12 @@ class Admin extends Classes
   public function updateAdmins($id, $newValues)
   {
     return $this->db->update($this->adminTableName, $id, $newValues);
+  }
+
+  public function isAdminRegistered($adminEmail) {
+    $result = $this->db->query("SELECT id FROM " . $this->adminTableName . " WHERE useremail=:useremail",
+      ["useremail"=>$adminEmail]);
+    return $result->rowCount() > 0;
   }
 
   /**

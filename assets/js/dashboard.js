@@ -45,4 +45,17 @@ $(function () {
     $('.toggle-school-status').click((e) => {
         if (!confirm("Are you sure you want to toggle school status? This action is reversible")) e.preventDefault();
     });
+
+    //Generate password for superAdmin
+    $('#pwdgen').click(function(){
+        var _pwdgen = this;
+        $(this).attr('disabled', 'disabled');
+
+        $.get(API + 'admin/pwd', null, (data) => {
+            $('[name="userpass"]').val(data.data);
+            $(_pwdgen).removeAttr('disabled');
+        }).error((e) => {
+            $(_pwdgen).removeAttr('disabled');
+        })
+    })
 });

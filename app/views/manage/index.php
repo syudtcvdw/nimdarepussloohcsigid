@@ -47,8 +47,9 @@
                                 <span class="input-group-addon"><i class="fa fa-key"></i> </span>
                                 <input type="text" class="form-control" placeholder="Password" name="userpass"
                                        value="<?= _generate_id() ?>" readonly/>
-                                <span class="input-group-addon"><button class="btn btn-danger"
-                                                                        onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</button></span>
+                                <span class="input-group-addon">
+                                    <script>var API = "<?= API_PATH ?>"</script>
+                                    <a id="pwdgen" class="btn btn-danger" onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</a></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,12 +99,13 @@
                                         <?= $admin['date_created']; ?>
                                     </td>
                                     <td>
-                                        <a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i
+                                        <a title="Delete" href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i
                                                     class="fa fa-trash"></i></a> &nbsp;
                                         <a data-toggle="modal" data-target="#myModal" href="#myModal"
                                            data-name="<?= $admin['fullname'] ?>" data-id="<?= $admin['id'] ?>"
-                                           data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>">
-                                            <i class="fa fa-edit"></i></a>
+                                           data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>"
+                                        class = "btn btn-warning btn-sm">Reset</i></a>
+
                                         </a>
                                     </td>
                                 </tr>
@@ -159,7 +161,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><!--end of modal-->
+</div>
     <!--manage-wrapper end-->
     <!--<script src="<? /*= ASSET_PATH */ ?>js/datatables.min.js"></script>
 

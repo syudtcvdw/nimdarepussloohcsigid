@@ -38,9 +38,22 @@ body {
         margin: 8px auto;
         border: none;
         border-radius: 0px !important;
+        box-shadow: none !important;
     }
     .panel-primary {
         border: none !important;
+    }
+    .fa {
+        padding-left: 8px;
+    }
+    .table {
+        border-top: none;
+        overflow-y: auto;
+    }
+    @media(width : 315px) {
+        .table {
+        width: 50%;
+    }
     }
     .panel-heading {
         background: $theme-white;
@@ -52,6 +65,9 @@ body {
     }
     .panel-title {
         padding: 15px 10px;
+    }
+    .panel-body {
+        padding: 0px !important;
     }
     .form-control {
         border-radius: 0px !important;
@@ -126,17 +142,5 @@ body {
         padding:0px;
         margin-bottom: 7px;
         margin-top: -20px;
-    }
-}
-.dataTables_length .dataTables_filter {
-    .input-sm {
-        height: 30px !important;
-        font-size: 0px !important;
-        border-radius: 0px !important;
-        
-    }
-    select.form-control {
-        padding: 6px 12px;
-        border: 1px solid $theme-blue;
     }
 }

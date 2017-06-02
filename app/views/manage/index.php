@@ -3,7 +3,7 @@
     <div class="row">
         <!--row--->
         <div class="col-lg-12">
-            <h3>Manage SuperAdmins</h3>
+            <h3></h3>
         </div>
 
         <div class="col-md-5 pad">
@@ -18,41 +18,45 @@
                 <div class="panel-body">
                     <!--Panel body-->
                     <? if (isset($this->notice)): ?>
-                        <p class="alert alert-<?= $this->error? 'danger':'success' ?> notice">
+                        <p class="alert alert-<?= $this->error ? 'danger' : 'success' ?> notice">
                             <?= $this->notice; ?>
                         </p>
-                        <?php endif; ?>
-                            <!--form for adding super admin-->
-                            <p id = "info"></p>
-                            <form class="add-admin-form" action="" method="POST">
-                                <div class="form-group">
-                                    <label class="control-label sr-only">Fullname</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-                                        <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname" value="<?= _preserveInputs('fullname'); ?>" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label sr-only">Email Address</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
-                                        <input type="email" class="form-control" placeholder="Email address" name="useremail" value="<?= _preserveInputs('useremail'); ?>" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label sr-only">Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                                        <input type="text" class="form-control" placeholder="Password" name="userpass" value="<?= _generate_id() ?>" readonly/>
-                                        <span class="input-group-addon"><button class="btn btn-danger"
-                                                        onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</button></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" name="add-super-admin">Add New Super Admin</button>
-                                </div>
-                            </form>
-                            <!--end of super admin forms-->
+                    <?php endif; ?>
+                    <!--form for adding super admin-->
+                    <p id="info"></p>
+                    <form class="add-admin-form" action="" method="POST">
+                        <div class="form-group">
+                            <label class="control-label sr-only">Fullname</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                                <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname"
+                                       value="<?= _preserveInputs('fullname'); ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label sr-only">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
+                                <input type="email" class="form-control" placeholder="Email address" name="useremail"
+                                       value="<?= _preserveInputs('useremail'); ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label sr-only">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input type="text" class="form-control" placeholder="Password" name="userpass"
+                                       value="<?= _generate_id() ?>" readonly/>
+                                <span class="input-group-addon"><button class="btn btn-danger"
+                                                                        onclick="window.location('<?= PROJECT_PATH; ?>manage');">Generate</button></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" name="add-super-admin">Add New Super Admin
+                            </button>
+                        </div>
+                    </form>
+                    <!--end of super admin forms-->
                 </div>
                 <!--end of panel body -->
             </div>
@@ -68,39 +72,43 @@
                 <div class="panel-body">
                     <table id="admin-table" class="table table-striped table-bordered" cellpadding="2" cellspacing="2">
                         <thead>
-                            <tr>
-                                <th>S/N</th>
-                                <th>Fullname</th>
-                                <th>Email</th>
-                                <th>Date Created</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Date Created</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <?php if ($this->viewAdmins) : ?>
-                                <?php $sn = 1; ?>
-                                    <?php foreach ($this->viewAdmins as $admin) : ?>
-                                        <tr>
-                                            <td>
-                                                <?= $sn++; ?>
-                                            </td>
-                                            <td>
-                                                <?= $admin['fullname']; ?>
-                                            </td>
-                                            <td>
-                                                <?= $admin['useremail']; ?>
-                                            </td>
-                                            <td>
-                                                <?= $admin['date_created']; ?>
-                                            </td>
-                                            <td><a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i class="fa fa-trash"></i></a> &nbsp;
-                                                <a data-toggle="modal" data-target="#myModal" href="#myModal" data-name="<?= $admin['fullname'] ?>" data-id="<?= $admin['id'] ?>" data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>">
-                                                    <i class="fa fa-edit"></i></a>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                            <?php endif; ?>
+                        <?php if ($this->viewAdmins) : ?>
+                            <?php $sn = 1; ?>
+                            <?php foreach ($this->viewAdmins as $admin) : ?>
+                                <tr>
+                                    <td>
+                                        <?= $sn++; ?>
+                                    </td>
+                                    <td>
+                                        <?= $admin['fullname']; ?>
+                                    </td>
+                                    <td>
+                                        <?= $admin['useremail']; ?>
+                                    </td>
+                                    <td>
+                                        <?= $admin['date_created']; ?>
+                                    </td>
+                                    <td>
+                                        <a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/delete/' . $admin['id']; ?>"><i
+                                                    class="fa fa-trash"></i></a> &nbsp;
+                                        <a data-toggle="modal" data-target="#myModal" href="#myModal"
+                                           data-name="<?= $admin['fullname'] ?>" data-id="<?= $admin['id'] ?>"
+                                           data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>">
+                                            <i class="fa fa-edit"></i></a>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
                         </tbody>
                     </table>
@@ -114,39 +122,46 @@
 
     <!--Change Password Modal Box-->
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password For <span id="pwd-admin-target"></span></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password For <span
+                                id="pwd-admin-target"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                            <form class="form-horizontal change-pswd-form" action="" method="post">
-                                <div class="form-group">
-                                    <label class="control-label sr-only">Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                                        <input type="password" class="form-control" placeholder="Password" name="userpass" value="<?= _preserveInputs('userpass'); ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label sr-only">Confirm Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                                        <input type="password" class="form-control" placeholder="Confirm New Password" name="conf_userpass" value="<?= _preserveInputs('conf_userpass'); ?>">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" name="changePassword" class="btn btn-success">Change Password</button>
-                                </div>
-                            </form>
-                </div </div>
+                    <form class="form-horizontal change-pswd-form" action="" method="post">
+                        <div class="form-group" id="spwd">
+                            <label class="control-label sr-only">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input type="password" class="form-control" placeholder="Password" name="userpass">
+                                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="spwd">
+                            <label class="control-label sr-only">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                                <input type="password" class="form-control" placeholder="Confirm New Password"
+                                       name="conf_userpass">
+                                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="changePassword" class="btn btn-success">Change Password</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <!--manage-wrapper end-->
-            <!--<script src="<?/*= ASSET_PATH */?>js/datatables.min.js"></script>
+        </div>
+    </div>
+    <!--manage-wrapper end-->
+    <!--<script src="<? /*= ASSET_PATH */ ?>js/datatables.min.js"></script>
 
             <script>
                 $(document).ready(function() {

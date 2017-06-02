@@ -15,6 +15,7 @@ class Admin extends Classes
 {
 
   private $id;
+  private $salt;
   private $fullname;
   private $useremail;
   private $userpass;
@@ -59,7 +60,8 @@ class Admin extends Classes
   public function register()
   {
     if (!$this->isAdminRegistered($this->useremail)) {
-      $insertId = $this->db->insert($this->adminTableName, ["fullname" => $this->fullname, "useremail" => $this->useremail, "userpass" => _hash($this->userpass, PASSWORD_BCRYPT)]);
+      $this->salt = _generate_salt($this->useremail);
+      $insertId = $this->db->insert($this->adminTableName, ["fullname" => $this->fullname, "useremail" => $this->useremail, "userpass" => _hash($this->userpass, PASSWORD_BCRYPT), "salt"=>$this->salt]);
       if ($insertId) {
         $this->id = $insertId;
         return true;
@@ -79,9 +81,9 @@ class Admin extends Classes
   {
     if ($this->__adminExists()) {
       Session::set("loggedIn", true);
-      Session::set("adminSalt", _generate_salt($this->useremail));
+      Session::set("adminSalt", $this->salt);
       if ($rememberMe) // sets a cookie for period of 3 months
-        Cookie::set("adminId", $this->id, Cookie::EXPIRE_THREE_MONTH);
+        Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
       _redirect($redirect);
     }
     return false;
@@ -128,6 +130,11 @@ class Admin extends Classes
     return $this->db->update($this->adminTableName, $id, $newValues);
   }
 
+  /**
+   * Checks if an admin is registered
+   * @param $adminEmail
+   * @return bool
+   */
   public function isAdminRegistered($adminEmail) {
     $result = $this->db->query("SELECT id FROM " . $this->adminTableName . " WHERE useremail=:useremail",
       ["useremail"=>$adminEmail]);

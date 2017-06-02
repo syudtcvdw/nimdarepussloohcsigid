@@ -38,19 +38,15 @@ class SchoolModel extends Model
 
         public function create(){
             $this->date_created = time();
+            $this->uID = _generate_id(6);
             $insertID = $this->db->insert($this->schoolTable, [ "name"=>$this->name,
                 "location"=>$this->location, "admin_uname" => $this->admin_username,
                 "admin_password" => password_hash($this->admin_password,PASSWORD_BCRYPT),
-                "date_created" => date("Y-m-d H:i:s",$this->date_created),"uid"]);
+                "date_created" => date("Y-m-d H:i:s",$this->date_created),"uid" => $this->uID]);
             if($insertID){
                 $this->id = $insertID;
                 return true;
             }
             return false;
-        }
-
-        private function generateSchoolID()
-        {
-            $this->uID = rand();
         }
 }

@@ -16,8 +16,8 @@
             <br/>
             <input type="password" name="admin_password" class="form-control" placeholder="Admin Password" required/>
             <br/>
-
-            <button type="submit" class="btn btn-block submit-button">Submit</button>
+            <button type="submit" class="btn btn-block submit-button" name="create_school">Submit</button>
+            </form>
         </div>
     </div>
 

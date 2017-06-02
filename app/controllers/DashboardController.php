@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Core\Controller;
-use App\Lib\Validators;
+use App\Lib\Classes\Validators;
 use App\Models\SchoolModel;
 use App\Models\ManageAdminModel;
 
@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         parent::__construct();
-        _logged_only();
+//        _logged_only();
 
         $this->layout = "dashboard-layout";
         $this->view->title = "Dashboard";

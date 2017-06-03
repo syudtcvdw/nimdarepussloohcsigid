@@ -72,7 +72,7 @@ function _generate_id($length = 8)
  */
 function _logged_only()
 {
-    if (!\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
+    if (!\App\Lib\Classes\Session::get("adminSalt")) _redirect("login");
 }
 
 /**

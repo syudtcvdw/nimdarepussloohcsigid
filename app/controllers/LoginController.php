@@ -21,9 +21,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        parent::__construct();
-    if ( $this->view->loggedIn ) _redirect("dashboard");
-        $this->view->title = "Login";
+      parent::__construct();
+      if ($this->view->loggedIn) _redirect("dashboard");
+      $this->view->title = "Login";
         $this->view->css = ["login"];
     }
 

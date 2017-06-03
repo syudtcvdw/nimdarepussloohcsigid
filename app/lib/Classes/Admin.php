@@ -41,7 +41,7 @@ class Admin extends Classes
    */
   public static function isLoggedIn()
   {
-    return Cookie::get("adminSalt") ? true : Session::get("loggedIn");
+    return Cookie::get("adminSalt") ? true : Session::get("adminSalt");
   }
 
   /**
@@ -80,7 +80,8 @@ class Admin extends Classes
   public function login($redirect = "/", $rememberMe = false)
   {
     if ($this->__adminExists()) {
-      Session::set("loggedIn", true);
+      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:email",["email"=>$this->useremail]);
+      $result->fetch(\PDO::FETCH_ASSOC)['salt'];
       Session::set("adminSalt", $this->salt);
       if ($rememberMe) // sets a cookie for period of 3 months
         Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
@@ -96,7 +97,7 @@ class Admin extends Classes
   public function logout($redirect = "/")
   {
     Session::destroy();
-    Cookie::destroy("adminId");
+    Cookie::destroy("adminSalt");
     _redirect($redirect);
   }
 

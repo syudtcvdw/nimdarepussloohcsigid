@@ -10,43 +10,55 @@
 namespace App\Lib\Classes;
 
 
-class Session
+abstract class Session
 {
-    /**
-     * Starts a session.
-     */
-    public static function init()
-    {
-        session_start();
-    }
 
-    /**
-     * Sets a $_SESSION given a key
-     * @param $key
-     * @param $value
-     */
-    public static function set($key, $value)
-    {
-        $_SESSION[$key] = $value;
-    }
+  /**
+   * Starts a session.
+   */
+  public static function init()
+  {
+    session_start();
+  }
 
-    /**
-     * Retrieve a $_SESSION
-     * @param $key
-     * @return bool
-     */
-    public static function get($key)
-    {
-        return isset($_SESSION[$key]) ? $_SESSION[$key] : false;
-    }
+  /**
+   * Sets a $_SESSION given a key
+   * @param $key
+   * @param $value
+   */
+  public static function set($key, $value)
+  {
+    $_SESSION[$key] = $value;
+  }
 
-    /**
-     * Destroys a $_SESSION
-     */
-    public static function destroy()
-    {
-        session_destroy();
-        $_SESSION = [];
-    }
+  /**
+   * Retrieve a $_SESSION
+   * @param $key
+   * @return bool
+   */
+  public static function get($key)
+  {
+    return isset($_SESSION[$key]) ? $_SESSION[$key] : false;
+  }
+
+  /**
+   * Removes a session key from the $_SESSION
+   * @param $key
+   */
+  public static function remove($key)
+  {
+    if (isset($_SESSION[$key]))
+      unset($_SESSION[$key]);
+    $_SESSION = $_SESSION ? array_values($_SESSION) : [];
+  }
+
+  /**
+   * Destroys all sessions
+   */
+  public static function destroy()
+  {
+    session_destroy();
+    $_SESSION = [];
+  }
 
 }

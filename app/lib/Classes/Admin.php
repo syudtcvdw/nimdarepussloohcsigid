@@ -81,11 +81,14 @@ class Admin extends Classes
   {
     if ($this->__adminExists()) {
       $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:email",["email"=>$this->useremail]);
-      $result->fetch(\PDO::FETCH_ASSOC)['salt'];
-      Session::set("adminSalt", $this->salt);
-      if ($rememberMe) // sets a cookie for period of 3 months
-        Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
-      _redirect($redirect);
+      if ( $result ) {
+        $this->salt = $result->fetch(\PDO::FETCH_ASSOC)['salt'];
+        Session::set("adminSalt", $this->salt);
+        if ($rememberMe) // sets a cookie for period of 3 months
+          Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
+        _redirect($redirect);
+        return true; // so that if redirect fails it won't continue execution to return false
+      }
     }
     return false;
   }
@@ -96,8 +99,8 @@ class Admin extends Classes
    */
   public function logout($redirect = "/")
   {
-    Session::destroy();
-    Cookie::destroy("adminSalt");
+    Session::remove("adminSalt");
+    Cookie::remove("adminSalt");
     _redirect($redirect);
   }
 

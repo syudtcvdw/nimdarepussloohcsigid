@@ -56,7 +56,7 @@ class DashboardController extends Controller
                 $this->view->msg = 'All fields are required';
             }
         }
-        $this->view->css = ['create-school'];
+        $this->view->css = ['create-school', 'font-awesome.min'];
         $this->view->title = "Create school";
         $this->view->render('dashboard/create-school', 'dashboard-layout');
     }

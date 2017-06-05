@@ -43,7 +43,7 @@ abstract class API
         $this->_dieTest();
 
         #!- fetch the endpoint (method)
-        $this->endpoint = array_shift($this->args);
+        $this->endpoint = _cleanUpDashes(array_shift($this->args));
 
         #!- figure out the HTTP request method
         $this->method = $_SERVER['REQUEST_METHOD'];

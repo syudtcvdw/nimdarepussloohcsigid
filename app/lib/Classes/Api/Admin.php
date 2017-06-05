@@ -15,24 +15,14 @@ namespace App\Lib\Classes\Api;
 class Admin extends APIAble
 {
 
-  /**
-   * @param null|API $api
-   * @return string
-   */
-  function all($api = null)
-  {
-    if ($api->method !== "GET") return "Admin: Invalid invocation";
-    return "All admin";
-  }
-
-  /**
-   * @param null|API $api
-   * @internal param $args
-   * @return string
-   */
-  function one($api = null)
-  {
-    if ($api->method !== "POST") return "Admin: Invalid invocation";
-    return "One admin";
-  }
+    /**
+     * Generates a random password
+     * @param null|API $api
+     * @return array|string
+     */
+    function pwd($api = null) {
+        if ($api->method !== "GET") return "Admin: Invalid invocation";
+        $obj = [ 'data' => _generate_id() ];
+        return $obj;
+    }
 }

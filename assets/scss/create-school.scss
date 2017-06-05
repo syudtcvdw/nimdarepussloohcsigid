@@ -9,7 +9,6 @@
 .wrapper.create-school {
     padding-top: 30px;
     overflow-x: auto;
-
     .submit-button {
         background-color: $theme-blue;
         color: $theme-white;
@@ -18,18 +17,18 @@
         font-size: .9em;
         color: $theme-deepblue;
         font-weight: lighter;
-      }
-  .form-control {
-    border-radius: 0px !important;
-    border: none;
-    border-bottom: 1px solid $theme-blue;
-    padding: 1.4em .8em;
-    text-align: left;
-    height: 4.3rem;
-    box-shadow: none !important;
-    outline: none !important;
-    background: none !important;
-  }
+    }
+    .form-control {
+        border-radius: 0px !important;
+        border: none;
+        border-bottom: 1px solid $theme-blue;
+        padding: 1.4em .8em;
+        text-align: left;
+        height: 4.3rem;
+        box-shadow: none !important;
+        outline: none !important;
+        background: none !important;
+    }
     .heading2 {
         color: $theme-blue;
         text-align: center;
@@ -98,10 +97,10 @@
         display: none;
     }
     input:checked+.slider {
-        background-color: #2196F3;
+        background-color: $theme-deepblue;
     }
     input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
+        box-shadow: 0 0 1px $theme-deepblue;
     }
     input:checked+.slider:before {
         -webkit-transform: translateX(26px);
@@ -124,17 +123,17 @@
     .bn {
         border-radius: 0px;
     }
-  .input-group-addon {
-    outline: none !important;
-    border-radius: 0px !important;
-    border-bottom: 1px solid $theme-blue !important;
-    background: none;
-    border-top: none;
-    border-left: none;
-    padding: 0px 5px 2px 2px!important;
-    border: none;
-  }
-  .modal-dialog {
+    .input-group-addon {
+        outline: none !important;
+        border-radius: 0px !important;
+        border-bottom: 1px solid $theme-blue !important;
+        background: none;
+        border-top: none;
+        border-left: none;
+        padding: 0px 5px 2px 2px!important;
+        border: none;
+    }
+    .modal-dialog {
         width: 360px !important;
         position: relative;
     }
@@ -148,17 +147,17 @@
         border-top: 0px !important;
     }
     .modal-header {
-    min-height: 16.43px;
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
+        min-height: 16.43px;
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
     }
-  .modal-body {
-    position: relative;
-    padding: 15px;
-  }
+    .modal-body {
+        position: relative;
+        padding: 15px;
+    }
     .close {
         font-size: 18px;
-        padding:0px;
+        padding: 0px;
         margin-bottom: 7px;
         margin-top: -20px;
     }

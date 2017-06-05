@@ -70,7 +70,6 @@ class DashboardController extends Controller
 
     $feedbackModel = new FeedbackModel;
     $this->view->allFeedback = $feedbackModel->getFeedback();
-
     $this->view->render('dashboard/feedback', $this->layout);
   }
 

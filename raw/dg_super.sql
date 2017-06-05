@@ -1,17 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 02, 2017 at 08:54 PM
--- Server version: 5.6.35
--- PHP Version: 7.1.1
+-- Host: 127.0.0.1
+-- Generation Time: Jun 05, 2017 at 10:26 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `digischools_super`
+-- Database: `dg_super`
 --
 
 -- --------------------------------------------------------
@@ -34,9 +40,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `useremail`, `userpass`, `fullname`, `salt`, `date_created`) VALUES
-  (10, 'mpdepaule1@gmail.com', '$2y$10$0dAk9Jo4uKBJS7h1vx5CTOSxpaqzRcVbNhXa2lrE7VWDd6P01ZHkS', 'Banjo Mofesola Paul', '', '2017-06-01 19:48:05'),
-  (14, 'emmat0616@gmail.com', '$2y$10$0dAk9Jo4uKBJS7h1vx5CTOSxpaqzRcVbNhXa2lrE7VWDd6P01ZHkS', 'Falua Temitope Oyewole', '', '2017-06-02 11:41:20'),
-  (18, 'hello@js.ck', '$2y$10$RYMSm0KbV9nk31LKCeo1Oe80jfXIT69E3jmHjSzldZq36//3rYyJe', 'Hello', '', '2017-06-02 14:40:38');
+(10, 'mpdepaule1@gmail.com', '$2y$10$We6inOUsX1aHPPDaNDODD.MZcfqjRJbh/7pBHOxL6qRNVyvGp3WbW', 'Banjo Mofesola Paul', '', '2017-06-01 19:48:05'),
+(14, 'emmat0616@gmail.com', '$2y$10$exVgi5uh50fgAQ/IUJHcrO3LKoKHm2CQpABn0YDjxZ183ZZN3GE.m', 'Falua Temitope Oyewole', '', '2017-06-02 11:41:20');
 
 -- --------------------------------------------------------
 
@@ -62,8 +67,8 @@ CREATE TABLE `schools` (
 --
 
 INSERT INTO `schools` (`id`, `uid`, `slug`, `name`, `location`, `status`, `admin_uname`, `admin_password`, `s_population`, `date_created`) VALUES
-  (1, 'avRbP5', 'royal-bird-int-l-school', 'Royal Bird Int\'l School', 'Akure', 1, 'emmat0616@gmail.com', '$2y$10$k9waDvG6psDDLf1YNIXNUunVxYw/9utJ/kCIh5Jf8G4mTQuQ7X7w2', 1200, '2017-06-02 12:34:55'),
-  (2, 'Nwjtsr', 'royal-bird-int-l-school-693', 'Royal Bird Int\'l School', 'Akure', 0, 'emmat0616@gmail.com', '$2y$10$GNwiD1N9CP5PgvQNrgAPBOO6vu/3TIMHPJKXnk0Nbj3ULjzrka0Ka', 1200, '2017-06-02 12:35:09');
+(1, 'avRbP5', 'royal-bird-int-l-school', 'Royal Bird Int\'l School', 'Akure', 1, 'emmat0616@gmail.com', '$2y$10$k9waDvG6psDDLf1YNIXNUunVxYw/9utJ/kCIh5Jf8G4mTQuQ7X7w2', 1200, '2017-06-02 12:34:55'),
+(2, 'Nwjtsr', 'royal-bird-int-l-school-693', 'Royal Bird Int\'l School', 'Akure', 0, 'emmat0616@gmail.com', '$2y$10$GNwiD1N9CP5PgvQNrgAPBOO6vu/3TIMHPJKXnk0Nbj3ULjzrka0Ka', 1200, '2017-06-02 12:35:09');
 
 --
 -- Indexes for dumped tables
@@ -89,9 +94,12 @@ ALTER TABLE `schools`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

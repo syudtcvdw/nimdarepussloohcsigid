@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" > Remember Me</label>
+                            <label><input type="checkbox" name="remember"> Remember Me</label>
                         </div>
                         <? if ( isset($this->notice) ): ?>
                             <p class="text-danger notice">

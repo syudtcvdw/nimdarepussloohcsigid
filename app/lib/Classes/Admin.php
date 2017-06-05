@@ -41,7 +41,7 @@ class Admin extends Classes
    */
   public static function isLoggedIn()
   {
-    return Cookie::get("adminSalt") ? true : Session::get("loggedIn");
+    return Cookie::get("adminSalt") ? true : Session::get("adminSalt");
   }
 
   /**
@@ -80,11 +80,15 @@ class Admin extends Classes
   public function login($redirect = "/", $rememberMe = false)
   {
     if ($this->__adminExists()) {
-      Session::set("loggedIn", true);
-      Session::set("adminSalt", $this->salt);
-      if ($rememberMe) // sets a cookie for period of 3 months
-        Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
-      _redirect($redirect);
+      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:email",["email"=>$this->useremail]);
+      if ( $result ) {
+        $this->salt = $result->fetch(\PDO::FETCH_ASSOC)['salt'];
+        Session::set("adminSalt", $this->salt);
+        if ($rememberMe) // sets a cookie for period of 3 months
+          Cookie::set("adminSalt", $this->salt, Cookie::EXPIRE_THREE_MONTH);
+        _redirect($redirect);
+        return true; // so that if redirect fails it won't continue execution to return false
+      }
     }
     return false;
   }
@@ -95,8 +99,8 @@ class Admin extends Classes
    */
   public function logout($redirect = "/")
   {
-    Session::destroy();
-    Cookie::destroy("adminId");
+    Session::remove("adminSalt");
+    Cookie::remove("adminSalt");
     _redirect($redirect);
   }
 

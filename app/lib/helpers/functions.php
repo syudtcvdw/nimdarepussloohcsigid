@@ -76,8 +76,7 @@ function _generate_id($length = 8)
  */
 function _logged_only($protected = true)
 {
-    if ($protected && !\App\Lib\Classes\Session::get("loggedIn")) _redirect("login");
-    if (!$protected && \App\Lib\Classes\Session::get("loggedIn")) _redirect("dashboard");
+    if (!\App\Lib\Classes\Session::get("adminSalt")) _redirect("login");
 }
 
 /**

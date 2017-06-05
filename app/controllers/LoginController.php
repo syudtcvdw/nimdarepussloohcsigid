@@ -16,31 +16,30 @@ use App\Models\LoginModel;
 class LoginController extends Controller
 {
 
-    /**
-     * LoginController constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        _logged_only(false);
+  /**
+   * LoginController constructor.
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    if ($this->view->loggedIn) _redirect("dashboard");
+    $this->view->title = "Login";
+    $this->view->css = ["login"];
+  }
 
-        $this->view->title = "Login";
-        $this->view->css = ["login"];
+  /**
+   * Renders the login view and communicates with the LoginModel
+   */
+  public function index()
+  {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (!empty($_POST['useremail']) && Validators::validateEmail($_POST['useremail']) && !empty($_POST['userpass'])
+      ) {
+        $loginModel = new LoginModel;
+        if (!$loginModel->login($_POST, isset($_POST['remember']))) $this->view->notice = "Incorrect credentials";
+      } else $this->view->notice = "Please provide a valid email and password";
     }
-
-    /**
-     * Renders the login view and communicates with the LoginModel
-     */
-    public function index()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!empty($_POST['useremail']) && Validators::validateEmail($_POST['useremail']) && !empty($_POST['userpass'])
-            ) {
-                $loginModel = new LoginModel;
-                if (!$loginModel->login($_POST, isset($_POST['remember']))) $this->view->notice = "Incorrect credentials";
-            } else $this->view->notice = "Please provide a valid email and password";
-        }
-        $this->view->render("login/index");
-    }
+    $this->view->render("login/index");
+  }
 
 }

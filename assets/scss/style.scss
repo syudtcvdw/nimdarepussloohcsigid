@@ -104,7 +104,9 @@ th {
 }
 
 .error-500 {
-    @extend .error-404;
-    background: url(../resx/mistake.jpg) no-repeat center left fixed;
-    background-size: cover !important;
+	@extend .error-404;
+	background: url(../resx/embarrassed.jpeg) no-repeat center left fixed ;
+	background-size: cover !important;
+	
+
 }

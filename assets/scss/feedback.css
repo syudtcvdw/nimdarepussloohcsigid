@@ -1,0 +1,208 @@
+/* Fonts are defined herein */
+/**
+ * ensures that vertically aligned children don't appear blurry
+ */
+/**
+ * vertically aligns an element
+ */
+/*
+    Keyframes
+    Credits: https://gist.github.com/Integralist/3931680
+*/
+/*
+    Transform
+    Credits: https://codepen.io/sawmac/pen/qGudy/
+*/
+/*
+    Style placeholder
+    Credits: http://stackoverflow.com/questions/17181849/placeholder-mixin-scss-css
+*/
+body {
+  color: #777; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+.hide {
+  display: none;
+  transition: 500ms; }
+
+.cover-screen-with-this {
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  overflow: auto;
+  position: fixed; }
+  .cover-screen-with-this .closeModal {
+    display: inline;
+    right: 0;
+    float: right;
+    margin: 2em;
+    z-index: 9999999;
+    position: absolute; }
+  .cover-screen-with-this .blackground {
+    z-index: 999;
+    overflow: auto;
+    position: fixed;
+    background: black;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7; }
+  .cover-screen-with-this .modal-overlay {
+    opacity: 1 !important;
+    position: absolute;
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    background: white; }
+  .cover-screen-with-this .treated-query-overlay {
+    margin: auto;
+    text-align: center;
+    opacity: 1 !important;
+    position: absolute;
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+    top: 25%;
+    bottom: 25%;
+    left: 25%;
+    right: 25%;
+    background: white;
+    color: #777; }
+    .cover-screen-with-this .treated-query-overlay .treated-content {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%); }
+      .cover-screen-with-this .treated-query-overlay .treated-content button {
+        width: 8em;
+        margin: .25em;
+        display: inline;
+        background: white;
+        border: 0;
+        border-radius: 2px;
+        padding: .75em 2em;
+        box-shadow: 0px 0px 0px 0.5px #3399FF;
+        outline: 0; }
+      .cover-screen-with-this .treated-query-overlay .treated-content .no {
+        color: #3399FF; }
+      .cover-screen-with-this .treated-query-overlay .treated-content .yes {
+        box-shadow: none !important;
+        background: #3399FF;
+        color: white; }
+    @media (max-width: 768px) {
+      .cover-screen-with-this .treated-query-overlay {
+        top: 15%;
+        bottom: 15%;
+        left: 15%;
+        right: 15%; } }
+
+.feedback-body-content {
+  overflow: auto;
+  min-height: 100% !important;
+  background: #F7F7FF;
+  position: absolute;
+  width: 94%; }
+
+@media (max-width: 1038px) {
+  .feedback-body-content {
+    width: 100%; } }
+.centered-view {
+  overflow: auto;
+  position: absolute;
+  width: auto;
+  height: auto;
+  margin-top: 0px;
+  top: 5%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  background: white;
+  box-shadow: 0px 0px 5px .1px #eee;
+  padding-bottom: 100px; }
+  .centered-view .body-section {
+    overflow: auto; }
+    .centered-view .body-section button {
+      padding: 0 !important; }
+    .centered-view .body-section .viewed {
+      background: #eee; }
+    .centered-view .body-section .feedback-row {
+      border-bottom: 1px solid #eee;
+      overflow: auto; }
+      .centered-view .body-section .feedback-row .borrowFromMe, .centered-view .body-section .feedback-row .serialNo, .centered-view .body-section .feedback-row .SchoolName, .centered-view .body-section .feedback-row .excerpt {
+        display: inline-block;
+        text-align: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em; }
+      .centered-view .body-section .feedback-row .serialNo {
+        width: 5%;
+        padding-top: 3.5em !important; }
+      .centered-view .body-section .feedback-row .SchoolName {
+        width: 20%; }
+      .centered-view .body-section .feedback-row .excerpt {
+        width: 60%;
+        padding-top: 2em !important; }
+      .centered-view .body-section .feedback-row .action {
+        width: 12%;
+        display: inline-block;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        text-align: center;
+        margin: auto; }
+        .centered-view .body-section .feedback-row .action button {
+          display: inline;
+          min-height: 3.3em;
+          min-width: 3.3em;
+          margin: .25em;
+          display: inline;
+          border: 0;
+          border-radius: 2px;
+          outline: 0;
+          box-shadow: none !important;
+          background: #3399FF;
+          color: white; }
+          .centered-view .body-section .feedback-row .action button i {
+            font-size: 1.4em; }
+  @media (max-width: 767px) {
+    .centered-view .feedback-row .serialNo, .centered-view .feedback-row .SchoolName, .centered-view .feedback-row .excerpt, .centered-view .feedback-row .action {
+      padding: 1em;
+      width: 100% !important;
+      float: left !important;
+      text-align: center;
+      margin: auto;
+      line-height: 2em; } }
+
+.button-switcher-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 2rem 3rem;
+  background: white;
+  box-shadow: 0px -0.025px 0px 0.1px #3399FF; }
+  .button-switcher-wrapper .button-switchers {
+    text-align: center; }
+    .button-switcher-wrapper .button-switchers button {
+      width: 8em;
+      margin: .25em;
+      display: inline;
+      background: white;
+      border: 0;
+      border-radius: 2px;
+      padding: .75em 2em;
+      box-shadow: 0px 0px 0px 0.5px #3399FF;
+      outline: 0; }
+    .button-switcher-wrapper .button-switchers .previous {
+      color: #3399FF; }
+    .button-switcher-wrapper .button-switchers .next {
+      box-shadow: none !important;
+      background: #3399FF;
+      color: white; }
+
+/*# sourceMappingURL=feedback.css.map */

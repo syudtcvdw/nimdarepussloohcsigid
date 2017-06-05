@@ -24,7 +24,7 @@
           <?php foreach($this->allFeedback as $feedback): ?>
           <div class="feedback-row">
             <div class="serialNo"> <?= $i++; ?></div>
-            <div class="SchoolName">St. Gregory's College</div>
+            <div class="SchoolName"><?= $feedback['school_name']; ?></div>
             <div class="excerpt"> <?= $feedback["body"]; ?> </div>
             <div class="action">
               <button class="rowAction moreAction"><i class="iAction fa fa-ellipsis-h"></i></button>

@@ -70,12 +70,14 @@ class DashboardController extends Controller
 
         $feedbackModel = new FeedbackModel;
         $this->view->allFeedback = $feedbackModel->getFeedback();
-
         $this->view->render('dashboard/feedback', $this->layout);
     }
 
     public function viewSchools()
     {
+        #!- inform whoever is listening, what menu item we're on
+        $this->view->menu = 2;
+
         #!- set up args
         $this->args = func_get_args();
 

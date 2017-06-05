@@ -33,8 +33,8 @@ class FeedbackModel extends Model
    */
   public function getFeedbackStatus($id)
   {
-    $result = $this->db->query("SELECT status FROM {$this->tableName} WHERE id=:id", ["id"=>$id]);
-    if ( $result->rowCount() > 0 )
+    $result = $this->db->query("SELECT status FROM {$this->tableName} WHERE id=:id", ["id" => $id]);
+    if ($result->rowCount() > 0)
       return $result->fetch()["status"];
     return "No record";
   }
@@ -45,13 +45,19 @@ class FeedbackModel extends Model
    * @param int $limit
    * @return array
    */
-  public function getFeedback($id=null, $limit=15)
+  public function getFeedback($id = null, $limit = 15)
   {
-    if ( !$id )
-     return $this->db->selectAll("feedback", $limit);
-    $result = $this->db->query("SELECT * FROM {$this->tableName} WHERE id=:id LIMIT = :limit", ["id"=>$id,
-      "limit"=>$limit]);
-    return $result->rowCount() > 0 ? $result->fetchAll(\PDO::FETCH_ASSOC) : [];
+    if (!$id) {
+      $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
+} INNER JOIN schools ON {$this->tableName}.school_id = schools.id LIMIT  {$limit}";
+      $result = $this->db->query($query, ["limit" => $limit]);
+      echo $query;
+    } else {
+      $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
+} INNER JOIN schools ON {$this->tableName}.school_id = schools.id WHERE id=:id LIMIT {$limit}";
+      $result = $this->db->query($query, ["id" => $id, "limit" => $limit]);
+    }
+    return $result->rowCount() > 0 ? $result->fetchAll() : [];
   }
 
 }

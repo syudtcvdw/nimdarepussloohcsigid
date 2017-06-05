@@ -80,7 +80,7 @@ class Admin extends Classes
   public function login($redirect = "/", $rememberMe = false)
   {
     if ($this->__adminExists()) {
-      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:email",["email"=>$this->useremail]);
+      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:useremail",["useremail"=>$this->useremail]);
       if ( $result ) {
         $this->salt = $result->fetch(\PDO::FETCH_ASSOC)['salt'];
         Session::set("adminSalt", $this->salt);

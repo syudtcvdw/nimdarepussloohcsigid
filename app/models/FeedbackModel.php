@@ -51,7 +51,6 @@ class FeedbackModel extends Model
       $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
 } INNER JOIN schools ON {$this->tableName}.school_id = schools.id LIMIT  {$limit}";
       $result = $this->db->query($query, ["limit" => $limit]);
-      echo $query;
     } else {
       $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
 } INNER JOIN schools ON {$this->tableName}.school_id = schools.id WHERE id=:id LIMIT {$limit}";

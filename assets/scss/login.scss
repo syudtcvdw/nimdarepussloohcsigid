@@ -1,15 +1,16 @@
 @import "_partials/vars";
 @import "_partials/mixins";
 @import "_partials/fonts";
-
 body {
     background: $theme-white;
     @include font-opensans;
 }
+
 @include headers {
     @include font-lato;
     font-weight: lighter
-} 
+}
+
 .login-wrapper {
     //border:1px solid $theme-black;
     margin: 10% auto;
@@ -33,7 +34,6 @@ body {
             font-size: 13px;
         }
     }
-    
     .input-group-addon {
         outline: none !important;
         border-radius: 0px !important;
@@ -46,8 +46,8 @@ body {
         font-size: 13px;
         font-style: italic;
     }
-    
 }
+
 .footer {
     width: 100%;
     position: absolute;
@@ -57,4 +57,8 @@ body {
         text-align: center;
         font-size: 14px;
     }
+}
+.btn {
+    padding: 10px 10px;
+    min-width: 15rem;
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\App;
 use App\Core\Controller;
 use App\Lib\Classes\Validators;
+use app\models\FeedbackModel;
 use App\Models\SchoolModel;
 use App\Models\ManageAdminModel;
 
@@ -27,7 +28,6 @@ class DashboardController extends Controller
     public function index()
     {
         $this->view->render('dashboard/index', 'dashboard-layout');
-
     }
 
     /**
@@ -56,28 +56,26 @@ class DashboardController extends Controller
                 $this->view->msg = 'All fields are required';
             }
         }
-        $this->view->css = ['create-school', 'font-awesome.min'];
+        $this->view->css = ['create-school'];
         $this->view->title = "Create school";
         $this->view->render('dashboard/create-school', 'dashboard-layout');
     }
 
     public function feedback()
     {
-        $this->view->css = ['feedback'];
+
         $this->view->title = "Feedback";
-        $this->view->css = ['feedback','font-awesome.min'];
+        $this->view->css = ['feedback', 'font-awesome.min'];
         $this->view->js = ['feedback'];
+
+        $feedbackModel = new FeedbackModel;
+        $this->view->allFeedback = $feedbackModel->getFeedback();
+
         $this->view->render('dashboard/feedback', $this->layout);
     }
 
-    /**
-     * /view-schools
-     */
     public function viewSchools()
     {
-        #!- inform whoever is listening, what menu item we're on
-        $this->view->menu = 2;
-
         #!- set up args
         $this->args = func_get_args();
 
@@ -169,13 +167,20 @@ class DashboardController extends Controller
                 extract($_POST);
                 if ($userpass !== $conf_userpass) $this->view->notice = "Passwords do not match";
                 else {
-
                     $admin = new ManageAdminModel;
                     if ($admin->updateAdmins($args[0], ['userpass' => _hash($_POST['userpass'])])) _redirect(App::$uri);
                     else $this->view->notice = "Could Not Update Existing Password. Try Again!";
                 }
             } else $this->view->notice = "Please, Fill All Fields";
         } else _redirect(App::$uri);
+    }
+
+    /**
+     * An AJAX request that gets the status of
+     */
+    public function ajaxGetStatus()
+    {
+
     }
 
 }

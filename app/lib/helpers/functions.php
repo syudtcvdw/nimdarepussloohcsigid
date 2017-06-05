@@ -87,7 +87,7 @@ function _logged_only($protected = true)
  */
 function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
 {
-    return password_hash($name, $algorithm);
+    return _hash($name, $algorithm);
 }
 
 /**

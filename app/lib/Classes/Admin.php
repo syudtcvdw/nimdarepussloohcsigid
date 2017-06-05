@@ -82,15 +82,17 @@ class Admin extends Classes
         if ($this->__adminExists()) {
             $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail" => $this->useremail]);
             if ($result->rowCount() > 0) {
-                $this->salt = $result->fetch(\PDO::FETCH_ASSOC)['salt'];
-                Session::set(ADMIN_SALT, $this->salt);
-                if ($rememberMe) // sets a cookie for period of 3 months
-                    Cookie::set(ADMIN_SALT, $this->salt, Cookie::EXPIRE_THREE_MONTH);
-                _redirect($redirect);
-                return true; // so that if redirect fails it won't continue execution to return false
+                $this->salt = $result->fetch()['salt'];
+                if (_verify_hash($this->useremail, $this->salt)) {
+                    Session::set(ADMIN_SALT, $this->salt);
+                    if ($rememberMe) // sets a cookie for period of 3 months
+                        Cookie::set(ADMIN_SALT, $this->salt, Cookie::EXPIRE_THREE_MONTH);
+                    _redirect($redirect);
+                    return true; // so that if redirect fails it won't continue execution to return false
+                }
             }
+            return false;
         }
-        return false;
     }
 
     /**
@@ -154,7 +156,7 @@ class Admin extends Classes
     {
         $result = $this->db->query("SELECT userpass FROM " . $this->adminTableName . " WHERE useremail=:useremail", ["useremail" => $this->useremail]);
         return ($result->rowCount() > 0) ?
-            _verify_hash($this->userpass, $result->fetch(\PDO::FETCH_ASSOC)['userpass']) : false;
+            _verify_hash($this->userpass, $result->fetch()['userpass']) : false;
     }
 
 }

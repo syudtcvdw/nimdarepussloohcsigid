@@ -8,7 +8,7 @@
  * Copyright victor © 2017. All rights reserved.
  */
 
-namespace app\models;
+namespace App\Models;
 
 
 use App\Core\Model;
@@ -39,6 +39,11 @@ class FeedbackModel extends Model
     return "No record";
   }
 
+  public function setFeedbackStatus($id, $status="treated")
+  {
+    return $this->db->update($this->tableName, $id, ["status" => $status]);
+  }
+
   /**
    * Gets a set number of feedback
    * @param null $id
@@ -48,12 +53,13 @@ class FeedbackModel extends Model
   public function getFeedback($id = null, $limit = 15)
   {
     if (!$id) {
-      $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
-} INNER JOIN schools ON {$this->tableName}.school_id = schools.id LIMIT  {$limit}";
+      $query = "SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
+school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id ORDER BY {$this->tableName
+}.id ASC LIMIT {$limit}";
       $result = $this->db->query($query, ["limit" => $limit]);
     } else {
-      $query = "SELECT {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name FROM {$this->tableName
-} INNER JOIN schools ON {$this->tableName}.school_id = schools.id WHERE id=:id LIMIT {$limit}";
+      $query = "SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name 
+FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}";
       $result = $this->db->query($query, ["id" => $id, "limit" => $limit]);
     }
     return $result->rowCount() > 0 ? $result->fetchAll() : [];

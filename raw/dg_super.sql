@@ -1,17 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.4.10
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 05, 2017 at 10:26 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost:3306
+-- Generation Time: Jun 05, 2017 at 01:09 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `digischools_super`
+-- Database: `digischools_superadmin`
 --
 
 -- --------------------------------------------------------
@@ -26,16 +26,15 @@ CREATE TABLE `admins` (
   `userpass` varchar(300) NOT NULL,
   `fullname` varchar(200) NOT NULL,
   `salt` varchar(250) NOT NULL,
-  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `useremail`, `userpass`, `fullname`, `salt`, `date_created`) VALUES
-(10, 'mpdepaule1@gmail.com', '$2y$10$We6inOUsX1aHPPDaNDODD.MZcfqjRJbh/7pBHOxL6qRNVyvGp3WbW', 'Banjo Mofesola Paul', '', '2017-06-01 19:48:05'),
-(14, 'emmat0616@gmail.com', '$2y$10$exVgi5uh50fgAQ/IUJHcrO3LKoKHm2CQpABn0YDjxZ183ZZN3GE.m', 'Falua Temitope Oyewole', '', '2017-06-02 11:41:20');
+  (1, 'victor@vic.com', '$2y$10$chEeMmamVV2565QJzPfSrutYqfu.DdZ.5YMnXwjdfqJniE5bnoRmi', 'Victor I. Afolabi', '$2y$10$RDs2L6L0h.LwyNOUQB5UUOU.CLr2jYe7EzQ1bc/qRjf99MzVNl6d.', '2017-06-05 10:44:23');
 
 -- --------------------------------------------------------
 
@@ -54,15 +53,15 @@ CREATE TABLE `schools` (
   `admin_password` varchar(250) NOT NULL,
   `s_population` int(11) NOT NULL,
   `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `schools`
 --
 
 INSERT INTO `schools` (`id`, `uid`, `slug`, `name`, `location`, `status`, `admin_uname`, `admin_password`, `s_population`, `date_created`) VALUES
-(1, 'avRbP5', 'royal-bird-int-l-school', 'Royal Bird Int\'l School', 'Akure', 1, 'emmat0616@gmail.com', '$2y$10$k9waDvG6psDDLf1YNIXNUunVxYw/9utJ/kCIh5Jf8G4mTQuQ7X7w2', 1200, '2017-06-02 12:34:55'),
-(2, 'Nwjtsr', 'royal-bird-int-l-school-693', 'Royal Bird Int\'l School', 'Akure', 0, 'emmat0616@gmail.com', '$2y$10$GNwiD1N9CP5PgvQNrgAPBOO6vu/3TIMHPJKXnk0Nbj3ULjzrka0Ka', 1200, '2017-06-02 12:35:09');
+  (1, 'avRbP5', 'royal-bird-int-l-school', 'Royal Bird Int''l School', 'Akure', 1, 'emmat0616@gmail.com', '$2y$10$k9waDvG6psDDLf1YNIXNUunVxYw/9utJ/kCIh5Jf8G4mTQuQ7X7w2', 1200, '2017-06-02 12:34:55'),
+  (2, 'Nwjtsr', 'royal-bird-int-l-school-693', 'Royal Bird Int''l School', 'Akure', 0, 'emmat0616@gmail.com', '$2y$10$GNwiD1N9CP5PgvQNrgAPBOO6vu/3TIMHPJKXnk0Nbj3ULjzrka0Ka', 1200, '2017-06-02 12:35:09');
 
 --
 -- Indexes for dumped tables
@@ -88,12 +87,9 @@ ALTER TABLE `schools`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;

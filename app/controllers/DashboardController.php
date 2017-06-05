@@ -166,7 +166,7 @@ class DashboardController extends Controller
             if (!empty($_POST['userpass']) && !empty($_POST['conf_userpass'])) {
 
                 extract($_POST);
-                if ($userpass != $conf_userpass) $this->view->notice = "Passwords do not match";
+                if ($userpass !== $conf_userpass) $this->view->notice = "Passwords do not match";
                 else {
 
                     $admin = new ManageAdminModel;

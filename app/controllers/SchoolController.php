@@ -12,7 +12,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Models\SchoolStatModel;
 
-class SchoolsController extends Controller
+class SchoolController extends Controller
 {
     /*
     * School Statistics Controller
@@ -20,9 +20,13 @@ class SchoolsController extends Controller
     public function __construct()
     {
         parent::__construct();
-        //_logged_only();
+        _logged_only();
+
         $this->view->title = "View School Statistics";
         $this->view->sidebar = VIEW_INCLUDE_PATH . 'sidebar.php';
+
+        #!- inform whoever is listening, what menu item we're on
+        $this->view->menu = 2;
     }
 
     /*

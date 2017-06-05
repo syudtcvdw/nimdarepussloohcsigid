@@ -179,13 +179,5 @@ class DashboardController extends Controller
     } else _redirect(App::$uri);
   }
 
-  /**
-   * An AJAX request that gets the status of
-   */
-  public function ajaxGetStatus()
-  {
-
-  }
-
 }
 

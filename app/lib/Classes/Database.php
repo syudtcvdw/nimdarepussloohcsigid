@@ -7,7 +7,7 @@ use App\Controllers\_ErrorController;
 class Database
 {
 
-    private $conn = null;
+    private $conn;
     public $success;
     private $status;
 
@@ -128,7 +128,6 @@ class Database
     {
         return $this->query("DROP TABLE {$table}");
     }
-
 
     /**
      * Returns Database connection Message

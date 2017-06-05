@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `userpass` varchar(300) NOT NULL,
   `fullname` varchar(200) NOT NULL,
   `salt` varchar(250) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

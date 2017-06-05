@@ -80,8 +80,8 @@ class Admin extends Classes
   public function login($redirect = "/", $rememberMe = false)
   {
     if ($this->__adminExists()) {
-      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:email",["email"=>$this->useremail]);
-      if ( $result ) {
+      $result = $this->db->query("SELECT salt from " . $this->adminTableName . " WHERE useremail=:useremail",["useremail"=>$this->useremail]);
+      if ( $result->rowCount() > 0 ) {
         $this->salt = $result->fetch(\PDO::FETCH_ASSOC)['salt'];
         Session::set("adminSalt", $this->salt);
         if ($rememberMe) // sets a cookie for period of 3 months

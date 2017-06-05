@@ -1,0 +1,47 @@
+NWT New:
+
+Full height page banner
+Bigger logo
+Purple logo everywhere
+Full height sections on the homepage
+Cohorts redesigned, emphasis on images, states clickable to reveal state page
+Add menu [media] - to video & image gallery page. [media] drops down [video gallery (videos from youtube), picture gallery (sourced from flickr)]
+Menu: Home first, remove Roadmap, change ‘registration open for cohort 1’ to ‘signup’, add Team [linked to http://tech4dev.com/team.html], remove ‘Contact us’
+
+State page:
+State bio - wikipedia style
+See donors
+See partners
+See Supporters/Volunteers
+See participants [picture, name, state]
+Section for Projects
+Section for media
+
+On Home page:
+Major sponsors [whomenwhocode.com], view all sponsors
+Merge sponsors/partners into sponsors as above, white background, grayscale logos
+Social media [+ youtube, linkedin]
+Top stories like on http://womendeliver.org/
+Signup for newsletter
+Remove smiling woman strip
+
+Add blog
+[Powered by Microsoft] everywhere
+
+About page:
+Like on https://code.org/about
+Side tabs [Sponsors [Donors|Partners|Supporters]|Leadership [Advisory board (they’re six women)|Team]|Contact us|Evaluation report]
+
+Admin
+All pages should be colorful
+Eye icons should be [view]
+No 404 on 404 page, add home button
+
+Roadmap
+Map of nigeria showing cohort states - clickable state [linked to the state’s wikipedia page]
+
+Refs:
+http://thefutureafrica.com/awards/
+http://womendeliver.org/
+https://www.womenwhocode.com/
+http://tech4dev.com/team.html

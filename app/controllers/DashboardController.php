@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         parent::__construct();
-        _logged_only();
+//        _logged_only();
 
         $this->layout = "dashboard-layout";
         $this->view->title = "Dashboard";
@@ -86,8 +86,9 @@ class DashboardController extends Controller
 
         $model = new SchoolModel();
         $this->view->allSchools = $model->getAllSchools();
-        $this->view->css = ['create-school'];
+        $this->view->css = ['create-school', 'font-awesome.min'];
         $this->view->title = 'View all schools';
+        $this->view->js = ['datatables.min'];
         $this->view->render('dashboard/view-schools', $this->layout);
     }
 

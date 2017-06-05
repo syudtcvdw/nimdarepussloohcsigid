@@ -31,13 +31,12 @@
                         <?= $school['admin_uname'];?>
                     </td>
                     <td>
-                        <a data-toggle="modal" data-target="#passModal" href="#passModal"
-                           data-name="<?/*= $admin['fullname'] */?>" data-id="<?/*= $admin['id'] */?>"
-                           data-path="<?/*= PROJECT_PATH . \App\Core\App::$uri . '/../' */?>"
-                           class = "btn btn-danger btn-sm">Reset</i></a>
-
+                        <a data-toggle="modal" data-target="#myModal" href="#"
+                           data-name="<?= $school['admin_uname'] ?>" data-id="<?= $school['admin_password'] ?>"
+                           data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>"
+                           class = "bn btn btn-danger btn-sm">Reset</i></a>
                         </a>
-                    </td>
+                       </td>
                     <td class="no-bottom-padding">
                         <label class="switch">
                             <input type="checkbox" <?= $school['status']? 'checked':'' ?>>
@@ -52,11 +51,13 @@
     </div> <!--end of view school table-->
     <!--Change Password Modal Box-->
     <!-- Modal -->
-    <div class="modal fade" id="passModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password For <span id="pwd-admin-target"></span></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password For <span
+                                id="pwd-admin-target"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -81,7 +82,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="changePassword" class="btn btn-success">Change Password</button>
+                            <button type="submit" name="changePassword" class="btn btn-info">Change Password</button>
                         </div>
                     </form>
                 </div>

@@ -9,7 +9,7 @@
 namespace App\Core;
 
 
-use App\Lib\Database;
+use App\Lib\Classes\Database;
 
 class Model
 {
@@ -18,6 +18,7 @@ class Model
 
   /**
    * Model constructor.
+   * Instantiates the Database object
    */
   public function __construct()
   {

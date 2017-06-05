@@ -1,0 +1,123 @@
+@import "_partials/vars";
+@import "_partials/fonts";
+@import "_partials/mixins";
+.content {
+    height: inherit;
+    width: 100%;
+}
+
+.wrapper.create-school {
+    padding-top: 30px;
+    overflow-x: auto;
+
+    .submit-button {
+        background-color: $theme-blue;
+        color: $theme-white;
+    }
+    .heading2 {
+        color: $theme-blue;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+        @include font-lato();
+    }
+    .heading {
+        text-align: center;
+    }
+    .body-content {
+        @include vertical-align;
+    }
+    .change-input {
+        input {
+            box-shadow: none !important;
+            outline: none !important;
+            -webkit-border-radius: 0!important;
+            -moz-border-radius: 0!important;
+            border-radius: 0 !important;
+        }
+        .submit-button {
+            padding: .85em !important;
+            border: 0px;
+            border-radius: 0px;
+        }
+    }
+    .table-div {
+        padding-top: 30px;
+    }
+    .panel-heading {
+        padding: 10px 10px !important;
+        background-color: $theme-blue;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 22px;
+        margin-bottom: 0;
+    }
+    .slider {
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    input[type=checkbox] {
+        display: none;
+    }
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 26px;
+    }
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    td {
+        vertical-align: middle;
+        &.no-bottom-padding {
+            padding-bottom: 0;
+        }
+    }
+    .bn {
+        border-radius: 0px;
+    }
+    .input-group-addon {
+        outline: none !important;
+        border-radius: 0px !important;
+        border-bottom: 1px solid $theme-blue !important;
+        background: none;
+        border-top: none;
+        border-left: none;
+        padding: 0px 5px 2px 2px!important;
+        border: none;
+        color: $theme-blue;
+        font-size: 15px;
+    }
+}

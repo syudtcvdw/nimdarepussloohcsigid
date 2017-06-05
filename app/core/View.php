@@ -9,23 +9,26 @@
 
 namespace App\Core;
 
-use App\Lib\Session;
+use App\Lib\Classes\Admin;
 
 /**
  * @property string title
- * @property string status
+ * @property string notice
  * @property array js
  * @property array css
  * @property string sidebar
+ * @property bool viewAdmins
  */
 class View
 {
 
   protected $header;
   protected $footer;
-  
   public $js = [];
   public $css = [];
+
+  #!- boolean for correct alert messages
+  public $error = false;
 
   /**
    * View constructor.
@@ -33,7 +36,7 @@ class View
   public function __construct()
   {
     $this->isErrorPage = App::$hasError;
-    $this->loggedIn = Session::get("loggedIn");
+    $this->loggedIn = Admin::isLoggedIn();
   }
 
   /**

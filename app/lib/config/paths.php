@@ -17,3 +17,5 @@ define('ASSET_PATH', PROJECT_PATH . 'assets/');
 define('VIEW_PATH', APP_ROOT . 'views/');
 define('LAYOUT_PATH', VIEW_PATH . '_layouts/');
 define('VIEW_INCLUDE_PATH', VIEW_PATH . '_includes/');
+define('DASHBOARD_PATH', PROJECT_PATH . 'dashboard/');
+define('API_PATH', PROJECT_PATH . 'api/v1/');

@@ -6,6 +6,7 @@
  * Date: 5/28/17
  * Time: 9:20 AM
  */
+
 namespace App\Controllers;
 
 use App\Core\Controller;
@@ -27,11 +28,12 @@ class _ErrorController extends Controller
    * Renders custom error view for a specified error type
    * @param null $type
    * @param string $status
+   * @return mixed|void
    */
-  public function index($type=null, $status="")
+  public function index($type = null, $status = "")
   {
-    $this->view->status = $status;
-    switch ( $type ) {
+    $this->view->notice = $status;
+    switch ($type) {
       case 404:
         $this->view->render('_error/404');
         break;

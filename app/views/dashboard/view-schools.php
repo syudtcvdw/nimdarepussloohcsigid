@@ -1,6 +1,7 @@
 <div class="wrapper create-school container-fluid">
-    <div class="table-div"> <!--View school table-->
-        <table id="media-table" class="table table-striped table-hover table-condensed" cellpadding="2" cellspacing="2">
+    <div class="table-div">
+        <!--View school table-->
+        <table id="media-table" class="table table-striped table-hover table-" cellpadding="2" cellspacing="2">
             <thead>
             <tr>
                 <th>S/N</th>
@@ -14,7 +15,7 @@
             </thead>
             <tbody>
             <? foreach ($this->allSchools as $sn => $school): ?>
-                <tr>
+                <tr data-clickable data-href="<?=PROJECT_PATH.'school/'.$school['slug']?>">
                     <td>
                         <?= $sn + 1; ?>
                     </td>
@@ -25,22 +26,22 @@
                         <?= $school['location']; ?>
                     </td>
                     <td>
-                        <?= $school['s_population'];?>
+                        <?= $school['s_population']; ?>
                     </td>
                     <td>
-                        <?= $school['admin_uname'];?>
+                        <?= $school['admin_uname']; ?>
                     </td>
                     <td>
-                        <a data-toggle="modal" data-target="#myModal" href="#"
-                           data-name="<?= $school['admin_uname'] ?>" data-id="<?= $school['admin_password'] ?>"
+                        <a data-toggle="modal" data-target="#myModal" href="#" data-name="<?= $school['admin_uname'] ?>"
+                           data-id="<?= $school['admin_password'] ?>"
                            data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>"
-                           class = "bn btn btn-danger btn-sm">Reset</i></a>
-                        </a>
-                       </td>
+                           class="bn btn btn-danger btn-sm">Reset</i></a>
+                    </td>
                     <td class="no-bottom-padding">
                         <label class="switch">
-                            <input type="checkbox" <?= $school['status']? 'checked':'' ?>>
-                            <a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/toggle/' .$school['slug']; ?>" class="toggle-school-status slider round"></a>
+                            <input type="checkbox" <?= $school['status'] ? 'checked' : '' ?> />
+                            <a href="<?= PROJECT_PATH . \App\Core\App::$uri . '/toggle/' . $school['slug']; ?>"
+                               class="toggle-school-status slider round"></a>
                         </label>
                     </td>
                 </tr>
@@ -48,7 +49,8 @@
 
             </tbody>
         </table>
-    </div> <!--end of view school table-->
+    </div>
+    <!--end of view school table-->
     <!--Change Password Modal Box-->
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -88,6 +90,7 @@
                 </div>
             </div>
         </div>
-    </div><!--end of modal-->
-</div><!--end of school container-->
-
+    </div>
+    <!--end of modal-->
+</div>
+<!--end of school container-->

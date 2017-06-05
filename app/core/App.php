@@ -18,6 +18,9 @@ class App
     private $raw_controller = '';
     private $raw_method = '';
 
+    #!- invoked method is inexistent?
+    private $_inexistent = false;
+
     /**
      * App constructor.
      */
@@ -47,7 +50,13 @@ class App
         App::$uri .= "{$this->raw_controller}/{$this->raw_method}";
 
         // call respective controller method
-        call_user_func_array([$this->controller, $this->method], $this->args);
+        if (!$this->_inexistent) call_user_func_array([$this->controller, $this->method], $this->args);
+        else {
+
+            #!- for lenient controllers, pass the actual (raw) method (with the dashes and all) first
+            #!- then send in args with its head cut off
+            call_user_func_array([$this->controller, $this->method], [$this->raw_method, array_slice($this->args, 1)]);
+        }
     }
 
     /**
@@ -65,8 +74,16 @@ class App
         if (method_exists($this->controller, $url[$index])) {
             $this->method = $url[$index];
             unset($url[$index]);
-        } else
-            $url = $this->__methodInExistent();
+        } else {
+            $u = $this->__methodInExistent();
+
+            #!- lenient?
+            if ($this->_inexistent) {
+
+                #!- use the graceful lenient index implementation
+                $this->method = '_index';
+            } else $url = $u;
+        }
 
         return $url;
     }
@@ -95,9 +112,15 @@ class App
      */
     private function __methodInExistent()
     {
-        App::$hasError = true;
-        $this->controller = new _ErrorController();
-        return [404, 404];
+        if ($this->controller->LENIENT) {
+            #!- handle inexistent method leniently
+            $this->_inexistent = true;
+        }
+        else {
+            App::$hasError = true;
+            $this->controller = new _ErrorController();
+            return [404, 404];
+        }
     }
 
     /**

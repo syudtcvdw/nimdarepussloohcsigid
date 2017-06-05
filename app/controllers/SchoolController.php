@@ -20,6 +20,8 @@ class SchoolController extends Controller
     public function __construct()
     {
         parent::__construct();
+        $this->LENIENT = true; // accepts all methods
+
         _logged_only();
 
         $this->view->title = "View School Statistics";
@@ -29,12 +31,23 @@ class SchoolController extends Controller
         $this->view->menu = 2;
     }
 
+    /**
+     * Lenient index function that accepts non-existent methods as arguments
+     */
+    public function _index()
+    {
+        $this->index(func_get_args()[0]);
+    }
+
     /*
      * Index page of View School Statistics
      * */
-    public function index()
+    public function index($slug = '')
     {
-        $schoolStat = new SchoolStatModel();
+        $model = new SchoolStatModel($slug);
+
+        $this->view->basic = $model->getBasicInfo();
+        $this->view->title = $this->view->basic['name'];
 
         $this->view->css = ['manage', 'font-awesome.min'];
         $this->view->render("schools/index", "dashboard-layout");

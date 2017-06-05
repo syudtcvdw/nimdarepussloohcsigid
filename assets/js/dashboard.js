@@ -58,4 +58,9 @@ $(function () {
             $(_pwdgen).removeAttr('disabled');
         })
     })
+    
+    // handle view-schools table row click
+    $('tr[data-clickable]').click(function() {
+        window.location.assign($(this).data().href);
+    });
 });

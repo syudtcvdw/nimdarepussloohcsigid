@@ -15,23 +15,24 @@ use App\Core\Classes;
 class SchoolStat extends Classes
 {
     private $id;
-    private $uid;
+    private $slug;
     private $schoolTable;
 
     /*
      * Constructor for School Statistics
      * */
-    public function __construct($data = null)
+    public function __construct($slug)
     {
         parent::__construct();
+        $this->slug = $slug;
         $this->schoolTable = "schools";
     }
 
-    /*
-     * Get the details of each schools
-     * */
-    public function getOneSchoolStat($uid) {
-        return $this->db->selectAll($this->schoolTable);
-
+    /**
+     * Get this school's basic info
+     */
+    public function getBasicInfo() {
+        $q = $this->db->query("SELECT * FROM `{$this->schoolTable}` WHERE `slug` = :slug LIMIT 1", ['slug' => $this->slug]);
+        return $q->fetch(\PDO::FETCH_ASSOC);
     }
 }

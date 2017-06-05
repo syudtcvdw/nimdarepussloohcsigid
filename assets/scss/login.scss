@@ -34,6 +34,17 @@ body {
             font-size: 13px;
         }
     }
+    .form-control {
+        border-radius: 0px !important;
+        border: none;
+        border-bottom: 1px solid $theme-blue;
+        padding: 1.4em .8em;
+        text-align: left;
+        height: 4.3rem;
+        box-shadow: none !important;
+        outline: none !important;
+        background: none !important;
+    }
     .input-group-addon {
         outline: none !important;
         border-radius: 0px !important;
@@ -41,6 +52,14 @@ body {
         background: none;
         border-top: none;
         border-left: none;
+        padding: 0px 5px 2px 2px!important;
+        border: none;
+    }
+    .btn {
+        border-radius: 0px;
+        border: none;
+        width: 14rem;
+        padding: 10px 15px;
     }
     .notice {
         font-size: 13px;
@@ -57,8 +76,4 @@ body {
         text-align: center;
         font-size: 14px;
     }
-}
-.btn {
-    padding: 10px 10px;
-    min-width: 15rem;
 }

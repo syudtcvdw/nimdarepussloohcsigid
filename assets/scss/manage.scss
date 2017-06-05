@@ -100,6 +100,9 @@ body {
         border-radius: 0px;
         border: none;
     }
+    .btn-sm {
+        min-width: 30px !important;
+    }
     .btn-primary {
         background: $theme-blue;
     }
@@ -108,6 +111,7 @@ body {
     }
     .btn-danger {
         background: $theme-red;
+        min-width: 45px !important;
     }
     .alert {
         padding: 1.32em 1.34em;

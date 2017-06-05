@@ -31,7 +31,7 @@
                         <?= $school['admin_uname'];?>
                     </td>
                     <td>
-                        <a data-toggle="modal" data-target="#myModal" href="#myModal"
+                        <a data-toggle="modal" data-target="#passModal" href="#passModal"
                            data-name="<?/*= $admin['fullname'] */?>" data-id="<?/*= $admin['id'] */?>"
                            data-path="<?/*= PROJECT_PATH . \App\Core\App::$uri . '/../' */?>"
                            class = "btn btn-danger btn-sm">Reset</i></a>
@@ -52,7 +52,7 @@
     </div> <!--end of view school table-->
     <!--Change Password Modal Box-->
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="passModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

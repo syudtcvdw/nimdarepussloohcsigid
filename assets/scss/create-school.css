@@ -41,8 +41,7 @@
     top: 50%;
     -webkit-transform: perspective(1px) translateY(-50%);
     -ms-transform: perspective(1px) translateY(-50%);
-    transform: perspective(1px) translateY(-50%);
-    font-family: 'Open Sans', sans-serif; }
+    transform: perspective(1px) translateY(-50%); }
   .wrapper.create-school .change-input input {
     box-shadow: none !important;
     outline: none !important;
@@ -105,5 +104,16 @@
       padding-bottom: 0; }
   .wrapper.create-school .bn {
     border-radius: 0px; }
+  .wrapper.create-school .input-group-addon {
+    outline: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #3399FF !important;
+    background: none;
+    border-top: none;
+    border-left: none;
+    padding: 0px 5px 2px 2px !important;
+    border: none;
+    color: #3399FF;
+    font-size: 15px; }
 
 /*# sourceMappingURL=create-school.css.map */

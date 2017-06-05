@@ -57,7 +57,6 @@ class ManageController extends Controller
         }
         $this->view->viewAdmins = $admin->getAdmins();
         $this->view->css = ['manage', 'font-awesome.min'];
-        $this->view->js = ['datatables.min'];
         $this->view->render("manage/index", "dashboard-layout");
     }
 }

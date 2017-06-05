@@ -32,7 +32,11 @@
                         <?= $school['admin_uname']; ?>
                     </td>
                     <td>
-                        <a data-toggle="modal" data-target="#myModal" href="#" data-name="<?= $school['admin_uname'] ?>"
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#myModal"
+                           data-nobubble
+                           data-name="<?= $school['admin_uname'] ?>"
                            data-id="<?= $school['admin_password'] ?>"
                            data-path="<?= PROJECT_PATH . \App\Core\App::$uri . '/change-password/' ?>"
                            class="bn btn btn-danger btn-sm">Reset</i></a>

@@ -60,7 +60,8 @@ $(function () {
     })
     
     // handle view-schools table row click
-    $('tr[data-clickable]').click(function() {
-        window.location.assign($(this).data().href);
+    $('tr[data-clickable]').click(function(e) {
+        if (e.target.hasAttribute('href')) return;
+        else window.location.assign($(this).data().href);
     });
 });

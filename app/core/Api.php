@@ -21,7 +21,7 @@ class Api
   public function __construct()
   {
     $url = $this->__parseURL();
-
+    // TODO: Handle version smartly.
     if (isset($url[0])) {
       $this->version = $url[0];
       unset($url[0]);

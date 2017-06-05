@@ -35,13 +35,12 @@ class Admin extends APIAble
   function feedback($api = null)
   {
     if ($api->method !== "GET") return "Admin: Invalid invocation";
+    $feedback = new FeedbackModel;
     if (count($api->args) > 0) {
       $id = $api->args[0];
-      $feedback = new FeedbackModel;
       $status = $feedback->getFeedbackStatus($id);
       $obj = ["status" => $status, "id" => $id];
       return $obj;
     }
-    return "Admin: Pass in user id";
   }
 }

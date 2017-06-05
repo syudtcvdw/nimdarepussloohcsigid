@@ -40,6 +40,7 @@ class Database
             $stmt = $this->conn->prepare($query);
             if ($bindings) $stmt->execute($bindings);
             else $stmt->execute();
+            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
             return $stmt;
         } catch (\PDOException $e) {
             return false;
@@ -78,15 +79,18 @@ class Database
         return $result;
     }
 
-    /**
-     * Selects records
-     * @param $table
-     * @return array
-     */
-    public function selectAll($table)
+  /**
+   * Selects records
+   * @param $table
+   * @param null $limit
+   * @return array
+   */
+    public function selectAll($table, $limit=null)
     {
-        $result = $this->query("SELECT * FROM {$table}");
-        return ($result->rowCount() > 0) ? $result->fetchAll() : [];
+
+        if ( $limit ) $result = $this->query("SELECT * FROM {$table} LIMIT {$limit}");
+        else $result = $this->query("SELECT * FROM {$table}");
+        return ($result && $result->rowCount() > 0) ? $result->fetchAll() : [];
     }
 
     /**

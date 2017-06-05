@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\App;
 use App\Core\Controller;
 use App\Lib\Classes\Validators;
+use app\models\FeedbackModel;
 use App\Models\SchoolModel;
 use App\Models\ManageAdminModel;
 
@@ -27,7 +28,6 @@ class DashboardController extends Controller
   public function index()
   {
     $this->view->render('dashboard/index', 'dashboard-layout');
-
   }
 
   /**
@@ -64,10 +64,13 @@ class DashboardController extends Controller
   public function feedback()
   {
 
-    $this->view->css = ['feedback'];
     $this->view->title = "Feedback";
     $this->view->css = ['feedback', 'font-awesome.min'];
     $this->view->js = ['feedback'];
+
+    $feedbackModel = new FeedbackModel;
+    $this->view->allFeedback = $feedbackModel->getFeedback();
+
     $this->view->render('dashboard/feedback', $this->layout);
   }
 

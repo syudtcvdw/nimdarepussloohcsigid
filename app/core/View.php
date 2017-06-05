@@ -17,7 +17,7 @@ use App\Lib\Classes\Admin;
  * @property array js
  * @property array css
  * @property string sidebar
- * @property bool viewAdmins
+ * @property array allFeedback
  */
 class View
 {

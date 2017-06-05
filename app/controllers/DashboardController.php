@@ -169,13 +169,20 @@ class DashboardController extends Controller
         extract($_POST);
         if ($userpass !== $conf_userpass) $this->view->notice = "Passwords do not match";
         else {
-
           $admin = new ManageAdminModel;
           if ($admin->updateAdmins($args[0], ['userpass' => _hash($_POST['userpass'])])) _redirect(App::$uri);
           else $this->view->notice = "Could Not Update Existing Password. Try Again!";
         }
       } else $this->view->notice = "Please, Fill All Fields";
     } else _redirect(App::$uri);
+  }
+
+  /**
+   * An AJAX request that gets the status of
+   */
+  public function ajaxGetStatus()
+  {
+
   }
 
 }

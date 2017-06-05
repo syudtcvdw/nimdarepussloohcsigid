@@ -11,7 +11,7 @@
                             <label for="email" class="sr-only">Email address</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i> </span>
-                                <input type="email" class="form-control" id="email" name="useremail" placeholder="Enter your Email Address" value="<?= _preserveInputs('email'); ?>" required>
+                                <input type="email" class="form-control" id="email" name="useremail" placeholder="Enter your Email Address" value="<?= _preserveInputs('useremail'); ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -19,7 +19,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i> </span>
                                 <input type="password" class="form-control" id="password" name="userpass" placeholder="Enter Your Password" value="<?=
-                            _preserveInputs('password'); ?>" required>
+                            _preserveInputs('userpass'); ?>" required>
                             </div>
                         </div>
                         <div class="checkbox">

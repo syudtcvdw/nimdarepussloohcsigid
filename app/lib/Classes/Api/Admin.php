@@ -39,7 +39,7 @@ class Admin extends APIAble
       $feedback = new FeedbackModel;
       switch ($api->method) {
         case "POST":
-          if ( isset($api->args[1]) ) {
+          if (isset($api->args[1])) {
             $status = $api->args[1];
             if ($feedback->setFeedbackStatus($id, $status)) return ["status" => "success"];
             return [
@@ -49,19 +49,19 @@ class Admin extends APIAble
           }
           return [
             "status" => "failed",
-            "msg"    => "Missing param 'status'"
+            "msg" => "Missing param 'status'"
           ];
         case "GET":
           $status = $feedback->getFeedbackStatus($id);
           return [
             "status" => "success",
-            "response"   =>  ["id" => $id, "feedback_status" => $status]
+            "response" => ["id" => $id, "feedback_status" => $status]
           ];
       }
     }
     return [
       "status" => "failed",
-      "msg"    => "Admin: Missing param 'id'"
+      "msg" => "Admin: Missing param 'id'"
     ];
   }
 }

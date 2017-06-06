@@ -50,7 +50,7 @@ class FeedbackModel extends Model
    * @param int $limit
    * @return array
    */
-  public function getFeedback($id = null, $limit = 15)
+  public function getFeedback($id = null, $limit = 5)
   {
     if (!$id) {
       $query = "SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 

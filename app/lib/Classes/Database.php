@@ -87,7 +87,6 @@ class Database
    */
     public function selectAll($table, $limit=null)
     {
-
         if ( $limit ) $result = $this->query("SELECT * FROM {$table} LIMIT {$limit}");
         else $result = $this->query("SELECT * FROM {$table}");
         return ($result && $result->rowCount() > 0) ? $result->fetchAll() : [];

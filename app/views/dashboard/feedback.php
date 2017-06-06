@@ -22,7 +22,7 @@
         <?php if ($this->allFeedback): ?>
           <?php $i = 1; ?>
           <?php foreach ($this->allFeedback as $feedback): ?>
-            <div class="feedback-row <?= $feedback['status'] === 'treated' ? "" : "viewed" ?>">
+            <div class="feedback-row <?= $feedback['status'] === 'treated' ? "viewed" : "" ?>">
               <div class="serialNo"> <?= $i++; ?></div>
               <div class="SchoolName"><?= $feedback['school_name']; ?></div>
               <div class="excerpt"> <?= $feedback["body"]; ?> </div>

@@ -25,7 +25,11 @@ class SchoolModel extends Model
     public $uID;
     public $status;
 
-    public function __construct($data = null)
+  /**
+   * SchoolModel constructor.
+   * @param null $data
+   */
+  public function __construct($data = null)
     {
         parent::__construct();
         $this->schoolTable = 'schools';
@@ -71,9 +75,8 @@ class SchoolModel extends Model
         $getAllSchools = $this->db->selectAll($this->schoolTable);
         if (count($getAllSchools) > 0) {
             return $getAllSchools;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -81,8 +84,7 @@ class SchoolModel extends Model
      * @param $school_slug
      */
     public function toggleStatus($school_slug) {
-        $this->db->query("UPDATE `{$this->schoolTable}` SET `status` = !`status` WHERE `slug` = :slug", [
-            'slug' => $school_slug
-        ]);
+        $this->db->query("UPDATE `{$this->schoolTable}` SET `status` = !`status` WHERE `slug` = :slug",
+          ['slug' => $school_slug]);
     }
 }

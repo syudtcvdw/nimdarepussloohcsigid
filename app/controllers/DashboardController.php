@@ -125,7 +125,7 @@ class DashboardController extends Controller
     $this->view->title = "Manage admins";
     $this->view->css = ['manage', 'font-awesome.min'];
     $this->view->js = ['datatables.min'];
-    $this->view->render("manage/index", $this->layout);
+    $this->view->render("dashboard/manage-admins", $this->layout);
   }
 
   /**

@@ -26,8 +26,8 @@ class SchoolStatModel extends Model
         $this->schoolStat = new SchoolStat;
     }
 
-    public function getOneSchoolStat() {
-        return $this->schoolStat->getOneSchoolStat();
+    public function getOneSchoolStat($id) {
+        return $this->schoolStat->getOneSchoolStat($id);
     }
 
 }

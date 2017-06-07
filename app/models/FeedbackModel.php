@@ -35,13 +35,16 @@ class FeedbackModel extends Model
   {
     $result = $this->db->query("SELECT status FROM {$this->tableName} WHERE id=:id", ["id" => $id]);
     if ($result->rowCount() > 0)
-      return $result->fetch()["status"];
+      return $result->fetch()->status;
     return "No record";
   }
 
   public function setFeedbackStatus($id, $status="treated")
   {
-    return $this->db->update($this->tableName, $id, ["status" => $status]);
+    $result = $this->db->query("SELECT id FROM {$this->tableName} WHERE id=:id", ["id"=>$id]);
+    if ( $result->rowCount() > 0 )
+      return $this->db->update($this->tableName, $id, ["status" => $status]);
+    return false;
   }
 
   /**
@@ -53,15 +56,21 @@ class FeedbackModel extends Model
   public function getFeedback($id = null, $limit = 5)
   {
     if (!$id) {
-      $query = "SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
-school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id ORDER BY {$this->tableName
-}.id ASC LIMIT {$limit}";
-      $result = $this->db->query($query, ["limit" => $limit]);
+      $query = <<<EOT
+                SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS
+                school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
+                ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+EOT;
+      $bindings = ["limit" => $limit];
     } else {
-      $query = "SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS school_name 
-FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}";
-      $result = $this->db->query($query, ["id" => $id, "limit" => $limit]);
+      $query = <<<EOT
+                SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
+                school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
+                WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+EOT;
+      $bindings = ["id" => $id, "limit" => $limit];
     }
+    $result = $this->db->query($query, $bindings);
     return $result->rowCount() > 0 ? $result->fetchAll() : [];
   }
 

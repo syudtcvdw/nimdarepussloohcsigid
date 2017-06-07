@@ -10,14 +10,14 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\SchoolStatModel;
 
 class SchoolController extends Controller
 {
-    /*
-    * School Statistics Controller
-    * */
-    public function __construct()
+
+  /**
+   * SchoolController constructor.
+   */
+  public function __construct()
     {
         parent::__construct();
         _logged_only();
@@ -29,13 +29,11 @@ class SchoolController extends Controller
         $this->view->menu = 2;
     }
 
-    /*
-     * Index page of View School Statistics
-     * */
-    public function index()
+  /**
+   * Index page of View School Statistics
+   */
+  public function index()
     {
-        $schoolStat = new SchoolStatModel();
-
         $this->view->css = ['manage', 'font-awesome.min'];
         $this->view->render("schools/index", "dashboard-layout");
     }

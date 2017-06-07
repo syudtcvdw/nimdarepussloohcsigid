@@ -44,7 +44,7 @@ class Admin extends APIAble
             if ($feedback->setFeedbackStatus($id, $status)) return ["status" => "success"];
             return [
               "status" => "failed",
-              "msg" => "Could not update record"
+              "msg" => "Could not update record."
             ];
           }
           return [

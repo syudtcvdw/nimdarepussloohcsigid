@@ -32,7 +32,12 @@ class Validators
         return strlen($password) > 3;
     }
 
-    public static function validateCreateSchoolForm($data)
+  /**
+   * Validates that all fields are required
+   * @param $data
+   * @return array|bool
+   */
+  public static function validateCreateSchoolForm($data)
     {
         $errors = [];
         foreach ($data as $key => $value) {

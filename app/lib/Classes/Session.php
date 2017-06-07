@@ -49,7 +49,6 @@ abstract class Session
   {
     if (isset($_SESSION[$key]))
       unset($_SESSION[$key]);
-    $_SESSION = $_SESSION ? array_values($_SESSION) : [];
   }
 
   /**

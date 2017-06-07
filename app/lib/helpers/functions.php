@@ -10,7 +10,7 @@
  */
 function _preserveInputs($key)
 {
-    return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
+  return isset($_REQUEST[$key]) ? htmlspecialchars($_REQUEST[$key]) : '';
 }
 
 /**
@@ -20,7 +20,7 @@ function _preserveInputs($key)
  */
 function _preserveCheckBox($key)
 {
-    return isset($_POST[$key]) ? "checked" : "";
+  return isset($_REQUEST[$key]) ? "checked" : "";
 }
 
 /**
@@ -29,8 +29,8 @@ function _preserveCheckBox($key)
  */
 function _redirect($uri)
 {
-    echo '<script>document.title = "Redirecting..."; window.location="' . PROJECT_PATH . $uri . '"</script>';
-    die();
+  echo '<script>document.title = "Redirecting..."; window.location="' . PROJECT_PATH . $uri . '"</script>';
+  die();
 }
 
 
@@ -42,7 +42,7 @@ function _redirect($uri)
  */
 function _hash($password, $algorithm = PASSWORD_BCRYPT)
 {
-    return password_hash($password, $algorithm);
+  return password_hash($password, $algorithm);
 }
 
 
@@ -54,7 +54,7 @@ function _hash($password, $algorithm = PASSWORD_BCRYPT)
  */
 function _verify_hash($password, $hash)
 {
-    return password_verify($password, $hash);
+  return password_verify($password, $hash);
 }
 
 /**
@@ -64,19 +64,19 @@ function _verify_hash($password, $hash)
  */
 function _generate_id($length = 8)
 {
-    $chars = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
-    shuffle($chars);
-    if ($length > count($chars)) $length = count($chars);
-    return implode(array_slice($chars, 0, $length));
+  $chars = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
+  shuffle($chars);
+  if ($length > count($chars)) $length = count($chars);
+  return implode(array_slice($chars, 0, $length));
 }
 
 /**
  * Redirects unlogged visitors to login, does the reverse [on /login] when $protected is false
- * @param bool $protected
+ * @internal param bool $protected
  */
-function _logged_only($protected = true)
+function _logged_only()
 {
-    if (!\App\Lib\Classes\Admin::isLoggedIn()) _redirect("login");
+  if (!\App\Lib\Classes\Admin::isLoggedIn()) _redirect("login");
 }
 
 /**
@@ -87,7 +87,7 @@ function _logged_only($protected = true)
  */
 function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
 {
-    return _hash($name, $algorithm);
+  return _hash($name, $algorithm);
 }
 
 /**
@@ -98,34 +98,36 @@ function _generate_salt($name, $algorithm = PASSWORD_BCRYPT)
  */
 function _verify_salt($name, $salt)
 {
-    return password_verify($name, $salt);
+  return password_verify($name, $salt);
 }
 
 /**
  * Generates a unique slug for a specified table; assumes the `slug` column exists
  * @credit Banjo Mofesola Paul
  * @param  string $string The string to slug
- * @param  string [$check_table = ''] The database table to check in
+ * @param string $check_table
+ * @param string $check_col
  * @return string
+ * @internal param $string [$check_table = ''] The database table to check in
  */
 function _generate_slug($string, $check_table = '', $check_col = 'slug')
 {
-    #!- regex
-    $s = array('/[^A-Za-z0-9\s]/', '/\s+/');
-    $r = array('-', '-');
+  #!- regex
+  $s = ['/[^A-Za-z0-9\s]/', '/\s+/'];
+  $r = ['-', '-'];
 
-    #!- initial slug
-    $pregged = preg_replace($s, $r, strtolower($string));
-    $pregged = preg_replace('/\-+/', '-', $pregged);
-    $slug = $s = substr($pregged, 0, 30);
+  #!- initial slug
+  $pregged = preg_replace($s, $r, strtolower($string));
+  $pregged = preg_replace('/\-+/', '-', $pregged);
+  $slug = $s = substr($pregged, 0, 30);
 
-    #!- clean up
-    if ($check_table != '') {
-        $db = new \App\Lib\Classes\Database();
-        while ($db->exists($slug, $check_col, $check_table)) $slug = $s . '-' . rand(0, 999);
-    }
+  #!- clean up
+  if ($check_table != '') {
+    $db = new \App\Lib\Classes\Database();
+    while ($db->exists($slug, $check_col, $check_table)) $slug = $s . '-' . rand(0, 999);
+  }
 
-    return $slug;
+  return $slug;
 }
 
 /**
@@ -135,5 +137,5 @@ function _generate_slug($string, $check_table = '', $check_col = 'slug')
  */
 function _cleanUpDashes($subject)
 {
-    return str_replace("-", "", $subject);
+  return str_replace("-", "", $subject);
 }

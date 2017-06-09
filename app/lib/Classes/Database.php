@@ -40,7 +40,7 @@ class Database
             $stmt = $this->conn->prepare($query);
             if ($bindings) $stmt->execute($bindings);
             else $stmt->execute();
-            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+            $stmt->setFetchMode(\PDO::FETCH_OBJ);
             return $stmt;
         } catch (\PDOException $e) {
             return false;
@@ -87,7 +87,6 @@ class Database
    */
     public function selectAll($table, $limit=null)
     {
-
         if ( $limit ) $result = $this->query("SELECT * FROM {$table} LIMIT {$limit}");
         else $result = $this->query("SELECT * FROM {$table}");
         return ($result && $result->rowCount() > 0) ? $result->fetchAll() : [];
@@ -115,13 +114,13 @@ class Database
     }
 
     /**
-     * Get each row from a table
+     * Returns all columns form a row in a table
      * @param $table
      * @param $id
      * @return bool|\PDOStatement
      * */
     public function getOne($table, $id) {
-        return $this->query("SELECT FROM " .$table . "WHERE id=:id", ["id"=>$id]);
+        return $this->query("SELECT * FROM " .$table . "WHERE id=:id", ["id"=>$id]);
     }
     /**
      * Runs an SQL command to DROP a table

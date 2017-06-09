@@ -18,6 +18,7 @@ use App\Lib\Classes\Admin;
  * @property array css
  * @property string sidebar
  * @property array allFeedback
+ * @property int menu
  */
 class View
 {

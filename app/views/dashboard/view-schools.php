@@ -93,6 +93,19 @@
                     </form>
                 </div>
             </div>
+            <div class="form-group" id="spwd">
+              <label class="control-label sr-only">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                <input type="password" class="form-control" placeholder="Confirm New Password"
+                       name="conf_userpass">
+                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="changePassword" class="btn btn-info">Change Password</button>
+            </div>
+          </form>
         </div>
     </div>
     <!--end of modal-->

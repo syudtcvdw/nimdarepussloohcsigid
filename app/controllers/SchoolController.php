@@ -10,14 +10,14 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\SchoolStatModel;
 
 class SchoolController extends Controller
 {
-    /*
-    * School Statistics Controller
-    * */
-    public function __construct()
+
+  /**
+   * SchoolController constructor.
+   */
+  public function __construct()
     {
         parent::__construct();
         $this->LENIENT = true; // accepts all methods

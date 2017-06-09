@@ -14,7 +14,7 @@
       </thead>
       <tbody>
       <? foreach ($this->allSchools as $sn => $school): ?>
-        <tr>
+        <tr data-clickable data-href="<?=PROJECT_PATH.'school/'.$school->slug?>">
           <td> <?= ++$sn; ?> </td>
           <td> <?= $school->name; ?> </td>
           <td> <?= $school->location; ?> </td>
@@ -62,18 +62,6 @@
                 <input type="password" class="form-control" placeholder="Password" name="userpass">
                 <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
               </div>
-            </div>
-            <div class="form-group" id="spwd">
-              <label class="control-label sr-only">Confirm Password</label>
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-                <input type="password" class="form-control" placeholder="Confirm New Password"
-                       name="conf_userpass">
-                <span class="input-group-addon"><a href='#'><i class="fa fa-eye"></i></a> </span>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" name="changePassword" class="btn btn-info">Change Password</button>
             </div>
             <div class="form-group" id="spwd">
               <label class="control-label sr-only">Confirm Password</label>

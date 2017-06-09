@@ -10,6 +10,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\SchoolStatModel;
 
 class SchoolController extends Controller
 {

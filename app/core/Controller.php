@@ -11,6 +11,10 @@ abstract class Controller
     protected $args;
     protected $view;
 
+    #!- if true, means this controller has implementation in its _index()
+    #!- that allows it to accepts all method invocations
+    public $LENIENT = false;
+
     /**
      * Controller constructor.
      */
@@ -27,6 +31,11 @@ abstract class Controller
         if (method_exists($this, _cleanUpDashes($this->args[0])))
             call_user_func_array([$this, _cleanUpDashes($this->args[0])], array_slice($this->args, 1));
     }
+
+    /**
+     * Lenient index function that accpts non-existent methods as arguments
+     */
+    protected function _index() {}
 
     /**
      * Default method run by every controller.

@@ -34,7 +34,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `useremail`, `userpass`, `fullname`, `salt`, `date_created`) VALUES
-  (1, 'victor@vic.com', '$2y$10$chEeMmamVV2565QJzPfSrutYqfu.DdZ.5YMnXwjdfqJniE5bnoRmi', 'Victor I. Afolabi', '$2y$10$RDs2L6L0h.LwyNOUQB5UUOU.CLr2jYe7EzQ1bc/qRjf99MzVNl6d.', '2017-06-05 10:44:23');
+  (1, 'victor@vic.com', '$2y$10$chEeMmamVV2565QJzPfSrutYqfu.DdZ.5YMnXwjdfqJniE5bnoRmi', 'Victor I. Afolabi', '$2y$10$RDs2L6L0h.LwyNOUQB5UUOU.CLr2jYe7EzQ1bc/qRjf99MzVNl6d.', '2017-06-05 10:44:23'),
+  (2, 'mpdepaule1@gmail.com', '$2y$10$pDGmwFdJP4R/C/NrAeOxT.Fo8ZHEZJgzYKiZ6V6SZeN.s86fZN3Wa', 'Banjo Mofesola Paul', '$2y$10$6kwQZsJBeLYszbSO4LiigudyHaAUa.mybR.F9FzJFEkZe35szNIx2', '2017-06-05 15:44:23');
 
 -- --------------------------------------------------------
 

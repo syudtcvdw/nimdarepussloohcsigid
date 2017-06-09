@@ -81,4 +81,3 @@
     </div>
   </div><!--end of modal-->
 </div><!--end of school container-->
-

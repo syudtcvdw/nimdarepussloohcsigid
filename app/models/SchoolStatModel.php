@@ -15,19 +15,21 @@ use App\Lib\Classes\SchoolStat;
 class SchoolStatModel extends Model
 {
     private $schoolStat;
+    private $slug;
 
     /**
      * School Statistics Model Constructor
+     * @param string $slug
      */
-
-    public function __construct()
+    public function __construct($slug = '')
     {
         parent::__construct();
-        $this->schoolStat = new SchoolStat;
+        $this->slug = $slug;
+        $this->schoolStat = new SchoolStat($this->slug);
     }
 
-    public function getOneSchoolStat($id) {
-        return $this->schoolStat->getOneSchoolStat($id);
+    public function getBasicInfo() {
+        return $this->schoolStat->getBasicInfo();
     }
 
 }

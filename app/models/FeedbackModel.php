@@ -57,16 +57,16 @@ class FeedbackModel extends Model
   {
     if (!$id) {
       $query = <<<EOT
-                SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS
-                school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
-                ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+        SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS
+        school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
+        ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
 EOT;
       $bindings = ["limit" => $limit];
     } else {
       $query = <<<EOT
-                SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
-                school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
-                WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+        SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
+        school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
+        WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
 EOT;
       $bindings = ["id" => $id, "limit" => $limit];
     }

@@ -13,7 +13,6 @@ namespace App\Lib\Classes;
 
 class Mail
 {
-
   /**
    * Sends an email
    * @param $to -> who you are sending the e-mail to

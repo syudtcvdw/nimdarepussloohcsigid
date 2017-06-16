@@ -10,6 +10,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\SchoolStatModel;
 
 class SchoolController extends Controller
 {
@@ -39,10 +40,14 @@ class SchoolController extends Controller
         $this->index(func_get_args()[0]);
     }
 
-    /*
-     * Index page of View School Statistics
-     * */
-    public function index($slug = '')
+
+  /**
+   * Index method for controller
+   * @credit: Victor I. Afolabi
+   * @param string $slug
+   * @return mixed|void
+   */
+  public function index($slug = '')
     {
         $model = new SchoolStatModel($slug);
 

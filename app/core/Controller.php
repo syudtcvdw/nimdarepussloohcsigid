@@ -33,7 +33,7 @@ abstract class Controller
     }
 
     /**
-     * Lenient index function that accpts non-existent methods as arguments
+     * Lenient index function that accepts non-existent methods as arguments
      */
     protected function _index() {}
 

@@ -38,14 +38,20 @@ class ManageAdminModel extends Model
 
     /**
      * Gets all admins
-     * @return bool
+     * @return array
      */
     public function getAdmins()
     {
         return $this->admin->getAdmins();
     }
 
-    public function deleteAdmins($id)
+  /**
+   * Deletes an admin (by id)
+   * @credit: Victor I. Afolabi
+   * @param $id
+   * @return bool|\PDOStatement
+   */
+  public function deleteAdmins($id)
     {
         return $this->admin->deleteAdmins($id);
     }

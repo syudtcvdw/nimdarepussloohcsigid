@@ -13,7 +13,7 @@ class Validators
 {
 
     /**
-     * Checks for a valid email (e.g example@email.com)
+     * Checks for a valid email (e.g example@domain.com)
      * @param $email
      * @return bool
      */
@@ -32,20 +32,17 @@ class Validators
         return strlen($password) > 3;
     }
 
-  /**
-   * Validates that all fields are required
-   * @param $data
-   * @return array|bool
-   */
-  public static function validateCreateSchoolForm($data)
+    /**
+    * Validates that all fields are required
+    * @param $data
+    * @return array|bool
+    */
+    public static function validateCreateSchoolForm($data)
     {
         $errors = [];
-        foreach ($data as $key => $value) {
-            if (empty($value)) {
-
+        foreach ($data as $key => $value)
+            if (empty($value))
                 $errors[$key] = "Field is required";
-            }
-        }
         return empty($errors) ? false : $errors;
     }
 

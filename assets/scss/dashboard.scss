@@ -41,7 +41,7 @@
     float: left;
     text-align: center;
     margin: auto;
-    z-index: 90;
+    z-index: 9999;
     position: fixed;
     overflow: auto;
     overflow-x: hidden;
@@ -107,6 +107,7 @@
             @extend .sidebar-row;
             text-align: center !important;
             padding: 2rem 2rem;
+            min-height: 78px; // removes the flicker on sidebar reveal
             img {
                 max-height: 38px;
                 margin: auto;
@@ -201,7 +202,7 @@
     .navbar-toggle {
         display: none !important;
     }
-    .hover-left-width {
+    .left:hover {
         width: 25% !important;
         button:not(.logo) img {
             height: 15px !important;

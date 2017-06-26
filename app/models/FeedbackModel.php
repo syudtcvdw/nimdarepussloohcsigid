@@ -15,63 +15,65 @@ use App\Core\Model;
 
 class FeedbackModel extends Model
 {
-  private $tableName;
+    private $tableName;
 
-  /**
-   * FeedbackModel constructor.
-   */
-  public function __construct()
-  {
-    parent::__construct();
-    $this->tableName = "feedback";
-  }
+    /**
+     * FeedbackModel constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->tableName = "feedback";
+    }
 
-  /**
-   * Returns the feedback status (fresh, treated, closed)
-   * @param $id
-   * @return bool
-   */
-  public function getFeedbackStatus($id)
-  {
-    $result = $this->db->query("SELECT status FROM {$this->tableName} WHERE id=:id", ["id" => $id]);
-    if ($result->rowCount() > 0)
-      return $result->fetch()->status;
-    return "No record";
-  }
+    /**
+     * Returns the feedback status (fresh, treated, closed)
+     * @param $id
+     * @return bool
+     */
+    public function getFeedbackStatus($id)
+    {
+        $result = $this->db->query("SELECT status FROM {$this->tableName} WHERE id=:id", ["id" => $id]);
+        if ($result->rowCount() > 0)
+            return $result->fetch()->status;
+        return "No record";
+    }
 
-  public function setFeedbackStatus($id, $status="treated")
-  {
-    $result = $this->db->query("SELECT id FROM {$this->tableName} WHERE id=:id", ["id"=>$id]);
-    if ( $result->rowCount() > 0 )
-      return $this->db->update($this->tableName, $id, ["status" => $status]);
-    return false;
-  }
+    public function setFeedbackStatus($id, $status = "treated")
+    {
+        $result = $this->db->query("SELECT id FROM {$this->tableName} WHERE id=:id", ["id" => $id]);
+        if ($result->rowCount() > 0)
+            return $this->db->update($this->tableName, $id, ["status" => $status]);
+        return false;
+    }
 
-  /**
-   * Gets a set number of feedback
-   * @param null $id
-   * @param int $limit
-   * @return array
-   */
-  public function getFeedback($id = null, $limit = 5)
-  {
-    if (!$id) {
-      $query = <<<EOT
+    /**
+     * Gets a set number of feedback, applying specified offset
+     * @param null $id
+     * @param int $limit
+     * @param int $offset
+     * @return array
+     */
+    public function getFeedback($id = null, $limit = 5, $offset = 0)
+    {
+        if (!$id) {
+            $query = <<<EOT
         SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS
         school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
-        ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+        ORDER BY {$this->tableName}.id ASC LIMIT {$offset},{$limit}
 EOT;
-      $bindings = ["limit" => $limit];
-    } else {
-      $query = <<<EOT
+            $bindings = ["limit" => $limit];
+        } else {
+            $query = <<<EOT
         SELECT {$this->tableName}.id, {$this->tableName}.body, {$this->tableName}.status, schools.name AS 
         school_name FROM {$this->tableName} INNER JOIN schools ON {$this->tableName}.school_id = schools.id 
-        WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$limit}
+        WHERE id=:id ORDER BY {$this->tableName}.id ASC LIMIT {$offset},{$limit}
 EOT;
-      $bindings = ["id" => $id, "limit" => $limit];
+            $bindings = ["id" => $id, "limit" => $limit];
+        }
+
+        $result = $this->db->query($query, $bindings);
+        return $result->rowCount() > 0 ? $result->fetchAll() : [];
     }
-    $result = $this->db->query($query, $bindings);
-    return $result->rowCount() > 0 ? $result->fetchAll() : [];
-  }
 
 }

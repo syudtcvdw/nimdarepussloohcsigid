@@ -1,17 +1,17 @@
 <div class="sidebar">
 
-    <div class="col-md-12 ">
-        <button class=" logo">
+    <div class="col-md-12">
+        <button class="logo">
             <img src="<?= ASSET_PATH ?>logo/logo-icon.png" class="img img-responsive logo-icon" alt="">
             <img src="<?= ASSET_PATH ?>logo/logo-full.png" class="img img-responsive logo-full" alt=""></button>
     </div>
 
-    <div class="col-md-12 ">
+    <div class="col-md-12">
         <a class="<?= $this->menu == 0 ? 'active' : '' ?> sidebar-row" href="<?= PROJECT_PATH ?>">
             <img src="<?= ASSET_PATH ?>icons/dashboard-wire-frame.png" height=30px alt=""> <span> Dashboard</span></a>
     </div>
 
-    <div class="col-md-12 ">
+    <div class="col-md-12">
         <a class="<?= $this->menu == 1 ? 'active' : '' ?> sidebar-row" href="<?= DASHBOARD_PATH . 'create-school' ?>">
             <img src="<?= ASSET_PATH ?>icons/plus-wire-frame.png" height=30px alt=""> <span> Create School</span></a>
     </div>

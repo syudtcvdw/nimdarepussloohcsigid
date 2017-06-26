@@ -9,8 +9,6 @@
 
     <title> <?= isset($this->title) ? $this->title . " &bull; Digischools" : "Digischools"; ?> </title>
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/bootstrap.min.css'; ?>">
-    <!--<link rel="stylesheet" href="<?= ASSET_PATH . 'css/bootstrap-reboot.min.css'; ?>">
-    <link rel="stylesheet" href="<?= ASSET_PATH . 'css/bootstrap-grid.min.css'; ?>">-->
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/style.css'; ?>">
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/dashboard.css'; ?>">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans:300,400" rel="stylesheet">

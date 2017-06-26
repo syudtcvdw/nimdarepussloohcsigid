@@ -10,8 +10,6 @@
 
     <title> <?= isset($this->title) ? $this->title . " &bull; Digischools" : "Digischools"; ?> </title>
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/bootstrap.min.css'; ?>">
-    <!--<link rel="stylesheet" href="<?/*= ASSET_PATH . 'css/bootstrap-reboot.min.css'; */?>">-->
-    <link rel="stylesheet" href="<?/*= ASSET_PATH . 'css/bootstrap-grid.min.css'; */?>">
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/font-awesome.min.css'; ?>">
     <link rel="stylesheet" href="<?= ASSET_PATH . 'css/style.css'; ?>">
 

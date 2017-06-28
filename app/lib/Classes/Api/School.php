@@ -24,6 +24,7 @@ class School extends APIAble
    */
   public function authAdmin($api = null)
   {
+    if ($api->method != 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
     if (count($api->args) >= 2) {
       $username = $api->args[0];
       $password = $api->args[1];
@@ -31,13 +32,13 @@ class School extends APIAble
       $school = new SchoolModel($data);
       $result = $school->getSchoolInfo(["uid", "name"]);
       if ($result) {
-        return ['status' => 'true',
+        return ['status' => true,
           'response' => ['uid' => $result->uid,
             'name' => $result->name]];
       }
-      return ['status' => 'false', 'msg' => 'Incorrect credentials.'];
+      return ['status' => false, 'msg' => 'Incorrect credentials supplied.'];
     }
-    return ['status' => 'false', 'msg' => 'Provide a username and password.'];
+    return ['status' => false, 'msg' => 'Provide a username and password.'];
   }
 
 }

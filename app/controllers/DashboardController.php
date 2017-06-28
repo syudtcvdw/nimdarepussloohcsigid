@@ -47,7 +47,7 @@ class DashboardController extends Controller
     if (isset($_POST['create_school'])) {
       unset($_POST['create_school']);
       $data = $_POST;
-      $errors = Validators::validateCreateSchoolForm($data);
+      $errors = Validators::validateForm($data);
       if (!$errors) {
         $school = new SchoolModel($data);
         if ($school->create()) {

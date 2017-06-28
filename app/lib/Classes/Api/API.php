@@ -20,7 +20,8 @@ abstract class API
     protected $endpoint;
 
     protected $class_tree = [
-        'admin' => Admin::class
+        'admin' => Admin::class,
+        'school' => School::class
     ];
 
     /**

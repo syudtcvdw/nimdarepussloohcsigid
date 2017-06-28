@@ -37,7 +37,7 @@ class Validators
     * @param $data
     * @return array|bool
     */
-    public static function validateCreateSchoolForm($data)
+    public static function validateForm($data)
     {
         $errors = [];
         foreach ($data as $key => $value)

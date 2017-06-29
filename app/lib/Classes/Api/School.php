@@ -25,9 +25,8 @@ class School extends APIAble
   public function authAdmin($api = null)
   {
     if ($api->method != 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
-    if (count($api->args) >= 2) {
-      $username = $api->args[0];
-      $password = $api->args[1];
+    if (count($_POST) >= 2) {
+      extract($_POST);
       $data = ['admin_username' => $username, 'admin_password' => $password];
       $school = new SchoolModel($data);
       $result = $school->getSchoolInfo(["uid", "name"]);

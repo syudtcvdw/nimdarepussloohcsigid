@@ -27,6 +27,8 @@ class School extends APIAble
     if ($api->method != 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
     if (count($_POST) >= 2) {
       extract($_POST);
+      /** @var string $username */
+      /** @var string $password */
       $data = ['admin_username' => $username, 'admin_password' => $password];
       $school = new SchoolModel($data);
       $result = $school->getSchoolInfo(["uid", "name"]);
@@ -38,6 +40,70 @@ class School extends APIAble
       return ['status' => false, 'msg' => 'Incorrect credentials supplied.'];
     }
     return ['status' => false, 'msg' => 'Provide a username and password.'];
+  }
+
+  /**
+   * Update admin email (endpoint: /school/update-email)
+   * @credit: Victor I. Afolabi
+   * @param null|API $api
+   * @return array|string
+   */
+  function updateEmail($api = null)
+  {
+    if ($api->method !== 'POST') return ['status' => false, 'msg' => 'Admin: invalid invocation'];
+    if (count($_POST) > 0) {
+      $schoolModel = new SchoolModel();
+      extract($_POST);
+      /** @var string $uid */
+      /** @var string $email */
+      if ( $schoolModel->updateSchoolInfo(['uid' => $uid, 'email' => $email], ['uid' => $uid]) ) {
+        return [
+          'status' => true,
+          'msg' => 'Admin: Password successfully updated'
+        ];
+      }
+      else
+        return [
+          'status' => false,
+          'msg'    => 'Admin: Could not update the email'
+        ];
+    }
+    return [
+      'status' => false,
+      'msg'    => 'Admin: School `uid` and admin\'s `email` required'
+    ];
+  }
+
+  /**
+   * Update admin password (endpoint: /school/update-password)
+   * @credit: Victor I. Afolabi
+   * @param null|API $api
+   * @return array|string
+   */
+  function updatePassword($api = null)
+  {
+    if ($api->method !== 'POST') return ['status' => false, 'msg' => 'Admin: invalid invocation'];
+    if (count($_POST)) {
+      $schoolModel = new SchoolModel();
+      extract($_POST);
+      /** @var string $uid */
+      /** @var string $password */
+      if ( $schoolModel->updateSchoolInfo(['uid' => $uid, 'password' => _hash($password)], ['uid' => $uid]) ) {
+        return [
+          'status' => true,
+          'msg' => 'Admin: Password successfully updated'
+        ];
+      }
+      else
+        return [
+          'status' => false,
+          'msg'    => 'Admin: Could not update password'
+        ];
+    }
+    return [
+      'status' => false,
+      'msg'    => 'Admin: School `uid` and admin\'s `password` required'
+    ];
   }
 
 }

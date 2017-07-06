@@ -64,18 +64,19 @@ class Database
     /**
      * Updates a row in a table
      * @param $table
-     * @param $id
+     * @param $val
      * @param $bindings
+     * @param string $handle
      * @return bool|\PDOStatement
      */
-    public function update($table, $id, $bindings)
+    public function update($table, $val, $bindings, $handle = 'id')
     {
         $structure = "";
         foreach ($bindings as $key => $value)
             $structure .= $key . "=:" . $key . ", ";
         $structure = rtrim($structure, ", ");
-        $bindings['id'] = $id;
-        $result = $this->query("UPDATE " . $table . " SET {$structure} WHERE id=:id", $bindings);
+        $bindings['val'] = $val;
+        $result = $this->query("UPDATE " . $table . " SET {$structure} WHERE $handle=:val", $bindings);
         return $result;
     }
 

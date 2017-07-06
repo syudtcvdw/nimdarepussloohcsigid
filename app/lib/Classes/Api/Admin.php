@@ -12,6 +12,7 @@ namespace App\Lib\Classes\Api;
 
 
 use app\models\FeedbackModel;
+use App\Models\ManageAdminModel;
 
 class Admin extends APIAble
 {
@@ -29,8 +30,9 @@ class Admin extends APIAble
   }
 
   /**
+   * Retrieve and update feedback status
    * @param null|API $api
-   * @return array|string
+   * @return array
    */
   function feedback($api = null)
   {
@@ -41,27 +43,28 @@ class Admin extends APIAble
         case "POST":
           if (isset($api->args[1])) {
             $status = $api->args[1];
-            if ($feedback->setFeedbackStatus($id, $status)) return ["status" => "success"];
+            if ($feedback->setFeedbackStatus($id, $status)) return ["status" => true];
             return [
-              "status" => "failed",
-              "msg" => "Could not update record."
+              "status" => false,
+              "msg"    => "Could not update record."
             ];
           }
           return [
-            "status" => "failed",
-            "msg" => "Missing param 'status'"
+            "status"  => false,
+            "msg"     => "Missing param 'status'"
           ];
         case "GET":
           $status = $feedback->getFeedbackStatus($id);
           return [
-            "status" => "success",
+            "status"   => true,
             "response" => ["id" => $id, "feedback_status" => $status]
           ];
       }
     }
     return [
-      "status" => "failed",
-      "msg" => "Admin: Missing param 'id'"
+      "status" => false,
+      "msg"    => "Admin: Missing param 'id'"
     ];
   }
+
 }

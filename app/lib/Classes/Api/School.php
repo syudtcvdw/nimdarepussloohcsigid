@@ -58,32 +58,35 @@ class School extends APIAble
   function updateEmail($api = null)
   {
     if ($api->method !== 'POST') return ['status' => false, 'msg' => 'Admin: invalid invocation'];
-    if (count($_POST) > 0) {
+    if (count($_POST) == 2) {
       $schoolModel = new SchoolModel();
       extract($_POST);
-      /** @var string $uid */
-      /** @var string $email */
-      if ( !Validators::anyEmpty($_POST) ) {
-        if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_uname' => $email], ['uid' => $uid])) {
-          return [
-            'status' => true,
-            'msg' => 'Admin: Email successfully updated'
-          ];
+      if (isset($uid) && isset($email)) {
+        if (!Validators::anyEmpty($_POST)) {
+          if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_uname' => $email], ['uid' => $uid]))
+            return [
+              'status' => true,
+              'msg' => 'Admin: Email successfully updated'
+            ];
+          else
+            return [
+              'status' => false,
+              'msg' => 'Admin: Could not update the email. Could be due to wrong `uid`'
+            ];
         } else
           return [
             'status' => false,
-            'msg' => 'Admin: Could not update the email. Could be due to wrong `uid`'
+            'msg' => 'Admin: `uid` and `email` cannot be empty'
           ];
-      }
-      else
+      } else
         return [
-          'status'  => false,
-          'msg'     => 'Admin: `uid` and `email` cannot be empty'
+          'status' => false,
+          'msg' => 'Admin: Unexpected arguments.'
         ];
     }
     return [
       'status' => false,
-      'msg'    => 'Admin: School `uid` and admin\'s `email` required'
+      'msg' => 'Admin: School `uid` and admin\'s `email` required'
     ];
   }
 
@@ -100,32 +103,35 @@ class School extends APIAble
   function updatePassword($api = null)
   {
     if ($api->method !== 'POST') return ['status' => false, 'msg' => 'Admin: invalid invocation'];
-    if (count($_POST) > 0) {
+    if (count($_POST) === 2) {
       $schoolModel = new SchoolModel();
       extract($_POST);
-      /** @var string $uid */
-      /** @var string $password */
-      if ( !Validators::anyEmpty($_POST) ) {
-        if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_password' => _hash($password)], ['uid' => $uid])) {
-          return [
-            'status' => true,
-            'msg' => 'Admin: Password successfully updated'
-          ];
+      if (isset($uid) && isset($password)) {
+        if (!Validators::anyEmpty($_POST)) {
+          if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_password' => $password], ['uid' => $uid]))
+            return [
+              'status' => true,
+              'msg' => 'Admin: Password successfully updated'
+            ];
+          else
+            return [
+              'status' => false,
+              'msg' => 'Admin: Could not update the password. Could be due to wrong `uid`'
+            ];
         } else
           return [
             'status' => false,
-            'msg' => 'Admin: Could not update the password. Could be due to wrong `uid`'
+            'msg' => 'Admin: `uid` and `password` cannot be empty'
           ];
-      }
-      else
+      } else
         return [
-          'status'  => false,
-          'msg'     => 'Admin: `uid` and `password` cannot be empty'
+          'status' => false,
+          'msg' => 'Admin: Unexpected arguments.'
         ];
     }
     return [
       'status' => false,
-      'msg'    => 'Admin: School `uid` and admin\'s `password` required'
+      'msg' => 'Admin: School `uid` and admin\'s `password` required'
     ];
   }
 

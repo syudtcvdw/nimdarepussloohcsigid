@@ -110,7 +110,7 @@ class School extends APIAble
       extract($_POST);
       if (isset($uid) && isset($password)) {
         if (!Validators::anyEmpty($_POST)) {
-          if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_password' => $password], ['uid' => $uid]))
+          if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_password' => _hash($password)], ['uid' => $uid]))
             return [
               'status' => true,
               'msg' => 'Admin: Password successfully updated'

@@ -31,9 +31,10 @@ class School extends APIAble
     if ($api->method != 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
     if (count($_POST) >= 2) {
       extract($_POST);
-      /** @var string $username */
-      /** @var string $password */
-      $data = ['admin_username' => $username, 'admin_password' => $password];
+      if (isset($username) && isset($password))
+        $data = ['admin_username' => $username, 'admin_password' => $password];
+      else
+        return ['status' => false, 'msg' => 'Admin: Unexpected arguments'];
       $school = new SchoolModel($data);
       $result = $school->getSchoolInfo(["uid", "name"]);
       if ($result) {
@@ -73,7 +74,8 @@ class School extends APIAble
               'status' => false,
               'msg' => 'Admin: Could not update the email. Could be due to wrong `uid`'
             ];
-        } else
+        }
+        else
           return [
             'status' => false,
             'msg' => 'Admin: `uid` and `email` cannot be empty'

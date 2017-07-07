@@ -19,6 +19,9 @@ class Admin extends APIAble
 
   /**
    * Generates a random password
+   * @method: GET
+   * @endpoint: /admin/pwd
+   * @args: null
    * @param null|API $api
    * @return array|string
    */
@@ -31,6 +34,9 @@ class Admin extends APIAble
 
   /**
    * Retrieve and update feedback status
+   * @method: GET & POST
+   * @endpoint: /admin/feedback
+   * @args: For GET(?id='') For POST (?id=''&status='')
    * @param null|API $api
    * @return array
    */

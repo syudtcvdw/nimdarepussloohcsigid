@@ -127,7 +127,7 @@ class SchoolModel extends Model
   {
     $key = array_keys($updateMetric)[0];
     $value = array_values($updateMetric)[0];
-    return $this->db->update($this->schoolTable, $value, $info, $key);
+    return $this->db->update($this->schoolTable, $value, $info, $key)->rowCount() > 0;
   }
 
 }

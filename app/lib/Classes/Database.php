@@ -38,8 +38,10 @@ class Database
     {
         try {
             $stmt = $this->conn->prepare($query);
-            if ($bindings) $stmt->execute($bindings);
-            else $stmt->execute();
+            $exec = null;
+            if ($bindings) $exec = $stmt->execute($bindings);
+            else $exec = $stmt->execute();
+            if (!$exec) return false;
             $stmt->setFetchMode(\PDO::FETCH_OBJ);
             return $stmt;
         } catch (\PDOException $e) {

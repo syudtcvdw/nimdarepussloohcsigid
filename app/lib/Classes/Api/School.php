@@ -11,13 +11,14 @@
 namespace App\Lib\Classes\Api;
 
 
+use App\Lib\Classes\Validators;
 use App\Models\SchoolModel;
 
 class School extends APIAble
 {
 
   /**
-   * Verifies admin credentials
+   * Verifies admin credentials (endpoint: /school/auth-admin)
    * @credit: Victor I. Afolabi
    * @param API|null $api
    * @return array
@@ -56,16 +57,22 @@ class School extends APIAble
       extract($_POST);
       /** @var string $uid */
       /** @var string $email */
-      if ( $schoolModel->updateSchoolInfo(['uid' => $uid, 'email' => $email], ['uid' => $uid]) ) {
-        return [
-          'status' => true,
-          'msg' => 'Admin: Password successfully updated'
-        ];
+      if ( !Validators::anyEmpty($_POST) ) {
+        if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'email' => $email], ['uid' => $uid])) {
+          return [
+            'status' => true,
+            'msg' => 'Admin: Password successfully updated'
+          ];
+        } else
+          return [
+            'status' => false,
+            'msg' => 'Admin: Could not update the email'
+          ];
       }
       else
         return [
-          'status' => false,
-          'msg'    => 'Admin: Could not update the email'
+          'status'  => false,
+          'msg'     => 'Admin: `uid` and `email` cannot be empty'
         ];
     }
     return [

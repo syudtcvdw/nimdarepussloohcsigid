@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author
  * Created by victor.
@@ -42,35 +43,53 @@ class Admin extends APIAble
    */
   function feedback($api = null)
   {
-    if (count($api->args) > 0) {
-      $id = $api->args[0];
-      $feedback = new FeedbackModel;
-      switch ($api->method) {
-        case "POST":
-          if (isset($api->args[1])) {
-            $status = $api->args[1];
+    switch ($api->method) {
+      case "GET" :
+        if (count($api->args) === 1) {
+          $id = $api->args[0];
+          $feedback = new FeedbackModel;
+          $status = $feedback->getFeedbackStatus($id);
+          if (!$status)
+            return [
+            "status" => false,
+            "msg" => "No record found for id: {$id}"
+          ];
+          return [
+            "status" => true,
+            "response" => ["id" => $id, "feedback_status" => $status]
+          ];
+        }
+        return [
+          "status" => false,
+          "msg" => "Admin: Unexpected argument"
+        ];
+      case "POST" :
+        if (count($_POST) === 2) {
+          $feedback = new FeedbackModel;
+          extract($_POST);
+          if (isset($status) && isset($id)) {
             if ($feedback->setFeedbackStatus($id, $status)) return ["status" => true];
             return [
               "status" => false,
-              "msg"    => "Could not update record."
+              "msg" => "Could not update record."
             ];
           }
           return [
-            "status"  => false,
-            "msg"     => "Missing param 'status'"
+            "status" => false,
+            "msg" => "Unexpected arguments."
           ];
-        case "GET":
-          $status = $feedback->getFeedbackStatus($id);
-          return [
-            "status"   => true,
-            "response" => ["id" => $id, "feedback_status" => $status]
-          ];
-      }
+        }
+        return [
+          "status" => false,
+          "msg" => "Missing arguments."
+        ];
+      default :
+        return [
+          "status" => false,
+          "msg" => "Admin: Invalid invocation"
+        ];
     }
-    return [
-      "status" => false,
-      "msg"    => "Admin: Missing param 'id'"
-    ];
+
   }
 
 }

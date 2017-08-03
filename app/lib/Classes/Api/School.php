@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author
  * Created by victor.
@@ -13,6 +14,7 @@ namespace App\Lib\Classes\Api;
 
 use App\Lib\Classes\Validators;
 use App\Models\SchoolModel;
+use app\models\FeedbackModel;
 
 class School extends APIAble
 {
@@ -28,7 +30,7 @@ class School extends APIAble
    */
   public function authAdmin($api = null)
   {
-    if ($api->method != 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
+    if ($api->method !== 'POST') return ['status' => false, 'msg' => 'Invalid invocation'];
     if (count($_POST) >= 2) {
       extract($_POST);
       if (isset($username) && isset($password))
@@ -38,9 +40,13 @@ class School extends APIAble
       $school = new SchoolModel($data);
       $result = $school->getSchoolInfo(["uid", "name"]);
       if ($result) {
-        return ['status' => true,
-          'response' => ['uid' => $result->uid,
-            'name' => $result->name]];
+        return [
+          'status' => true,
+          'response' => [
+            'uid' => $result->uid,
+            'name' => $result->name
+          ]
+        ];
       }
       return ['status' => false, 'msg' => 'Incorrect credentials supplied.'];
     }
@@ -66,25 +72,26 @@ class School extends APIAble
         if (!Validators::anyEmpty($_POST)) {
           if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_uname' => $email], ['uid' => $uid]))
             return [
-              'status' => true,
-              'msg' => 'Admin: Email successfully updated'
-            ];
+            'status' => true,
+            'msg' => 'Admin: Email successfully updated'
+          ];
           else
             return [
-              'status' => false,
-              'msg' => 'Admin: Could not update the email. Could be due to wrong `uid`'
-            ];
+            'status' => false,
+            'msg' => 'Admin: Could not update the email. Could be due to wrong `uid`'
+          ];
         }
         else
           return [
-            'status' => false,
-            'msg' => 'Admin: `uid` and `email` cannot be empty'
-          ];
-      } else
-        return [
           'status' => false,
-          'msg' => 'Admin: Unexpected arguments.'
+          'msg' => 'Admin: `uid` and `email` cannot be empty'
         ];
+      }
+      else
+        return [
+        'status' => false,
+        'msg' => 'Admin: Unexpected arguments.'
+      ];
     }
     return [
       'status' => false,
@@ -112,24 +119,26 @@ class School extends APIAble
         if (!Validators::anyEmpty($_POST)) {
           if ($schoolModel->updateSchoolInfo(['uid' => $uid, 'admin_password' => _hash($password)], ['uid' => $uid]))
             return [
-              'status' => true,
-              'msg' => 'Admin: Password successfully updated'
-            ];
+            'status' => true,
+            'msg' => 'Admin: Password successfully updated'
+          ];
           else
             return [
-              'status' => false,
-              'msg' => 'Admin: Could not update the password. Could be due to wrong `uid`'
-            ];
-        } else
-          return [
             'status' => false,
-            'msg' => 'Admin: `uid` and `password` cannot be empty'
+            'msg' => 'Admin: Could not update the password. Could be due to wrong `uid`'
           ];
-      } else
-        return [
+        }
+        else
+          return [
           'status' => false,
-          'msg' => 'Admin: Unexpected arguments.'
+          'msg' => 'Admin: `uid` and `password` cannot be empty'
         ];
+      }
+      else
+        return [
+        'status' => false,
+        'msg' => 'Admin: Unexpected arguments.'
+      ];
     }
     return [
       'status' => false,
@@ -137,5 +146,51 @@ class School extends APIAble
     ];
   }
 
+  /**
+   * Add feedback
+   * @method: POST
+   * @endpoint: /school/feedback
+   * @args: ?school_id=''&title=''&message=''
+   * @credit: Victor I. Afolabi
+   * @param null|API $api
+   * @return array|string
+   */
+  function feedback($api = null)
+  {
+    if ($api->method !== "POST") return ['status' => false, 'msg' => 'Admin: invalid invocation'];
+    if (count($_POST) === 3) {
+      $feedback = new FeedbackModel;
+      extract($_POST);
+      if (isset($school_id) && isset($title) && isset($message)) {
+        if (!Validators::anyEmpty($_POST)) {
+          $data = ['school_id' => $school_id, 'title' => $title, 'body' => $message, 'status' => 'fresh'];
+          if ($feedback->add($data))
+            return [
+            'status' => true,
+            'msg' => 'Admin: Feedback successfully inserted!'
+          ];
+          else
+            return [
+            'status' => false,
+            'msg' => 'Admin: Trouble adding feedback'
+          ];
+        }
+        else
+          return [
+          'status' => false,
+          'msg' => 'Admin: No fields must be empty'
+        ];
+      }
+      else
+        return [
+        'status' => false,
+        'msg' => 'Admin: Unexpected arguments.'
+      ];
+    }
+    return [
+      'status' => false,
+      'msg' => 'Admin: `school_id`, `title` and `message` required'
+    ];
+  }
 
 }

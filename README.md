@@ -1,4 +1,4 @@
-#digischools-superadmin
+<!-- #digischools-superadmin
 
 All contributors are advised to enlist themselves in the appropriate section below, with appropriate aliases
 
@@ -9,3 +9,4 @@ _Designer:_ Falua Temitope Oyewole [ Emmathem ]
 Odunayo Okebunmi [Odun]  
 Omotosho David Oluwatobiloba [Dylectus]  
 _Veronica O Michael(veralyn)  
+-->

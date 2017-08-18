@@ -162,19 +162,12 @@ class School extends APIAble
       $feedback = new FeedbackModel;
       extract($_POST);
       if (isset($school_id) && isset($title) && isset($message)) {
-        if (!Validators::anyEmpty($_POST)) {
           $data = ['school_id' => $school_id, 'title' => $title, 'body' => $message, 'status' => 'fresh'];
           if ($feedback->add($data))
             return [
             'status' => true,
             'msg' => 'Admin: Feedback successfully inserted!'
           ];
-          else
-            return [
-            'status' => false,
-            'msg' => 'Admin: Trouble adding feedback'
-          ];
-        }
         else
           return [
           'status' => false,
